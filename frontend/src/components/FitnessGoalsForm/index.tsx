@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { Multiselect } from "multiselect-react-dropdown";
 import "./index.css";
 import "../../index.css";
-import { Multiselect } from "multiselect-react-dropdown";
 
 const FitnessGoalsForm: React.FC = () => {
+  const navigate = useNavigate();
+
   const [other, setOther] = useState("");
   const [selectedOptions, setSelectedOptions] = useState({
     enduranceAndCardio: [],
@@ -22,7 +25,7 @@ const FitnessGoalsForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(selectedOptions); // You can handle the form submission here
+    navigate('/preferences');
   };
 
   const options = {
