@@ -3,8 +3,14 @@
     --primary-color: #00FFFF;
     --secondary-color: #FF7F50;
     --title-color: #FFFFFF;
-    --title-color: #FFFFFF;
     --subtext-color: #D3D3D3;
     --success-color: #32CD32;
   }
   
+body {
+    background-color: var(--background-color);
+}
+
+h1 {
+    color: var(--title-color);
+}

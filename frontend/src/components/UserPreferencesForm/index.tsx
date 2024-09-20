@@ -5,7 +5,7 @@ import './index.css';
 const UserPreferencesForm = () => {
     const [userPreferences, setUserPreferences] = useState('');
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         setUserPreferences(e.target.value)
         
     }
