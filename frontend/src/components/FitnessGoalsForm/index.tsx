@@ -56,71 +56,96 @@ const FitnessGoalsForm: React.FC = () => {
 
   return (
     <form className="body-info-form" onSubmit={handleSubmit}>
-      <h2>What do <span className="highlight">you</span> want to achieve?</h2>
+      <h2>
+        What do you want to <span className="highlight">achieve</span>?
+      </h2>
 
       <div className="form-group">
-        <label>Endurance & Cardio</label>
-        <Multiselect
-          options={options.enduranceAndCardio}
-          displayValue="name"
-          onSelect={(selectedList) => handleMultiSelectChange('enduranceAndCardio', selectedList)}
-          onRemove={(selectedList) => handleMultiSelectChange('enduranceAndCardio', selectedList)}
-          className="custom-multiselect"
-        />
+        <div>
+          <label>Endurance & Cardio</label>
+          <Multiselect
+            options={options.enduranceAndCardio}
+            displayValue="name"
+            onSelect={(selectedList) =>
+              handleMultiSelectChange("enduranceAndCardio", selectedList)
+            }
+            onRemove={(selectedList) =>
+              handleMultiSelectChange("enduranceAndCardio", selectedList)
+            }
+            className="custom-multiselect"
+          />
+        </div>
+
+        <div>
+          <label>Flexibility & Mobility</label>
+          <Multiselect
+            options={options.flexibilityAndMobility}
+            displayValue="name"
+            onSelect={(selectedList) =>
+              handleMultiSelectChange("flexibilityAndMobility", selectedList)
+            }
+            onRemove={(selectedList) =>
+              handleMultiSelectChange("flexibilityAndMobility", selectedList)
+            }
+            className="custom-multiselect"
+          />
+        </div>
+
+        <div>
+          <label>Overall Health</label>
+          <Multiselect
+            options={options.overallHealth}
+            displayValue="name"
+            onSelect={(selectedList) =>
+              handleMultiSelectChange("overallHealth", selectedList)
+            }
+            onRemove={(selectedList) =>
+              handleMultiSelectChange("overallHealth", selectedList)
+            }
+            className="custom-multiselect"
+          />
+        </div>
       </div>
 
       <div className="form-group">
-        <label>Flexibility & Mobility</label>
-        <Multiselect
-          options={options.flexibilityAndMobility}
-          displayValue="name"
-          onSelect={(selectedList) => handleMultiSelectChange('flexibilityAndMobility', selectedList)}
-          onRemove={(selectedList) => handleMultiSelectChange('flexibilityAndMobility', selectedList)}
-          className="custom-multiselect"
-        />
-      </div>
+        <div>
+          <label>Weight Management</label>
+          <Multiselect
+            options={options.weightManagement}
+            displayValue="name"
+            onSelect={(selectedList) =>
+              handleMultiSelectChange("weightManagement", selectedList)
+            }
+            onRemove={(selectedList) =>
+              handleMultiSelectChange("weightManagement", selectedList)
+            }
+            className="custom-multiselect"
+          />
+        </div>
 
-      <div className="form-group">
-        <label>Overall Health</label>
-        <Multiselect
-          options={options.overallHealth}
-          displayValue="name"
-          onSelect={(selectedList) => handleMultiSelectChange('overallHealth', selectedList)}
-          onRemove={(selectedList) => handleMultiSelectChange('overallHealth', selectedList)}
-          className="custom-multiselect"
-        />
-      </div>
+        <div>
+          <label>Strength & Muscle</label>
+          <Multiselect
+            options={options.strengthAndMuscle}
+            displayValue="name"
+            onSelect={(selectedList) =>
+              handleMultiSelectChange("strengthAndMuscle", selectedList)
+            }
+            onRemove={(selectedList) =>
+              handleMultiSelectChange("strengthAndMuscle", selectedList)
+            }
+            className="custom-multiselect"
+          />
+        </div>
 
-      <div className="form-group">
-        <label>Weight Management</label>
-        <Multiselect
-          options={options.weightManagement}
-          displayValue="name"
-          onSelect={(selectedList) => handleMultiSelectChange('weightManagement', selectedList)}
-          onRemove={(selectedList) => handleMultiSelectChange('weightManagement', selectedList)}
-          className="custom-multiselect"
-        />
-      </div>
-
-      <div className="form-group">
-        <label>Strength & Muscle</label>
-        <Multiselect
-          options={options.strengthAndMuscle}
-          displayValue="name"
-          onSelect={(selectedList) => handleMultiSelectChange('strengthAndMuscle', selectedList)}
-          onRemove={(selectedList) => handleMultiSelectChange('strengthAndMuscle', selectedList)}
-          className="custom-multiselect"
-        />
-      </div>
-
-      <div className="form-group">
-        <label>Other, please specify</label>
-        <input
-          type="string"
-          placeholder="E.g., Prepare for a hiking trip, rehab an injury, etc."
-          value={other}
-          onChange={(e) => setOther(e.target.value)}
-        />
+        <div>
+          <label>Other, please specify</label>
+          <textarea
+            placeholder="E.g., Prepare for a hiking trip, rehab an injury, etc."
+            value={other}
+            onChange={(e) => setOther(e.target.value)}
+          />
+        </div>
       </div>
 
       <button type="submit" className="submit-button">

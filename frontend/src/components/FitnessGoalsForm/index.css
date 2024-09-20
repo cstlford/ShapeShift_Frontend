@@ -17,13 +17,32 @@ h2 {
 }
 .form-group {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   margin-bottom: 15px;
   width: 100%;
 }
+
+.form-group > div {
+  flex: 1 1 30%;
+  margin-right: 10px;
+}
+
+.form-group > div:last-child {
+  margin-right: 0;
+}
+
+textarea {
+  width: 93%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #444;
+  color: #c9c9c9;
+}
+
 input,
 select {
-  padding: 8px;
+  padding: 10px;
   margin-top: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -46,7 +65,7 @@ input::placeholder {
 }
 
 .highlight {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 .custom-multiselect {
