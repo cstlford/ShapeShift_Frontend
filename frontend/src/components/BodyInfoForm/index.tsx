@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./index.css";
 import "../../index.css";
 const BodyInfoForm: React.FC = () => {
+  const navigate = useNavigate();
+
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [sex, setSex] = useState("Male");
   const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event: React.FormEvent) => {
+    navigate('/fitness-goals');
     event.preventDefault();
   };
 
