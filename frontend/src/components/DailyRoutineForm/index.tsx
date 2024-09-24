@@ -23,7 +23,7 @@ const DailyRoutineForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    navigate("/");
+    navigate("/final-page");
   };
 
   const options = {
