@@ -1,0 +1,43 @@
+.wp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wp-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 640px;
+  margin: auto;
+}
+
+.wp-title {
+  padding-bottom: 0;
+}
+
+.wp-submit-btn {
+  background: rgb(0,255,255);
+  background: linear-gradient(90deg, rgba(0,255,255,1) 0%, rgba(170,255,255,1) 100%); 
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 25%;
+}
+.wp-submit-btn:hover {
+  background: linear-gradient(90deg, rgb(5, 212, 212) 0%, rgb(130, 196, 196) 100%);
+}
+
+.highlight {
+  color: var(--secondary-color);
+}
+
+.wp-text {
+  text-align: center;
+}
