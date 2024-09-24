@@ -25,7 +25,7 @@ const FitnessGoalsForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    navigate('/preferences');
+    navigate('/daily-routine');
   };
 
   const options = {
@@ -153,7 +153,7 @@ const FitnessGoalsForm: React.FC = () => {
         </div>
 
         <button type="submit" className="fg-submit-btn">
-          Next: Your Preferences
+          Next: Your Lifestyle
         </button>
       </form>
     </div>
