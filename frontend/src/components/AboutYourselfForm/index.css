@@ -60,16 +60,18 @@ h2 {
 }
 
 .ay-submit-btn {
-  background-color: #ff7846;
+  background: rgb(255,127,80);
+  background: linear-gradient(90deg, rgba(255,127,80,1) 0%, rgb(255, 181, 151) 100%);
   border: none;
   padding: 10px;
   color: #fff;
   border-radius: 25px;
   cursor: pointer;
   width: 250px;
+  font-weight: bold;
 }
 .ay-submit-btn:hover {
-  background-color: #e06c41;
+  background: linear-gradient(90deg, rgb(212, 109, 72) 0%, rgb(214, 155, 131) 100%);
 }
 
 .ay-google-submit-btn {

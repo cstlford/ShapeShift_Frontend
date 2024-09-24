@@ -58,6 +58,7 @@
   width: 25%;
   margin-top: 5%;
   margin-bottom: 2%;
+  font-weight: bold;
 }
 .wp-submit-btn:hover {
   background: linear-gradient(
