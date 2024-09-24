@@ -18,65 +18,54 @@ const BodyInfoForm: React.FC = () => {
   return (
     <div className="bi-form-container">
       <form className="bi-form" onSubmit={handleSubmit}>
-        {" "}
         <h2>
           Now, let's get to know <span className="highlight">your</span> body...
-        </h2>{" "}
+        </h2>
         <div className="bi-form-group">
-          {" "}
-          <label className="bi-input-label">
-            What's your current weight?
-          </label>{" "}
+          <label className="bi-input-label">What's your current weight?</label>
           <input
             className="bi-input-text"
             type="number"
             placeholder="Weight"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
-          />{" "}
+          />
           <select>
-            {" "}
-            <option value="lb">lb</option> <option value="kg">kg</option>{" "}
-          </select>{" "}
-        </div>{" "}
+            <option value="lb">lb</option> <option value="kg">kg</option>
+          </select>
+        </div>
         <div className="bi-form-group">
-          {" "}
-          <label className="bi-input-label">How tall are you?</label>{" "}
+          <label className="bi-input-label">How tall are you?</label>
           <input
             className="bi-input-text"
             type="number"
             placeholder="Height"
             value={height}
             onChange={(e) => setHeight(e.target.value)}
-          />{" "}
+          />
           <select>
-            {" "}
-            <option value="in">in</option> <option value="cm">cm</option>{" "}
-          </select>{" "}
-        </div>{" "}
+            <option value="in">in</option> <option value="cm">cm</option>
+          </select>
+        </div>
         <div className="bi-form-group">
-          {" "}
-          <label className="bi-input-label">What is your sex?</label>{" "}
+          <label className="bi-input-label">What is your sex?</label>
           <select value={sex} onChange={(e) => setSex(e.target.value)}>
-            {" "}
-            <option value="Male">Male</option>{" "}
-            <option value="Female">Female</option>{" "}
-          </select>{" "}
-        </div>{" "}
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
         <div className="bi-form-group">
-          {" "}
-          <label className="bi-input-label">When's your birthday?</label>{" "}
+          <label className="bi-input-label">When's your birthday?</label>
           <input
             className="bi-input-text"
             type="date"
             value={birthday}
             onChange={(e) => setBirthday(e.target.value)}
-          />{" "}
-        </div>{" "}
+          />
+        </div>
         <button type="submit" className="bi-submit-btn">
-          {" "}
-          Next: Your Fitness Goals{" "}
-        </button>{" "}
+          Next: Your Fitness Goals
+        </button>
       </form>
     </div>
   );
