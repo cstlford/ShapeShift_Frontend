@@ -7,6 +7,7 @@ import WelcomePage from './components/IntroComponents/WelcomePage';
 import DailyRoutineForm from './components/IntroComponents/DailyRoutineForm';
 import AboutYourselfForm from './components/IntroComponents/AboutYourselfForm';
 import FinalPage from './components/IntroComponents/FinalPage';
+import DashboardComponent from './components/MainComponents/DashboardComponent';
 import { FormProvider } from './FormContext';
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <Route path="/fitness-goals" element={<FitnessGoalsForm />} />
           <Route path="/daily-routine" element={<DailyRoutineForm />} />
           <Route path="/final-page" element={<FinalPage />} />
+          <Route path="/dashboard" element={<DashboardComponent />} />
           <Route path="/preferences" element={<UserPreferencesForm />} />
         </Routes>
       </Router>

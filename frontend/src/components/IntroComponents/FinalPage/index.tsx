@@ -11,11 +11,10 @@ const FinalPage: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    navigate("/dashboard");
     try {
       const response = await axios.post("http://localhost:5000/api/formData", formData);
       console.log(response.data);
-      
-      navigate("/");
     } catch (error) {
       console.error("Error: ", error);
     }
