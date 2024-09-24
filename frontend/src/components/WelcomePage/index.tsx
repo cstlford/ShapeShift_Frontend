@@ -8,7 +8,7 @@ const WelcomePage: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    navigate('/body-info');
+    navigate('/about-yourself');
   };
 
   return (
