@@ -17,9 +17,33 @@
   margin: auto;
 }
 
-.wp-title {
-  padding-bottom: 0;
+.wp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.wp-header img {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.wp-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.wp-title {
+  margin: 0; /* Remove default margin */
+}
+
+.wp-subtitle {
+  margin: 0; /* Remove default margin */
+}
+
 
 .wp-submit-btn {
   background: rgb(0,255,255);
@@ -29,6 +53,8 @@
   border-radius: 5px;
   cursor: pointer;
   width: 25%;
+  margin-top: 5%;
+  margin-bottom: 2%;
 }
 .wp-submit-btn:hover {
   background: linear-gradient(90deg, rgb(5, 212, 212) 0%, rgb(130, 196, 196) 100%);
