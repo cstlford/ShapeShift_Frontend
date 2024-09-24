@@ -1,0 +1,37 @@
+.sidenav-container {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  width: 200px;
+  height: calc(100% - 3rem);
+  background-color: #6e6e6e;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidenav-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.sidenav-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidenav-item {
+  margin: 1rem 0;
+}
+
+.sidenav-item a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.sidenav-item a:hover {
+  text-decoration: underline;
+}
