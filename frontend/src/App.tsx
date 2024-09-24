@@ -7,20 +7,23 @@ import WelcomePage from './components/WelcomePage';
 import DailyRoutineForm from './components/DailyRoutineForm';
 import AboutYourselfForm from './components/AboutYourselfForm';
 import FinalPage from './components/FinalPage';
+import { FormProvider } from './FormContext';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/about-yourself" element={<AboutYourselfForm />} />
-        <Route path="/body-info" element={<BodyInfoForm />} />
-        <Route path="/fitness-goals" element={<FitnessGoalsForm />} />
-        <Route path="/daily-routine" element={<DailyRoutineForm />} />
-        <Route path="/final-page" element={<FinalPage />} />
-        <Route path="/preferences" element={<UserPreferencesForm />} />
-      </Routes>
-    </Router>
+    <FormProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/about-yourself" element={<AboutYourselfForm />} />
+          <Route path="/body-info" element={<BodyInfoForm />} />
+          <Route path="/fitness-goals" element={<FitnessGoalsForm />} />
+          <Route path="/daily-routine" element={<DailyRoutineForm />} />
+          <Route path="/final-page" element={<FinalPage />} />
+          <Route path="/preferences" element={<UserPreferencesForm />} />
+        </Routes>
+      </Router>
+    </FormProvider>
   );
 };
 

@@ -1,25 +1,20 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Multiselect } from "multiselect-react-dropdown";
+import { useFormContext } from "../../FormContext";
 import "./index.css";
 import "../../index.css";
 
 const FitnessGoalsForm: React.FC = () => {
   const navigate = useNavigate();
-
-  const [other, setOther] = useState("");
-  const [selectedOptions, setSelectedOptions] = useState({
-    enduranceAndCardio: [],
-    flexibilityAndMobility: [],
-    overallHealth: [],
-    weightManagement: [],
-    strengthAndMuscle: [],
-  });
+  const { formData, setFormData } = useFormContext();
 
   const handleMultiSelectChange = (category: string, selectedList: any) => {
-    setSelectedOptions((prev) => ({
+    setFormData((prev: any) => ({
       ...prev,
-      [category]: selectedList,
+      fitnessGoals: {
+        ...prev.fitnessGoals,
+        [category]: selectedList,
+      },
     }));
   };
 
@@ -146,8 +141,16 @@ const FitnessGoalsForm: React.FC = () => {
             <label>Other, please specify</label>
             <textarea
               placeholder="E.g., Prepare for a hiking trip, rehab an injury, etc."
-              value={other}
-              onChange={(e) => setOther(e.target.value)}
+              value={formData.fitnessGoals.other}
+              onChange={(e) =>
+                setFormData((prev: any) => ({
+                  ...prev,
+                  fitnessGoals: {
+                    ...prev.fitnessGoals,
+                    other: e.target.value,
+                  },
+                }))
+              }
             />
           </div>
         </div>

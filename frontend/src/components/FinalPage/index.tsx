@@ -2,12 +2,16 @@ import { useNavigate } from "react-router-dom";
 import "./index.css";
 import "../../index.css";
 import logo from "../../assets/logo.ico";
+import { useFormContext } from "../../FormContext";
 
 const FinalPage: React.FC = () => {
   const navigate = useNavigate();
+  const { formData } = useFormContext();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    // Handle data
+    console.log(formData);
     navigate("/");
   };
 

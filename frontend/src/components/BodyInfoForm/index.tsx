@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormContext } from "../../FormContext";
 import "./index.css";
 import "../../index.css";
+
 const BodyInfoForm: React.FC = () => {
   const navigate = useNavigate();
-
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
-  const [sex, setSex] = useState("Male");
-  const [birthday, setBirthday] = useState("");
+  const { formData, setFormData } = useFormContext();
 
   const handleSubmit = (event: React.FormEvent) => {
-    navigate("/fitness-goals");
     event.preventDefault();
+    navigate("/fitness-goals");
   };
 
   return (
@@ -28,10 +26,27 @@ const BodyInfoForm: React.FC = () => {
               className="bi-input-text"
               type="number"
               placeholder="Weight"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
+              value={formData.bodyInfo.weight}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  bodyInfo: { ...formData.bodyInfo, weight: e.target.value },
+                })
+              }
             />
-            <select className="bi-select">
+            <select
+              className="bi-select"
+              value={formData.bodyInfo.weightUnit}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  bodyInfo: {
+                    ...formData.bodyInfo,
+                    weightUnit: e.target.value,
+                  },
+                })
+              }
+            >
               <option value="lb">lb</option>
               <option value="kg">kg</option>
             </select>
@@ -44,11 +59,29 @@ const BodyInfoForm: React.FC = () => {
               className="bi-input-text"
               type="number"
               placeholder="Height"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
+              value={formData.bodyInfo.height}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  bodyInfo: { ...formData.bodyInfo, height: e.target.value },
+                })
+              }
             />
-            <select className="bi-select">
-              <option value="in">in</option> <option value="cm">cm</option>
+            <select
+              className="bi-select"
+              value={formData.bodyInfo.heightUnit}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  bodyInfo: {
+                    ...formData.bodyInfo,
+                    heightUnit: e.target.value,
+                  },
+                })
+              }
+            >
+              <option value="in">in</option>
+              <option value="cm">cm</option>
             </select>
           </div>
         </div>
@@ -56,9 +89,14 @@ const BodyInfoForm: React.FC = () => {
           <label className="bi-input-label">What is your sex?</label>
           <div className="bi-input-container">
             <select
-              value={sex}
-              onChange={(e) => setSex(e.target.value)}
               className="bi-select-sex"
+              value={formData.bodyInfo.sex}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  bodyInfo: { ...formData.bodyInfo, sex: e.target.value },
+                })
+              }
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -71,8 +109,13 @@ const BodyInfoForm: React.FC = () => {
             <input
               className="bi-input-text"
               type="date"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
+              value={formData.bodyInfo.birthday}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  bodyInfo: { ...formData.bodyInfo, birthday: e.target.value },
+                })
+              }
             />
           </div>
         </div>
@@ -83,4 +126,5 @@ const BodyInfoForm: React.FC = () => {
     </div>
   );
 };
+
 export default BodyInfoForm;
