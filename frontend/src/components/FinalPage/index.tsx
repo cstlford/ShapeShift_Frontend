@@ -3,16 +3,22 @@ import "./index.css";
 import "../../index.css";
 import logo from "../../assets/logo.ico";
 import { useFormContext } from "../../FormContext";
+import axios from "axios";
 
 const FinalPage: React.FC = () => {
   const navigate = useNavigate();
   const { formData } = useFormContext();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // Handle data
-    console.log(formData);
-    navigate("/");
+    try {
+      const response = await axios.post("http://localhost:5000/api/formData", formData);
+      console.log(response.data);
+      
+      navigate("/");
+    } catch (error) {
+      console.error("Error: ", error);
+    }
   };
 
   return (
