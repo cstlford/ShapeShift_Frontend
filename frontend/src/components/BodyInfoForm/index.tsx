@@ -16,10 +16,10 @@ const BodyInfoForm: React.FC = () => {
   };
 
   return (
-    <form className="body-info-form" onSubmit={handleSubmit}>
+    <form className="bi-form" onSubmit={handleSubmit}>
       {" "}
       <h2>Now, let's get to know <span className="highlight">your</span> body...</h2>{" "}
-      <div className="form-group">
+      <div className="bi-form-group">
         {" "}
         <label>What's your current weight?</label>{" "}
         <input
@@ -30,10 +30,10 @@ const BodyInfoForm: React.FC = () => {
         />{" "}
         <select>
           {" "}
-          <option value="kg">kg</option> <option value="lb">lb</option>{" "}
+          <option value="lb">lb</option> <option value="kg">kg</option>{" "}
         </select>{" "}
       </div>{" "}
-      <div className="form-group">
+      <div className="bi-form-group">
         {" "}
         <label>How tall are you?</label>{" "}
         <input
@@ -44,10 +44,10 @@ const BodyInfoForm: React.FC = () => {
         />{" "}
         <select>
           {" "}
-          <option value="cm">cm</option> <option value="in">in</option>{" "}
+          <option value="in">in</option> <option value="cm">cm</option>{" "}
         </select>{" "}
       </div>{" "}
-      <div className="form-group">
+      <div className="bi-form-group">
         {" "}
         <label>What is your sex?</label>{" "}
         <select value={sex} onChange={(e) => setSex(e.target.value)}>
@@ -56,7 +56,7 @@ const BodyInfoForm: React.FC = () => {
           <option value="Female">Female</option>{" "}
         </select>{" "}
       </div>{" "}
-      <div className="form-group">
+      <div className="bi-form-group">
         {" "}
         <label>When's your birthday?</label>{" "}
         <input
@@ -65,7 +65,7 @@ const BodyInfoForm: React.FC = () => {
           onChange={(e) => setBirthday(e.target.value)}
         />{" "}
       </div>{" "}
-      <button type="submit" className="submit-button">
+      <button type="submit" className="bi-submit-btn">
         {" "}
         Next: Your Fitness Goals{" "}
       </button>{" "}

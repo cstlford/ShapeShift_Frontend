@@ -1,4 +1,4 @@
-.body-info-form {
+.bi-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ h2 {
   text-align: center;
   color: #f4f4f4;
 }
-.form-group {
+.bi-form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -33,7 +33,7 @@ select {
 input::placeholder {
   color: #ccc;
 }
-.submit-button {
+.bi-submit-btn {
   background-color: #ff7846;
   border: none;
   padding: 10px;
@@ -42,7 +42,7 @@ input::placeholder {
   cursor: pointer;
   width: 100%;
 }
-.submit-button:hover {
+.bi-submit-btn:hover {
   background-color: #e06c41;
 }
 

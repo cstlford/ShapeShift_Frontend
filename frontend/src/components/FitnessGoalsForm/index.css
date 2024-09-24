@@ -1,4 +1,4 @@
-.body-info-form {
+.fg-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,19 +15,19 @@ h2 {
   text-align: center;
   color: #f4f4f4;
 }
-.form-group {
+.fg-form-group {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 15px;
   width: 100%;
 }
 
-.form-group > div {
+.fg-form-group > div {
   flex: 1 1 30%;
   margin-right: 10px;
 }
 
-.form-group > div:last-child {
+.fg-form-group > div:last-child {
   margin-right: 0;
 }
 
@@ -51,7 +51,7 @@ select {
 input::placeholder {
   color: #ccc;
 }
-.submit-button {
+.fg-submit-btn {
   background-color: #ff7846;
   border: none;
   padding: 10px;
@@ -60,7 +60,7 @@ input::placeholder {
   cursor: pointer;
   width: 100%;
 }
-.submit-button:hover {
+.fg-submit-btn:hover {
   background-color: #e06c41;
 }
 
@@ -68,31 +68,31 @@ input::placeholder {
   color: var(--secondary-color);
 }
 
-.custom-multiselect {
+.fg-multiselect {
   background-color: #444;
   color: #222222;
 }
 
-.custom-multiselect .multiselect__input {
+.fg-multiselect .multiselect__input {
   color: #fff;
   background-color: #444;
 }
 
-.custom-multiselect .multiselect__option {
+.fg-multiselect .multiselect__option {
   background-color: #444;
   color: #fff;
 }
 
-.custom-multiselect .multiselect__option--highlight {
+.fg-multiselect .multiselect__option--highlight {
   background-color: #ff7846;
   color: #fff;
 }
 
-.custom-multiselect .multiselect__option--selected {
+.fg-multiselect .multiselect__option--selected {
   background-color: #ff7846;
   color: #fff;
 }
 
-.custom-multiselect .multiselect__option-container {
+.fg-multiselect .multiselect__option-container {
   background-color: #333;
 }

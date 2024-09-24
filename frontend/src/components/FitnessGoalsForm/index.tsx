@@ -58,12 +58,12 @@ const FitnessGoalsForm: React.FC = () => {
   };
 
   return (
-    <form className="body-info-form" onSubmit={handleSubmit}>
+    <form className="fg-form" onSubmit={handleSubmit}>
       <h2>
         What do you want to <span className="highlight">achieve</span>?
       </h2>
 
-      <div className="form-group">
+      <div className="fg-form-group">
         <div>
           <label>Endurance & Cardio</label>
           <Multiselect
@@ -75,7 +75,7 @@ const FitnessGoalsForm: React.FC = () => {
             onRemove={(selectedList) =>
               handleMultiSelectChange("enduranceAndCardio", selectedList)
             }
-            className="custom-multiselect"
+            className="fg-multiselect"
           />
         </div>
 
@@ -90,7 +90,7 @@ const FitnessGoalsForm: React.FC = () => {
             onRemove={(selectedList) =>
               handleMultiSelectChange("flexibilityAndMobility", selectedList)
             }
-            className="custom-multiselect"
+            className="fg-multiselect"
           />
         </div>
 
@@ -105,12 +105,12 @@ const FitnessGoalsForm: React.FC = () => {
             onRemove={(selectedList) =>
               handleMultiSelectChange("overallHealth", selectedList)
             }
-            className="custom-multiselect"
+            className="fg-multiselect"
           />
         </div>
       </div>
 
-      <div className="form-group">
+      <div className="fg-form-group">
         <div>
           <label>Weight Management</label>
           <Multiselect
@@ -122,7 +122,7 @@ const FitnessGoalsForm: React.FC = () => {
             onRemove={(selectedList) =>
               handleMultiSelectChange("weightManagement", selectedList)
             }
-            className="custom-multiselect"
+            className="fg-multiselect"
           />
         </div>
 
@@ -137,7 +137,7 @@ const FitnessGoalsForm: React.FC = () => {
             onRemove={(selectedList) =>
               handleMultiSelectChange("strengthAndMuscle", selectedList)
             }
-            className="custom-multiselect"
+            className="fg-multiselect"
           />
         </div>
 
@@ -151,7 +151,7 @@ const FitnessGoalsForm: React.FC = () => {
         </div>
       </div>
 
-      <button type="submit" className="submit-button">
+      <button type="submit" className="fg-submit-btn">
         Next: Your Preferences
       </button>
     </form>
