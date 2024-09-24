@@ -82,6 +82,7 @@ h2 {
   border-radius: 25px;
   cursor: pointer;
   width: 250px;
+  font-weight: bold;
 }
 .ay-google-submit-btn:hover {
   background-color: #c9c9c9;
