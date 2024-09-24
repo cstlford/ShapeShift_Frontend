@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { Multiselect } from "multiselect-react-dropdown";
-import { useFormContext } from "../../FormContext";
+import { useFormContext } from "../../../FormContext";
 import "./index.css";
-import "../../index.css";
+import "../../../index.css";
 
 const FitnessGoalsForm: React.FC = () => {
   const navigate = useNavigate();

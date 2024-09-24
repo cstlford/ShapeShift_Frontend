@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import BodyInfoForm from './components/BodyInfoForm';
-import FitnessGoalsForm from './components/FitnessGoalsForm';
-import UserPreferencesForm from './components/UserPreferencesForm';
-import WelcomePage from './components/WelcomePage';
-import DailyRoutineForm from './components/DailyRoutineForm';
-import AboutYourselfForm from './components/AboutYourselfForm';
-import FinalPage from './components/FinalPage';
+import BodyInfoForm from './components/IntroComponents/BodyInfoForm';
+import FitnessGoalsForm from './components/IntroComponents/FitnessGoalsForm';
+import UserPreferencesForm from './components/IntroComponents/UserPreferencesForm';
+import WelcomePage from './components/IntroComponents/WelcomePage';
+import DailyRoutineForm from './components/IntroComponents/DailyRoutineForm';
+import AboutYourselfForm from './components/IntroComponents/AboutYourselfForm';
+import FinalPage from './components/IntroComponents/FinalPage';
 import { FormProvider } from './FormContext';
 
 const App: React.FC = () => {

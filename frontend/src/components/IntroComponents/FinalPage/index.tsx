@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "./index.css";
-import "../../index.css";
-import logo from "../../assets/logo.ico";
-import { useFormContext } from "../../FormContext";
+import "../../../index.css";
+import logo from "../../../assets/logo.ico";
+import { useFormContext } from "../../../FormContext";
 import axios from "axios";
 
 const FinalPage: React.FC = () => {
