@@ -58,103 +58,105 @@ const FitnessGoalsForm: React.FC = () => {
   };
 
   return (
-    <form className="fg-form" onSubmit={handleSubmit}>
-      <h2>
-        What do you want to <span className="highlight">achieve</span>?
-      </h2>
+    <div className="fg-form-container">
+      <form className="fg-form" onSubmit={handleSubmit}>
+        <h2>
+          What do you want to <span className="highlight">achieve</span>?
+        </h2>
 
-      <div className="fg-form-group">
-        <div>
-          <label>Endurance & Cardio</label>
-          <Multiselect
-            options={options.enduranceAndCardio}
-            displayValue="name"
-            onSelect={(selectedList) =>
-              handleMultiSelectChange("enduranceAndCardio", selectedList)
-            }
-            onRemove={(selectedList) =>
-              handleMultiSelectChange("enduranceAndCardio", selectedList)
-            }
-            className="fg-multiselect"
-          />
+        <div className="fg-form-group">
+          <div>
+            <label>Endurance & Cardio</label>
+            <Multiselect
+              options={options.enduranceAndCardio}
+              displayValue="name"
+              onSelect={(selectedList) =>
+                handleMultiSelectChange("enduranceAndCardio", selectedList)
+              }
+              onRemove={(selectedList) =>
+                handleMultiSelectChange("enduranceAndCardio", selectedList)
+              }
+              className="fg-multiselect"
+            />
+          </div>
+
+          <div>
+            <label>Flexibility & Mobility</label>
+            <Multiselect
+              options={options.flexibilityAndMobility}
+              displayValue="name"
+              onSelect={(selectedList) =>
+                handleMultiSelectChange("flexibilityAndMobility", selectedList)
+              }
+              onRemove={(selectedList) =>
+                handleMultiSelectChange("flexibilityAndMobility", selectedList)
+              }
+              className="fg-multiselect"
+            />
+          </div>
+
+          <div>
+            <label>Overall Health</label>
+            <Multiselect
+              options={options.overallHealth}
+              displayValue="name"
+              onSelect={(selectedList) =>
+                handleMultiSelectChange("overallHealth", selectedList)
+              }
+              onRemove={(selectedList) =>
+                handleMultiSelectChange("overallHealth", selectedList)
+              }
+              className="fg-multiselect"
+            />
+          </div>
         </div>
 
-        <div>
-          <label>Flexibility & Mobility</label>
-          <Multiselect
-            options={options.flexibilityAndMobility}
-            displayValue="name"
-            onSelect={(selectedList) =>
-              handleMultiSelectChange("flexibilityAndMobility", selectedList)
-            }
-            onRemove={(selectedList) =>
-              handleMultiSelectChange("flexibilityAndMobility", selectedList)
-            }
-            className="fg-multiselect"
-          />
+        <div className="fg-form-group">
+          <div>
+            <label>Weight Management</label>
+            <Multiselect
+              options={options.weightManagement}
+              displayValue="name"
+              onSelect={(selectedList) =>
+                handleMultiSelectChange("weightManagement", selectedList)
+              }
+              onRemove={(selectedList) =>
+                handleMultiSelectChange("weightManagement", selectedList)
+              }
+              className="fg-multiselect"
+            />
+          </div>
+
+          <div>
+            <label>Strength & Muscle</label>
+            <Multiselect
+              options={options.strengthAndMuscle}
+              displayValue="name"
+              onSelect={(selectedList) =>
+                handleMultiSelectChange("strengthAndMuscle", selectedList)
+              }
+              onRemove={(selectedList) =>
+                handleMultiSelectChange("strengthAndMuscle", selectedList)
+              }
+              className="fg-multiselect"
+            />
+          </div>
+
+          <div>
+            <label>Other, please specify</label>
+            <textarea
+              placeholder="E.g., Prepare for a hiking trip, rehab an injury, etc."
+              value={other}
+              onChange={(e) => setOther(e.target.value)}
+            />
+          </div>
         </div>
 
-        <div>
-          <label>Overall Health</label>
-          <Multiselect
-            options={options.overallHealth}
-            displayValue="name"
-            onSelect={(selectedList) =>
-              handleMultiSelectChange("overallHealth", selectedList)
-            }
-            onRemove={(selectedList) =>
-              handleMultiSelectChange("overallHealth", selectedList)
-            }
-            className="fg-multiselect"
-          />
-        </div>
-      </div>
-
-      <div className="fg-form-group">
-        <div>
-          <label>Weight Management</label>
-          <Multiselect
-            options={options.weightManagement}
-            displayValue="name"
-            onSelect={(selectedList) =>
-              handleMultiSelectChange("weightManagement", selectedList)
-            }
-            onRemove={(selectedList) =>
-              handleMultiSelectChange("weightManagement", selectedList)
-            }
-            className="fg-multiselect"
-          />
-        </div>
-
-        <div>
-          <label>Strength & Muscle</label>
-          <Multiselect
-            options={options.strengthAndMuscle}
-            displayValue="name"
-            onSelect={(selectedList) =>
-              handleMultiSelectChange("strengthAndMuscle", selectedList)
-            }
-            onRemove={(selectedList) =>
-              handleMultiSelectChange("strengthAndMuscle", selectedList)
-            }
-            className="fg-multiselect"
-          />
-        </div>
-
-        <div>
-          <label>Other, please specify</label>
-          <textarea
-            placeholder="E.g., Prepare for a hiking trip, rehab an injury, etc."
-            value={other}
-            onChange={(e) => setOther(e.target.value)}
-          />
-        </div>
-      </div>
-
-      <button type="submit" className="fg-submit-btn">
-        Next: Your Preferences
-      </button>
-    </form>
+        <button type="submit" className="fg-submit-btn">
+          Next: Your Preferences
+        </button>
+      </form>
+    </div>
   );
 };
 

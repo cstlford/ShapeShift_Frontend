@@ -1,3 +1,10 @@
+.fg-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .fg-form {
   display: flex;
   flex-direction: column;
