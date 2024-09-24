@@ -44,20 +44,27 @@
   margin: 0; /* Remove default margin */
 }
 
-
 .wp-submit-btn {
-  background: rgb(0,255,255);
-  background: linear-gradient(90deg, rgba(0,255,255,1) 0%, rgba(170,255,255,1) 100%); 
+  background: rgb(0, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 255, 1) 0%,
+    rgba(170, 255, 255, 1) 100%
+  );
   border: none;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   width: 25%;
   margin-top: 5%;
   margin-bottom: 2%;
 }
 .wp-submit-btn:hover {
-  background: linear-gradient(90deg, rgb(5, 212, 212) 0%, rgb(130, 196, 196) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(5, 212, 212) 0%,
+    rgb(130, 196, 196) 100%
+  );
 }
 
 .highlight {

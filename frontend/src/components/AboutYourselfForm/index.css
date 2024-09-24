@@ -28,21 +28,28 @@ h2 {
   margin-bottom: 15px;
   width: 100%;
 }
-input {
+
+.ay-input-label {
+  text-align: center;
+}
+
+.ay-input-text {
   -webkit-appearance: none;
   -moz-appearance: textfield;
 }
-input,
-select {
+
+.ay-input-text {
   padding: 8px;
   margin-top: 5px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #444;
-  color: #fff;
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
 }
-input::placeholder {
-  color: #ccc;
+
+.ay-input-text::placeholder {
+  color: #000000;
+  font-weight: bold;
 }
 
 .ay-btn-1 {
@@ -58,7 +65,7 @@ input::placeholder {
   border: none;
   padding: 10px;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   width: 250px;
 }
@@ -71,7 +78,7 @@ input::placeholder {
   border: none;
   padding: 10px;
   color: #000000;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   width: 250px;
 }
@@ -80,5 +87,5 @@ input::placeholder {
 }
 
 .highlight {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }

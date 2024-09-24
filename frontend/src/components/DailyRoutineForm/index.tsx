@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 import "../../index.css";
 
@@ -11,7 +11,10 @@ const DailyRoutineForm: React.FC = () => {
     typicalDay: null,
   });
 
-  const handleSelectChange = (category: string, event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (
+    category: string,
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setSelectedOptions((prev) => ({
       ...prev,
       [category]: event.target.value,
@@ -20,7 +23,7 @@ const DailyRoutineForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    navigate('/');
+    navigate("/");
   };
 
   const options = {
@@ -37,7 +40,10 @@ const DailyRoutineForm: React.FC = () => {
       { name: "Lightly Active (light exercise 1-3 days/week)", id: 2 },
       { name: "Moderately Active (Moderate exercise 3-5 days/week)", id: 3 },
       { name: "Very Active (Intense exercise 6-7 days/week)", id: 4 },
-      { name: "Extremely Active (very intense exercise & physical job)", id: 5 },
+      {
+        name: "Extremely Active (very intense exercise & physical job)",
+        id: 5,
+      },
     ],
   };
 
@@ -56,8 +62,10 @@ const DailyRoutineForm: React.FC = () => {
               onChange={(event) => handleSelectChange("particularDiet", event)}
               className="dr-select"
             >
-              <option value="" disabled selected>Select your diet</option>
-              {options.particularDiet.map(option => (
+              <option value="" disabled selected>
+                Select your diet
+              </option>
+              {options.particularDiet.map((option) => (
                 <option key={option.id} value={option.id}>
                   {option.name}
                 </option>
@@ -72,8 +80,10 @@ const DailyRoutineForm: React.FC = () => {
               onChange={(event) => handleSelectChange("typicalDay", event)}
               className="dr-select"
             >
-              <option value="" disabled selected>Select activity level</option>
-              {options.typicalDay.map(option => (
+              <option value="" disabled selected>
+                Select activity level
+              </option>
+              {options.typicalDay.map((option) => (
                 <option key={option.id} value={option.id}>
                   {option.name}
                 </option>

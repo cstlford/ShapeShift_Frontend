@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 import "../../index.css";
 const AboutYourselfForm: React.FC = () => {
@@ -10,7 +10,7 @@ const AboutYourselfForm: React.FC = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event: React.FormEvent) => {
-    navigate('/fitness-goals');
+    navigate("/body-info");
     event.preventDefault();
   };
 
@@ -18,11 +18,15 @@ const AboutYourselfForm: React.FC = () => {
     <div className="ay-form-container">
       <form className="ay-form" onSubmit={handleSubmit}>
         {" "}
-        <h2>First, tell us a bit about <span className="highlight">yourself</span>...</h2>{" "}
+        <h2>
+          First, tell us a bit about <span className="highlight">yourself</span>
+          ...
+        </h2>{" "}
         <div className="ay-form-group">
           {" "}
-          <label>What's your name?</label>{" "}
+          <label className="ay-input-label">What's your name?</label>{" "}
           <input
+            className="ay-input-text"
             type="string"
             placeholder="Enter your full name"
             value={name}
@@ -31,8 +35,9 @@ const AboutYourselfForm: React.FC = () => {
         </div>{" "}
         <div className="ay-form-group">
           {" "}
-          <label>What's your email?</label>{" "}
+          <label className="ay-input-label">What's your email?</label>{" "}
           <input
+            className="ay-input-text"
             type="string"
             placeholder="Enter your email"
             value={email}
@@ -41,8 +46,9 @@ const AboutYourselfForm: React.FC = () => {
         </div>{" "}
         <div className="ay-form-group">
           {" "}
-          <label>Create a password</label>{" "}
+          <label className="ay-input-label">Create a password</label>{" "}
           <input
+            className="ay-input-text"
             type="string"
             placeholder="Enter a strong password"
             value={password}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Multiselect } from "multiselect-react-dropdown";
 import "./index.css";
 import "../../index.css";
@@ -25,7 +25,7 @@ const FitnessGoalsForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    navigate('/daily-routine');
+    navigate("/daily-routine");
   };
 
   const options = {

@@ -63,7 +63,7 @@ input::placeholder {
   border: none;
   padding: 10px;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   width: 250px;
 }
@@ -88,4 +88,3 @@ input::placeholder {
   background-color: #444;
   color: #fff;
 }
-

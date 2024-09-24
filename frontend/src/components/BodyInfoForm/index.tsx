@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 import "../../index.css";
 const BodyInfoForm: React.FC = () => {
@@ -11,7 +11,7 @@ const BodyInfoForm: React.FC = () => {
   const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event: React.FormEvent) => {
-    navigate('/fitness-goals');
+    navigate("/fitness-goals");
     event.preventDefault();
   };
 
@@ -19,11 +19,16 @@ const BodyInfoForm: React.FC = () => {
     <div className="bi-form-container">
       <form className="bi-form" onSubmit={handleSubmit}>
         {" "}
-        <h2>Now, let's get to know <span className="highlight">your</span> body...</h2>{" "}
+        <h2>
+          Now, let's get to know <span className="highlight">your</span> body...
+        </h2>{" "}
         <div className="bi-form-group">
           {" "}
-          <label>What's your current weight?</label>{" "}
+          <label className="bi-input-label">
+            What's your current weight?
+          </label>{" "}
           <input
+            className="bi-input-text"
             type="number"
             placeholder="Weight"
             value={weight}
@@ -36,8 +41,9 @@ const BodyInfoForm: React.FC = () => {
         </div>{" "}
         <div className="bi-form-group">
           {" "}
-          <label>How tall are you?</label>{" "}
+          <label className="bi-input-label">How tall are you?</label>{" "}
           <input
+            className="bi-input-text"
             type="number"
             placeholder="Height"
             value={height}
@@ -50,7 +56,7 @@ const BodyInfoForm: React.FC = () => {
         </div>{" "}
         <div className="bi-form-group">
           {" "}
-          <label>What is your sex?</label>{" "}
+          <label className="bi-input-label">What is your sex?</label>{" "}
           <select value={sex} onChange={(e) => setSex(e.target.value)}>
             {" "}
             <option value="Male">Male</option>{" "}
@@ -59,8 +65,9 @@ const BodyInfoForm: React.FC = () => {
         </div>{" "}
         <div className="bi-form-group">
           {" "}
-          <label>When's your birthday?</label>{" "}
+          <label className="bi-input-label">When's your birthday?</label>{" "}
           <input
+            className="bi-input-text"
             type="date"
             value={birthday}
             onChange={(e) => setBirthday(e.target.value)}
