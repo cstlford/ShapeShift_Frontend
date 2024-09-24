@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #333;
   color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -37,11 +36,12 @@
 }
 
 .wp-title {
-  margin: 0; /* Remove default margin */
+  margin: 0;
 }
 
 .wp-subtitle {
-  margin: 0; /* Remove default margin */
+  margin: 0;
+  font-size: 16px;
 }
 
 .wp-submit-btn {

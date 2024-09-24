@@ -1,16 +1,25 @@
 :root {
-    --background-color: #2C2C2C;
-    --primary-color: #00FFFF;
-    --secondary-color: #FF7F50;
-    --title-color: #FFFFFF;
-    --subtext-color: #D3D3D3;
-    --success-color: #32CD32;
-  }
-  
+  --background-color: #2c2c2c;
+  --primary-color: #00ffff;
+  --secondary-color: #ff7f50;
+  --title-color: #ffffff;
+  --subtext-color: #d3d3d3;
+  --success-color: #32cd32;
+
+  --base-font-size: 16px;
+}
+
 body {
-    background-color: var(--background-color);
+  background-color: var(--background-color);
+  font-size: var(--base-font-size);
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
-    color: var(--title-color);
+  color: var(--title-color);
+  font-size: calc(var(--base-font-size) * 2);
+}
+
+p {
+  font-size: calc(var(--base-font-size) * 1.2);
 }
