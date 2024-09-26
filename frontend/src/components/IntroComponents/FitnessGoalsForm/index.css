@@ -1,8 +1,14 @@
-.body-info-form {
+.fg-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.fg-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #333;
   color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -15,19 +21,19 @@ h2 {
   text-align: center;
   color: #f4f4f4;
 }
-.form-group {
+.fg-form-group {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 15px;
   width: 100%;
 }
 
-.form-group > div {
+.fg-form-group > div {
   flex: 1 1 30%;
   margin-right: 10px;
 }
 
-.form-group > div:last-child {
+.fg-form-group > div:last-child {
   margin-right: 0;
 }
 
@@ -51,48 +57,50 @@ select {
 input::placeholder {
   color: #ccc;
 }
-.submit-button {
-  background-color: #ff7846;
+.fg-submit-btn {
+  background: rgb(255,127,80);
+  background: linear-gradient(90deg, rgba(255,127,80,1) 0%, rgb(255, 181, 151) 100%);
   border: none;
   padding: 10px;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
-  width: 100%;
+  width: 250px;
+  font-weight: bold;
 }
-.submit-button:hover {
-  background-color: #e06c41;
+.fg-submit-btn:hover {
+  background: linear-gradient(90deg, rgb(212, 109, 72) 0%, rgb(214, 155, 131) 100%);
 }
 
 .highlight {
   color: var(--secondary-color);
 }
 
-.custom-multiselect {
+.fg-multiselect {
   background-color: #444;
   color: #222222;
 }
 
-.custom-multiselect .multiselect__input {
+.fg-multiselect .multiselect__input {
   color: #fff;
   background-color: #444;
 }
 
-.custom-multiselect .multiselect__option {
+.fg-multiselect .multiselect__option {
   background-color: #444;
   color: #fff;
 }
 
-.custom-multiselect .multiselect__option--highlight {
+.fg-multiselect .multiselect__option--highlight {
   background-color: #ff7846;
   color: #fff;
 }
 
-.custom-multiselect .multiselect__option--selected {
+.fg-multiselect .multiselect__option--selected {
   background-color: #ff7846;
   color: #fff;
 }
 
-.custom-multiselect .multiselect__option-container {
+.fg-multiselect .multiselect__option-container {
   background-color: #333;
 }

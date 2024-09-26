@@ -1,0 +1,32 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ff7f50;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  margin: 1rem;
+}
+
+.nav-logo {
+  width: 30%;
+}
+
+.nav-bell-icon {
+  width: 9%;
+  padding: 0;
+  float: right;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2.5rem;
+  list-style-type: none;
+}
