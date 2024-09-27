@@ -75,3 +75,47 @@
 .wp-text {
   text-align: center;
 }
+#chat-flex-container{
+  width: 98vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#chat-container{
+  border-radius: 25px;
+  position: relative;
+  background: linear-gradient(to right, #d35400, #00cec9);
+  padding: 3px;
+  transition: all 0.5s ease;
+  width: 230px;
+ 
+ 
+}
+#chat-container:hover{
+  background: linear-gradient(to right, #00cec9, #d35400);
+
+  width: 240px;
+}
+
+#btn-chat{
+  border-radius: 25px;
+  margin:5px;
+  height: 75px;
+  width: 220px;
+  background-color: #2d3436;
+  color:white;
+  font-size: x-large;
+  transition: all 0.3s ease;
+  border: none;
+  letter-spacing: .1em;
+
+}
+#btn-chat:hover{
+  
+  height: 75px;
+  width: 230px;
+ 
+
+
+
+}

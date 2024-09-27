@@ -12,8 +12,11 @@ import ChatWithCoach from './components/ChatWithCoach';  // Merged from the HEAD
 import { FormProvider } from './FormContext';
 
 const App: React.FC = () => {
+
   return (
-    <FormProvider>
+    <>
+          
+        <FormProvider>
       <Router>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
@@ -28,6 +31,8 @@ const App: React.FC = () => {
         </Routes>
       </Router>
     </FormProvider>
+    </>
+
   );
 };
 

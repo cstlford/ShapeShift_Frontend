@@ -27,3 +27,11 @@
     font-size: large;
     width: 50vw;
   }
+  .btn-go-back btn{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    font-size: x-large;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
