@@ -10,7 +10,7 @@ import FinalPage from './components/IntroComponents/FinalPage';
 import DashboardComponent from './components/MainComponents/DashboardComponent';
 import ChatWithCoach from './components/ChatWithCoach';  // Merged from the HEAD version
 import { FormProvider } from './FormContext';
-
+import GenerateMealPlan from './components/GenerateMealPlan';
 const App: React.FC = () => {
 
   return (
@@ -27,7 +27,9 @@ const App: React.FC = () => {
           <Route path="/final-page" element={<FinalPage />} />
           <Route path="/dashboard" element={<DashboardComponent />} />
           <Route path="/preferences" element={<UserPreferencesForm />} />
-          <Route path="/chat-with-coach" element={<ChatWithCoach />} />  {/* Merged route */}
+          <Route path="/chat-with-coach" element={<ChatWithCoach />} /> 
+          <Route path="/generate-meal-plan" element={<GenerateMealPlan/>} /> 
+          
         </Routes>
       </Router>
     </FormProvider>
