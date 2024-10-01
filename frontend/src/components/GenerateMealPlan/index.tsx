@@ -1,38 +1,49 @@
 import { useState, useEffect } from 'react';
 import "./index.css";
 import ReactMarkdown from 'react-markdown';
-import { useLocation } from 'react-router-dom';
 
 const GenerateMealPlan = () => {
-    const location = useLocation();
-    const history = location.state;
     const [output, setOutput] = useState(""); // Default to empty string
-    const userInput = "someUserInput"; 
-    const baseUrl = import.meta.env.VITE_API_URL;
+    const baseUrl = import.meta.env.VITE_API_URL; // get base url from .env
+    const[loading, setLoading] = useState(true) // boolean to determine if loading should be displayed
 
-    useEffect(() => {
+    const LoadingMessage = () => { // Conditionally rendered loading message
+        return(
+            <>
+                <div className='loading-flex-container'>
+                    <div className='spinner'></div>
+                    <div className='loading-message'>Loading...</div>
+                </div>
+             
+            </>
+           
+        )
+    }
+    useEffect(() => { // makes sure the api call only happens once
         // Fetch the meal plan when the component mounts
-        const historyString = JSON.stringify(history);
-        fetch(`${baseUrl}/json-meal-plan/${historyString}`)
+        fetch(`${baseUrl}/meal_plan`)
             .then((response) => response.json())
             .then((data) => {
-                // Assuming the API returns meaningful text in data, 
-                // If data is an object, extract the relevant part
-                const markdownContent = data.markdown || data.text || "No content available"; // Adjust based on your API response
-                console.log(markdownContent); 
-                setOutput(markdownContent); // Set the actual Markdown content
+                console.log("API Response:", data); // Log the API response
+                setOutput(data);
+                setLoading(false); // payload has arrived loading is deactivated
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
                 setOutput("Failed to load meal plan."); // Handle error scenario
+                setLoading(false) // payload has arrived loading is deactivated
             });
-    }, [userInput, baseUrl, history]); // Ensure useEffect runs on changes
+    }, [baseUrl]); // No need for userInput as it's not used here
 
     return (
-        <div id='meal-output-container'>
-            {/* Render Markdown content */}
-            <ReactMarkdown>{output}</ReactMarkdown>
+
+        <div className='output-flex-container'>
+                 <div id='meal-output-container'>
+                    {loading && <LoadingMessage/>}
+                    <ReactMarkdown>{output}</ReactMarkdown>
+                </div>
         </div>
+   
     );
 }
 

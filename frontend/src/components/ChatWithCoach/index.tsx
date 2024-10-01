@@ -10,7 +10,7 @@ const ChatWithCoach = () => {
   
     const navigate = useNavigate() //navigate to page via react-router-dom "virtual dom"
     
-    const[output, setOutput] = useState("") // set the LLM output state
+    const[output, setOutput] = useState(null) // set the LLM output state
 
     const[userInput, setUserInput] = useState("") // set the userInput state
 
@@ -22,8 +22,8 @@ const ChatWithCoach = () => {
       setUserInput(e.target.value)
     
     }
-    const handleMealClick = () => {
-      navigate("/generate-meal-plan", {state:{ history }})
+    const handleMealClick = () => { // navigates to generate sample meal plan when users clicks the button
+      navigate("/generate-meal-plan")
     }
 
    
@@ -31,7 +31,7 @@ const ChatWithCoach = () => {
     const handleClick = () => { // Send use input to Api to generate output and set output state
 
       
-      const baseUrl = import.meta.env.VITE_API_URL;
+      const baseUrl = import.meta.env.VITE_API_URL; // base url of api pulled from .env
 
 
       fetch(`${baseUrl}/basic_chat/${userInput}`)
