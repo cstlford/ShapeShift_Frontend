@@ -1,5 +1,5 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Multiselect } from "multiselect-react-dropdown";
 import { useFormContext } from "../../../FormContext";
 import "./index.css";
 import "../../../index.css";
@@ -8,12 +8,12 @@ const FitnessGoalsForm: React.FC = () => {
   const navigate = useNavigate();
   const { formData, setFormData } = useFormContext();
 
-  const handleMultiSelectChange = (category: string, selectedList: any) => {
+  const handleRadioChange = (category: string, value: string) => {
     setFormData((prev: any) => ({
       ...prev,
       fitnessGoals: {
         ...prev.fitnessGoals,
-        [category]: selectedList,
+        [category]: value,
       },
     }));
   };
@@ -24,31 +24,22 @@ const FitnessGoalsForm: React.FC = () => {
   };
 
   const options = {
-    enduranceAndCardio: [
-      { name: "Improve endurance", id: 1 },
-      { name: "Enhance stamina for sports or activities", id: 2 },
-      { name: "Train for a specific event", id: 3 },
-    ],
-    flexibilityAndMobility: [
-      { name: "Increase flexibility", id: 1 },
-      { name: "Improve joint mobility", id: 2 },
-      { name: "Enhance balance and coordination", id: 3 },
-    ],
-    overallHealth: [
-      { name: "Improve overall health and wellness", id: 1 },
-      { name: "Boost enery levels", id: 2 },
-      { name: "Reduce stress", id: 3 },
-      { name: "Improve sleep quality", id: 4 },
-    ],
     weightManagement: [
-      { name: "Gain weight", id: 1 },
-      { name: "Lose weight", id: 2 },
-      { name: "Maintain weight", id: 3 },
+      { name: "Gain weight", id: "gain" },
+      { name: "Lose weight", id: "lose" },
+      { name: "Maintain weight", id: "maintain" },
     ],
-    strengthAndMuscle: [
-      { name: "Build muscle mass", id: 1 },
-      { name: "Increase strength", id: 2 },
-      { name: "Tone and define", id: 3 },
+    cardioGoals: [
+      { name: "Improve Endurance", id: "endurance" },
+      { name: "Increase Speed", id: "speed" },
+      { name: "Maximize Fat Burn", id: "fatBurn" },
+      { name: "Improve Overall Fitness", id: "overallFitness" },
+    ],
+    resistanceTrainingGoals: [
+      { name: "Increase Muscle Mass", id: "muscleMass" },
+      { name: "Improve Overall Strength", id: "overallStrength" },
+      { name: "Enhance Muscle Endurance", id: "muscleEndurance" },
+      { name: "Improve Functional Strength", id: "functionalStrength" },
     ],
   };
 
@@ -60,98 +51,67 @@ const FitnessGoalsForm: React.FC = () => {
         </h2>
 
         <div className="fg-form-group">
-          <div>
-            <label>Endurance & Cardio</label>
-            <Multiselect
-              options={options.enduranceAndCardio}
-              displayValue="name"
-              onSelect={(selectedList) =>
-                handleMultiSelectChange("enduranceAndCardio", selectedList)
-              }
-              onRemove={(selectedList) =>
-                handleMultiSelectChange("enduranceAndCardio", selectedList)
-              }
-              className="fg-multiselect"
-            />
+          <div className="card">
+            <h3>Weight Management</h3>
+            {options.weightManagement.map((option) => (
+              <div key={option.id}>
+                <input
+                  type="radio"
+                  id={`weightManagement-${option.id}`}
+                  name="weightManagement"
+                  value={option.id}
+                  checked={formData.fitnessGoals.weightManagement === option.id}
+                  onChange={() =>
+                    handleRadioChange("weightManagement", option.id)
+                  }
+                />
+                <label htmlFor={`weightManagement-${option.id}`}>
+                  {option.name}
+                </label>
+              </div>
+            ))}
           </div>
 
-          <div>
-            <label>Flexibility & Mobility</label>
-            <Multiselect
-              options={options.flexibilityAndMobility}
-              displayValue="name"
-              onSelect={(selectedList) =>
-                handleMultiSelectChange("flexibilityAndMobility", selectedList)
-              }
-              onRemove={(selectedList) =>
-                handleMultiSelectChange("flexibilityAndMobility", selectedList)
-              }
-              className="fg-multiselect"
-            />
+          <div className="card">
+            <h3>Cardio Goals</h3>
+            {options.cardioGoals.map((option) => (
+              <div key={option.id}>
+                <input
+                  type="radio"
+                  id={`cardioGoals-${option.id}`}
+                  name="cardioGoals"
+                  value={option.id}
+                  checked={formData.fitnessGoals.cardioGoals === option.id}
+                  onChange={() => handleRadioChange("cardioGoals", option.id)}
+                />
+                <label htmlFor={`cardioGoals-${option.id}`}>
+                  {option.name}
+                </label>
+              </div>
+            ))}
           </div>
 
-          <div>
-            <label>Overall Health</label>
-            <Multiselect
-              options={options.overallHealth}
-              displayValue="name"
-              onSelect={(selectedList) =>
-                handleMultiSelectChange("overallHealth", selectedList)
-              }
-              onRemove={(selectedList) =>
-                handleMultiSelectChange("overallHealth", selectedList)
-              }
-              className="fg-multiselect"
-            />
-          </div>
-        </div>
-
-        <div className="fg-form-group">
-          <div>
-            <label>Weight Management</label>
-            <Multiselect
-              options={options.weightManagement}
-              displayValue="name"
-              onSelect={(selectedList) =>
-                handleMultiSelectChange("weightManagement", selectedList)
-              }
-              onRemove={(selectedList) =>
-                handleMultiSelectChange("weightManagement", selectedList)
-              }
-              className="fg-multiselect"
-            />
-          </div>
-
-          <div>
-            <label>Strength & Muscle</label>
-            <Multiselect
-              options={options.strengthAndMuscle}
-              displayValue="name"
-              onSelect={(selectedList) =>
-                handleMultiSelectChange("strengthAndMuscle", selectedList)
-              }
-              onRemove={(selectedList) =>
-                handleMultiSelectChange("strengthAndMuscle", selectedList)
-              }
-              className="fg-multiselect"
-            />
-          </div>
-
-          <div>
-            <label>Other, please specify</label>
-            <textarea
-              placeholder="E.g., Prepare for a hiking trip, rehab an injury, etc."
-              value={formData.fitnessGoals.other}
-              onChange={(e) =>
-                setFormData((prev: any) => ({
-                  ...prev,
-                  fitnessGoals: {
-                    ...prev.fitnessGoals,
-                    other: e.target.value,
-                  },
-                }))
-              }
-            />
+          <div className="card">
+            <h3>Resistance Training Goals</h3>
+            {options.resistanceTrainingGoals.map((option) => (
+              <div key={option.id}>
+                <input
+                  type="radio"
+                  id={`resistanceTrainingGoals-${option.id}`}
+                  name="resistanceTrainingGoals"
+                  value={option.id}
+                  checked={
+                    formData.fitnessGoals.resistanceTrainingGoals === option.id
+                  }
+                  onChange={() =>
+                    handleRadioChange("resistanceTrainingGoals", option.id)
+                  }
+                />
+                <label htmlFor={`resistanceTrainingGoals-${option.id}`}>
+                  {option.name}
+                </label>
+              </div>
+            ))}
           </div>
         </div>
 
