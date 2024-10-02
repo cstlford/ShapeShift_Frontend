@@ -1,26 +1,23 @@
 import React, { createContext, useContext, useState } from "react";
 
 interface FormData {
-    bodyInfo: {
-        weight: string;
-        weightUnit: string;
-        height: string;
-        heightUnit: string;
-        sex: string;
-        birthday: string;
-    };
-    fitnessGoals: {
-        enduranceAndCardio: any[];
-        flexibilityAndMobility: any[];
-        overallHealth: any[];
-        weightManagement: any[];
-        strengthAndMuscle: any[];
-        other: string;
-    };
-    dailyRoutine: {
-        particularDiet: string;
-        typicalDay: string;
-    };
+  bodyInfo: {
+    weight: string;
+    weightUnit: string;
+    height: string;
+    heightUnit: string;
+    sex: string;
+    birthday: string;
+  };
+  fitnessGoals: {
+    weightManagement: string;
+    cardioGoals: string;
+    resistanceTrainingGoals: string;
+  };
+  dailyRoutine: {
+    particularDiet: string;
+    typicalDay: string;
+  };
 }
 
 const FormContext = createContext<any>(null);
@@ -30,24 +27,21 @@ export const FormProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [formData, setFormData] = useState<FormData>({
     bodyInfo: {
-        weight: "",
-        weightUnit: "lb",
-        height: "",
-        heightUnit: "in",
-        sex: "Male",
-        birthday: "",
+      weight: "",
+      weightUnit: "lb",
+      height: "",
+      heightUnit: "in",
+      sex: "Male",
+      birthday: "",
     },
     fitnessGoals: {
-        enduranceAndCardio: [],
-        flexibilityAndMobility: [],
-        overallHealth: [],
-        weightManagement: [],
-        strengthAndMuscle: [],
-        other: "",
-      },
+      weightManagement: "",
+      cardioGoals: "",
+      resistanceTrainingGoals: "",
+    },
     dailyRoutine: {
-        particularDiet: "",
-        typicalDay: "",
+      particularDiet: "",
+      typicalDay: "",
     },
   });
 
