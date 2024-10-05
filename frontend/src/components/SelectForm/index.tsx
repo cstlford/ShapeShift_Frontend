@@ -16,12 +16,8 @@ const SelectForm: React.FC<CustomSelectProps> = ({
 }) => {
   return (
     <div className="select-group">
-      {label && (
-        <label className="select-label" htmlFor="customSelect">
-          {label}
-        </label>
-      )}
-      <select id="select" value={value} onChange={onChange}>
+      {label && <label className="select-label">{label}</label>}
+      <select className="select" value={value} onChange={onChange}>
         {options.map((option) => (
           <option key={option} value={option}>
             {option}

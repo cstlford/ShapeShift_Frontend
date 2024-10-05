@@ -12,7 +12,7 @@
   margin: 0px;
 }
 
-.input-group .input {
+.input {
   border-radius: 15px;
   border: none;
   background-color: #f9f9f9;
@@ -21,6 +21,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 10px 0px 10px 20px;
+  margin-bottom: 10px;
 }
 
 .input-group .input:focus {
@@ -30,4 +31,5 @@
 
 .input-date {
   justify-content: center;
+  padding: 10px;
 }

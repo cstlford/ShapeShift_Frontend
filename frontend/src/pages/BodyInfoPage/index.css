@@ -1,9 +1,3 @@
-.weight,
-.height,
-.sex,
-.birthday {
-  margin-bottom: 10px;
-}
 .weight {
   display: flex;
   flex-direction: row;
