@@ -20,7 +20,10 @@ const SelectForm: React.FC<Props> = ({ label, options, onChange, value }) => {
           {label}
         </label>
       )}
-      <select className="select" value={value} onChange={onChange}>
+      <select className="select" value={value} onChange={onChange} required>
+        <option value="" disabled>
+          Select an option
+        </option>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
             {option.name}

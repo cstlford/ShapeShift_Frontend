@@ -31,6 +31,7 @@ const InputForm: React.FC<Props> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        required
       />
     </div>
   );

@@ -31,7 +31,7 @@ export const FormProvider: React.FC<{ children: React.ReactNode }> = ({
       weightUnit: "lb",
       height: "",
       heightUnit: "in",
-      sex: "Male",
+      sex: "",
       birthday: "",
     },
     fitnessGoals: {
