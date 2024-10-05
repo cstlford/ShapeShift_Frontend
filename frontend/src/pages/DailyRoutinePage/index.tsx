@@ -4,6 +4,7 @@ import { useFormContext } from "../../FormContext";
 import "./index.css";
 import Button from "../../components/Button";
 import FormLayout from "../../layouts/FormLayout";
+import SelectForm from "../../components/SelectForm";
 
 const DailyRoutineForm: React.FC = () => {
   const navigate = useNavigate();
@@ -56,36 +57,18 @@ const DailyRoutineForm: React.FC = () => {
         </h2>
 
         <div className="inputs">
-          <label>Do you follow a particular diet?</label>
-          <select
+          <SelectForm
+            label="Do you follow a particular diet?"
             value={formData.dailyRoutine?.particularDiet || ""}
+            options={options.particularDiet}
             onChange={(event) => handleSelectChange("particularDiet", event)}
-            className="dr-select"
-          >
-            <option value="" disabled>
-              Select your diet
-            </option>
-            {options.particularDiet.map((option) => (
-              <option key={option.id} value={option.name}>
-                {option.name}
-              </option>
-            ))}
-          </select>
-          <label>How would you describe your typical day?</label>
-          <select
+          />
+          <SelectForm
+            label="How would you describe your typical day?"
             value={formData.dailyRoutine?.typicalDay || ""}
+            options={options.typicalDay}
             onChange={(event) => handleSelectChange("typicalDay", event)}
-            className="dr-select"
-          >
-            <option value="" disabled>
-              Select activity level
-            </option>
-            {options.typicalDay.map((option) => (
-              <option key={option.id} value={option.name}>
-                {option.name}
-              </option>
-            ))}
-          </select>
+          />
         </div>
 
         <Button style="orange">Create My Profile</Button>

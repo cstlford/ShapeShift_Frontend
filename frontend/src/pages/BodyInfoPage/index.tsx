@@ -36,7 +36,10 @@ const BodyInfoPage = () => {
             }
           />
           <SelectForm
-            options={["lb", "kg"]}
+            options={[
+              { name: "lb", id: 1 },
+              { name: "kg", id: 2 },
+            ]}
             value={formData.bodyInfo.weightUnit}
             onChange={(e) =>
               setFormData({
@@ -63,7 +66,10 @@ const BodyInfoPage = () => {
             }
           />
           <SelectForm
-            options={["in", "cm"]}
+            options={[
+              { name: "in", id: 1 },
+              { name: "cm", id: 2 },
+            ]}
             value={formData.bodyInfo.heightUnit}
             onChange={(e) =>
               setFormData({
@@ -80,14 +86,17 @@ const BodyInfoPage = () => {
           <SelectForm
             label="What is your sex?"
             value={formData.bodyInfo.sex}
-            options={["Male", "Female"]}
+            options={[
+              { name: "Male", id: 1 },
+              { name: "Female", id: 2 },
+            ]}
             onChange={(e) =>
               setFormData({
                 ...formData,
                 bodyInfo: { ...formData.bodyInfo, sex: e.target.value },
               })
             }
-          ></SelectForm>
+          />
         </div>
         <div className="birthday">
           <InputForm
