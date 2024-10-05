@@ -1,40 +1,36 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import BodyInfoForm from './components/IntroComponents/BodyInfoForm';
-import FitnessGoalsForm from './components/IntroComponents/FitnessGoalsForm';
-import UserPreferencesForm from './components/IntroComponents/UserPreferencesForm';
-import WelcomePage from './components/IntroComponents/WelcomePage';
-import DailyRoutineForm from './components/IntroComponents/DailyRoutineForm';
-import AboutYourselfForm from './components/IntroComponents/AboutYourselfForm';
-import FinalPage from './components/IntroComponents/FinalPage';
-import DashboardComponent from './components/MainComponents/DashboardComponent';
-import ChatWithCoach from './components/ChatWithCoach';  // Merged from the HEAD version
-import { FormProvider } from './FormContext';
-import GenerateMealPlan from './components/GenerateMealPlan';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import BodyInfoPage from "./pages/BodyInfoPage";
+import FitnessGoalsPage from "./pages/FitnessGoalsPage";
+import UserPreferencesForm from "./components/UserPreferencesForm";
+import WelcomePage from "./pages/WelcomePage";
+import DailyRoutinePage from "./pages/DailyRoutinePage";
+import AboutYourselfPage from "./pages/AboutYourselfPage";
+import FinalPage from "./pages/FinalPage";
+import DashboardComponent from "./components/MainComponents/DashboardComponent";
+import ChatWithCoach from "./components/ChatWithCoach";
+import { FormProvider } from "./FormContext";
+import GenerateMealPlan from "./components/GenerateMealPlan";
 const App: React.FC = () => {
-
   return (
     <>
-          
-        <FormProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/about-yourself" element={<AboutYourselfForm />} />
-          <Route path="/body-info" element={<BodyInfoForm />} />
-          <Route path="/fitness-goals" element={<FitnessGoalsForm />} />
-          <Route path="/daily-routine" element={<DailyRoutineForm />} />
-          <Route path="/final-page" element={<FinalPage />} />
-          <Route path="/dashboard" element={<DashboardComponent />} />
-          <Route path="/preferences" element={<UserPreferencesForm />} />
-          <Route path="/chat-with-coach" element={<ChatWithCoach />} /> 
-          <Route path="/generate-meal-plan" element={<GenerateMealPlan/>} /> 
-          
-        </Routes>
-      </Router>
-    </FormProvider>
+      <FormProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/about-yourself" element={<AboutYourselfPage />} />
+            <Route path="/body-info" element={<BodyInfoPage />} />
+            <Route path="/fitness-goals" element={<FitnessGoalsPage />} />
+            <Route path="/daily-routine" element={<DailyRoutinePage />} />
+            <Route path="/final-page" element={<FinalPage />} />
+            <Route path="/dashboard" element={<DashboardComponent />} />
+            <Route path="/preferences" element={<UserPreferencesForm />} />
+            <Route path="/chat-with-coach" element={<ChatWithCoach />} />
+            <Route path="/generate-meal-plan" element={<GenerateMealPlan />} />
+          </Routes>
+        </Router>
+      </FormProvider>
     </>
-
   );
 };
 

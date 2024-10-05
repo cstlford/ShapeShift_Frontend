@@ -1,0 +1,36 @@
+.inputs {
+  width: 50%;
+  text-align: center;
+}
+h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #f4f4f4;
+}
+
+select {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #444;
+}
+
+.highlight {
+  color: var(--secondary-color);
+}
+
+.dr-select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background: white;
+  color: #444;
+}
+.dr-select option {
+  background-color: #444;
+  color: #fff;
+}

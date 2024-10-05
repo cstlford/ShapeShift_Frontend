@@ -1,0 +1,27 @@
+.fp-form {
+  width: 50%;
+}
+
+img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.fp-title {
+  margin: 0;
+}
+
+.fp-subtitle {
+  margin: 0;
+  font-size: 16px;
+}
+
+.fp-text {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.highlight {
+  color: var(--secondary-color);
+}

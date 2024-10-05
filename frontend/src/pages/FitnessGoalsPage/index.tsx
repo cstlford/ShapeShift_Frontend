@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormContext } from "../../../FormContext";
+import { useFormContext } from "../../FormContext";
 import "./index.css";
-import "../../../index.css";
+import FormLayout from "../../layouts/FormLayout";
+import Button from "../../components/Button";
 
 const FitnessGoalsForm: React.FC = () => {
   const navigate = useNavigate();
@@ -44,12 +45,15 @@ const FitnessGoalsForm: React.FC = () => {
   };
 
   return (
-    <div className="fg-form-container">
+    <FormLayout>
       <form className="fg-form" onSubmit={handleSubmit}>
         <h2>
           What do you want to <span className="highlight">achieve</span>?
         </h2>
-
+        <h5>
+          Your fitness journey is unique. Select all the goals that apply to
+          you:
+        </h5>
         <div className="fg-form-group">
           <div className="card">
             <h3>Weight Management</h3>
@@ -115,11 +119,9 @@ const FitnessGoalsForm: React.FC = () => {
           </div>
         </div>
 
-        <button type="submit" className="fg-submit-btn">
-          Next: Your Lifestyle
-        </button>
+        <Button style="orange">Next: Your Lifestyle</Button>
       </form>
-    </div>
+    </FormLayout>
   );
 };
 

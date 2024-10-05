@@ -1,0 +1,15 @@
+.highlight {
+  color: var(--secondary-color);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: auto;
+}
+.forms {
+  width: 300px;
+}

@@ -1,0 +1,52 @@
+.btn {
+  padding: 12px 50px;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 300px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  margin: 10px 0px 10px;
+}
+
+.btn-blue {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 255, 1) 0%,
+    rgba(170, 255, 255, 1) 100%
+  );
+  color: #2c2c2c;
+}
+.btn-blue:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(0, 181, 181) 0%,
+    rgba(170, 255, 255, 1) 100%
+  );
+}
+.btn-orange {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 127, 80, 1) 0%,
+    rgb(255, 181, 151) 100%
+  );
+  color: white;
+}
+.btn-orange:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(173, 84, 52) 0%,
+    rgb(255, 181, 151) 100%
+  );
+}
+
+.btn-white {
+  background: white;
+  color: #646464;
+}
+
+.btn-white:hover {
+  background: rgb(177, 177, 177);
+}
