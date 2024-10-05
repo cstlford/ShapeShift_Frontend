@@ -6,13 +6,14 @@ import { useFormContext } from "../../FormContext";
 import Button from "../../components/Button";
 import "./index.css";
 
-const AboutYourselfPage = () => {
+const AboutYourselfPage: React.FC = () => {
   const navigate = useNavigate();
   const { formData, setFormData } = useFormContext();
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     navigate("/body-info");
   };
+
   return (
     <FormLayout>
       <form onSubmit={handleSubmit}>

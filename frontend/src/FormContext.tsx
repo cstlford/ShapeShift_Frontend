@@ -1,6 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
 
 interface FormData {
+  name: string;
+  email: string;
+  password: string;
   bodyInfo: {
     weight: string;
     weightUnit: string;
@@ -26,6 +29,9 @@ export const FormProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    password: "",
     bodyInfo: {
       weight: "",
       weightUnit: "lb",

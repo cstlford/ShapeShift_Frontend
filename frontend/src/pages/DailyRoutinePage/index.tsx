@@ -48,7 +48,6 @@ const DailyRoutineForm: React.FC = () => {
       },
     ],
   };
-
   return (
     <FormLayout>
       <form onSubmit={handleSubmit}>
