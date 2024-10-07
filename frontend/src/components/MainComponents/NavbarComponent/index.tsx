@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./index.css";
 import logo from "../../../assets/logo.ico";
-import bell from "../../../assets/bell.ico";
 
 const NavbarComponent = () => {
   return (
@@ -14,7 +13,7 @@ const NavbarComponent = () => {
         <ul className="nav-list">
           <li className="nav-item">
             <NavLink to="/dashboard">
-              <img src={bell} alt="Bell Icon" className="nav-bell-icon"/>
+              <a className="nav-bell-icon">🔔</a>
             </NavLink>
           </li>
           <li className="nav-item">
