@@ -4,9 +4,6 @@ import "./index.css";
 const SideNavbarComponent = () => {
   return (
     <aside className="sidenav-container">
-      <div className="sidenav-header">
-        <h1>Dashboard</h1>
-      </div>
       <ul className="sidenav-list">
         <h2>Nutrition</h2>
         <li className="sidenav-item">
