@@ -2,17 +2,17 @@
   position: fixed;
   top: 5rem;
   left: 0;
-  width: 200px;
-  height: calc(100% - 3rem);
-  background-color: #6e6e6e;
-  padding: 1rem;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  height: calc(100% - 5rem);
+  background-color: #4a4a4a;
+  padding: 1.5rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  border-right: 2px solid #ccc;
 }
 
-.sidenav-logo {
+.sidenav-header {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 
 .sidenav-list {
@@ -24,14 +24,27 @@
 
 .sidenav-item {
   margin: 1rem 0;
+  transition: background-color 0.3s;
 }
 
 .sidenav-item a {
   text-decoration: none;
-  color: white;
+  color: #f0f0f0;
   font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: block;
 }
 
 .sidenav-item a:hover {
-  text-decoration: underline;
+  background-color: #5a5a5a;
+  color: #ffffff;
+}
+
+h2 {
+  color: #ffffff;
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
 }
