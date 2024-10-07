@@ -40,11 +40,26 @@
   padding: 0.5rem 1rem;
   border-radius: 5px;
   display: block;
+  position: relative;
+}
+
+.sidenav-item a::after {
+  content: '🡢';
+  position: absolute;
+  right: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(5px);
 }
 
 .sidenav-item a:hover {
   background-color: #5a5a5a;
   color: #ffffff;
+}
+
+.sidenav-item a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .collapsible {
