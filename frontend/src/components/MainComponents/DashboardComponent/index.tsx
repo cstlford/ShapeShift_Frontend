@@ -5,9 +5,16 @@ import "../../../index.css";
 
 const DashboardComponent: React.FC = () => {
   return (
-    <div>
+    <div className="dashboard-container">
       <NavbarComponent />
       <SideNavbarComponent />
+      <div className="content-container">
+        <div className="box box1">Content 1</div>
+        <div className="box-container">
+          <div className="box box2">Content 2</div>
+          <div className="box box3">Content 3</div>
+        </div>
+      </div>
     </div>
   );
 };
