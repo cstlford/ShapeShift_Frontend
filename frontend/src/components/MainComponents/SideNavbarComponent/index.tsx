@@ -16,7 +16,7 @@ const SideNavbarComponent = () => {
       <ul className="sidenav-list">
         <li className="sidenav-header">
           <h2 onClick={toggleNutrition}>
-            Nutrition {nutritionOpen ? '▼' : '▲'}
+            Nutrition <span className="arrow">{nutritionOpen ? '▼' : '▲'}</span>
           </h2>
         </li>
         <div
@@ -38,7 +38,7 @@ const SideNavbarComponent = () => {
 
         <li className="sidenav-header">
           <h2 onClick={toggleExercise}>
-            Exercise {exerciseOpen ? '▼' : '▲'}
+            Exercise <span className="arrow">{exerciseOpen ? '▼' : '▲'}</span>
           </h2>
         </li>
         <div
@@ -60,7 +60,7 @@ const SideNavbarComponent = () => {
 
         <li className="sidenav-header">
           <h2 onClick={toggleProgress}>
-            Progress Tracking {progressOpen ? '▼' : '▲'}
+            Progress Tracking <span className="arrow">{progressOpen ? '▼' : '▲'}</span>
           </h2>
         </li>
         <div

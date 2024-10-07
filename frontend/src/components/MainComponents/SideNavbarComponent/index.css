@@ -17,6 +17,10 @@
   cursor: pointer;
 }
 
+.arrow {
+  font-size: 0.7em;
+}
+
 .sidenav-list {
   display: flex;
   flex-direction: column;
