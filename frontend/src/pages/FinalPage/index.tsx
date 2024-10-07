@@ -12,6 +12,9 @@ const FinalPage: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    console.log(
+      `Name: ${formData.name} \n${formData.bodyInfo.weightUnit}: ${formData.bodyInfo.weight}\n${formData.bodyInfo.heightUnit}: ${formData.bodyInfo.height}\nWeight management: ${formData.fitnessGoals.weightManagement}\nCardio: ${formData.fitnessGoals.cardioGoals}\nResistance: ${formData.fitnessGoals.resistanceTrainingGoals}\nDiet: ${formData.dailyRoutine.particularDiet}\nActivity:${formData.dailyRoutine.typicalDay}`
+    );
     navigate("/dashboard");
     try {
       const response = await axios.post(

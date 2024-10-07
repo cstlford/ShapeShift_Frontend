@@ -10,9 +10,33 @@ import "./index.css";
 const BodyInfoPage = () => {
   const navigate = useNavigate();
   const { formData, setFormData } = useFormContext();
+  const convertToMetric = () => {
+    let weight = formData.bodyInfo.weight;
+    let height = formData.bodyInfo.height;
+
+    if (formData.bodyInfo.weightUnit === "lb") {
+      weight = (parseFloat(weight) / 2.20462).toFixed(2);
+    }
+
+    if (formData.bodyInfo.heightUnit === "in") {
+      height = (parseFloat(height) * 2.54).toFixed(2);
+    }
+
+    setFormData({
+      ...formData,
+      bodyInfo: {
+        ...formData.bodyInfo,
+        weight: weight,
+        height: height,
+        weightUnit: "kg",
+        heightUnit: "cm",
+      },
+    });
+  };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    convertToMetric();
     navigate("/fitness-goals");
   };
 
