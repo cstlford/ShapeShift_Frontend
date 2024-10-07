@@ -9,22 +9,6 @@ h2 {
   flex-direction: column;
   margin-bottom: 30px;
   align-items: center;
-  color: #646464;
-}
-
-.card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 0px 20px 20px 20px;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.card h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-  color: #646464;
 }
 
 .highlight {
