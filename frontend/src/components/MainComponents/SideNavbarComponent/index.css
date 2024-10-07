@@ -14,6 +14,7 @@
 .sidenav-header {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .sidenav-list {
@@ -40,6 +41,15 @@
 .sidenav-item a:hover {
   background-color: #5a5a5a;
   color: #ffffff;
+}
+
+.collapsible {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.collapsible-content {
+  padding: 0.5rem 0;
 }
 
 h2 {
