@@ -25,10 +25,10 @@ const SideNavbarComponent = () => {
         >
           <div className="collapsible-content">
             <li className="sidenav-item">
-              <NavLink to="/dashboard/nutrition/make-a-plan">Make a Plan</NavLink>
+              <NavLink to="/dashboard/nutrition/plan">Make a Plan</NavLink>
             </li>
             <li className="sidenav-item">
-              <NavLink to="/dashboard/nutrition/my-recipes">My Recipes</NavLink>
+              <NavLink to="/dashboard/nutrition/recipes">My Recipes</NavLink>
             </li>
             <li className="sidenav-item">
               <NavLink to="/dashboard/nutrition/logging">Food Logging</NavLink>
@@ -47,10 +47,10 @@ const SideNavbarComponent = () => {
         >
           <div className="collapsible-content">
             <li className="sidenav-item">
-              <NavLink to="/dashboard/exercise/make-a-plan">Make a Plan</NavLink>
+              <NavLink to="/dashboard/exercise/plan">Make a Plan</NavLink>
             </li>
             <li className="sidenav-item">
-              <NavLink to="/dashboard/exercise/how-to-guide">Exercise How-To Guide</NavLink>
+              <NavLink to="/dashboard/exercise/guide">Exercise How-To Guide</NavLink>
             </li>
             <li className="sidenav-item">
               <NavLink to="/dashboard/exercise/logging">Exercise Logging</NavLink>

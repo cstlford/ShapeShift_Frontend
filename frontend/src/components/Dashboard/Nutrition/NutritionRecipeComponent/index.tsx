@@ -1,7 +1,7 @@
 import NavbarComponent from "../../NavbarComponent";
 import SideNavbarComponent from "../../SideNavbarComponent";
 import "./index.css";
-import "../../../index.css";
+import "../../../../index.css"
 
 const NutritionRecipeComponent: React.FC = () => {
   return (
