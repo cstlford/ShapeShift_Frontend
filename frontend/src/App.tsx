@@ -7,7 +7,7 @@ import WelcomePage from "./pages/WelcomePage";
 import DailyRoutinePage from "./pages/DailyRoutinePage";
 import AboutYourselfPage from "./pages/AboutYourselfPage";
 import FinalPage from "./pages/FinalPage";
-import DashboardComponent from "./components/MainComponents/DashboardComponent";
+import DashboardComponent from "./components/Dashboard/DashboardComponent";
 import ChatWithCoach from "./components/ChatWithCoach";
 import { FormProvider } from "./FormContext";
 import GenerateMealPlan from "./components/GenerateMealPlan";
