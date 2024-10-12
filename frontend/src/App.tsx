@@ -13,7 +13,6 @@ import GenerateMealPlan from "./components/GenerateMealPlan";
 import ExcerciseGuideComponent from "./components/Dashboard/Exercise/ExerciseGuideComponent";
 import ExcerciseLoggingComponent from "./components/Dashboard/Exercise/ExerciseLoggingComponent";
 import ExcercisePlanComponent from "./components/Dashboard/Exercise/ExercisePlanComponent";
-import NutritionPlanComponent from "./components/Dashboard/Nutrition/NutritionPlanComponent";
 import NutritionLoggingComponent from "./components/Dashboard/Nutrition/NutritionLoggingComponent";
 import NutritionRecipeComponent from "./components/Dashboard/Nutrition/NutritionRecipeComponent";
 import ProgressLoggingComponent from "./components/Dashboard/Progress/ProgressLoggingComponent";

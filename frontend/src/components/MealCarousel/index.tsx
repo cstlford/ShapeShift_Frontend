@@ -36,7 +36,7 @@ const MealCarousel: React.FC<CarouselProps> = ({ mealData }) => {
   };
   const getIncrementedDate = (startDate: Date, daysToAdd: number) => {
     const newDate = new Date(startDate);
-    newDate.setDate(newDate.getDate() + daysToAdd); // Increment the date by the specified number of days
+    newDate.setDate(newDate.getDate() + daysToAdd);
     return newDate;
   };
 

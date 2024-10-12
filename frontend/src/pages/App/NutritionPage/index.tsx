@@ -1,4 +1,3 @@
-import MealCard from "../../../components/MealCard";
 import MealCarousel from "../../../components/MealCarousel";
 import AppLayout from "../../../layouts/AppLayout";
 
@@ -145,6 +144,7 @@ const NutritionPage = () => {
   ];
   return (
     <AppLayout>
+      <h1>Create Your Personal Nutritional Plan</h1>
       <MealCarousel mealData={meals} />
     </AppLayout>
   );

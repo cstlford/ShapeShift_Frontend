@@ -7,11 +7,11 @@ interface Props {
 }
 const AppLayout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="container">
+    <>
       <NavbarComponent />
       <SideNavbarComponent />
       <MainComponent>{children}</MainComponent>
-    </div>
+    </>
   );
 };
 
