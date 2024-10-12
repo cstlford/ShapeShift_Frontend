@@ -1,9 +1,9 @@
 import React from "react";
-import FormLayout from "../../layouts/FormLayout";
+import FormLayout from "../../../layouts/FormLayout";
 import { useNavigate } from "react-router-dom";
-import InputForm from "../../components/InputForm";
-import { useFormContext } from "../../FormContext";
-import Button from "../../components/Button";
+import InputForm from "../../../components/InputForm";
+import { useFormContext } from "../../../FormContext";
+import Button from "../../../components/Button";
 import "./index.css";
 
 const AboutYourselfPage: React.FC = () => {

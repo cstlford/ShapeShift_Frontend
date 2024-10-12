@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormContext } from "../../FormContext";
+import { useFormContext } from "../../../FormContext";
 import "./index.css";
-import Button from "../../components/Button";
-import FormLayout from "../../layouts/FormLayout";
-import SelectForm from "../../components/SelectForm";
+import Button from "../../../components/Button";
+import FormLayout from "../../../layouts/FormLayout";
+import SelectForm from "../../../components/SelectForm";
 
 const DailyRoutineForm: React.FC = () => {
   const navigate = useNavigate();

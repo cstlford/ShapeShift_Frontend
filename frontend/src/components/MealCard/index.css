@@ -1,0 +1,45 @@
+.meal-card {
+  border-radius: 8px;
+  background-color: white;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header {
+  background-color: #ff7f50;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-header > * {
+  margin: 0px;
+}
+#carrot {
+  width: 10%;
+  height: 10%;
+  margin: 0px;
+}
+.card-body {
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: auto; /* Enables vertical scroll when content overflows */
+  max-height: 250px; /* Optional: limits card body height */
+}
+
+.meal-section {
+  margin-bottom: 10px;
+}
+
+.calories {
+  text-align: right;
+  font-size: 14px;
+  color: #555;
+  padding-right: 10px;
+}

@@ -1,0 +1,26 @@
+.box {
+  padding: 20px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.box1 {
+  flex: 2;
+  margin: 0px 0px 10px 0px;
+  height: 45%;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-between;
+  height: 40%;
+  gap: 10px;
+}
+
+.box2 {
+  flex: 1;
+  height: 100%;
+  margin: 0px;
+}

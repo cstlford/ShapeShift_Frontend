@@ -44,7 +44,7 @@
 }
 
 .sidenav-item a::after {
-  content: '🡢';
+  content: "🡢";
   position: absolute;
   right: 10px;
   opacity: 0;
@@ -80,7 +80,7 @@ h2 {
 }
 
 h2::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: 0;

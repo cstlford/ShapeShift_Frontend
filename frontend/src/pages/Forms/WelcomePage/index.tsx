@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import FormLayout from "../../layouts/FormLayout";
-import Button from "../../components/Button";
+import FormLayout from "../../../layouts/FormLayout";
+import Button from "../../../components/Button";
 import "./index.css";
 const WelcomePage: React.FC = () => {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormContext } from "../../FormContext";
+import { useFormContext } from "../../../FormContext";
 import "./index.css";
-import FormLayout from "../../layouts/FormLayout";
-import Button from "../../components/Button";
-import RadioCard from "../../components/RadioCard";
+import FormLayout from "../../../layouts/FormLayout";
+import Button from "../../../components/Button";
+import RadioCard from "../../../components/RadioCard";
 
 const options = {
   weightManagement: [

@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormContext } from "../../FormContext";
-import FormLayout from "../../layouts/FormLayout";
-import SelectForm from "../../components/SelectForm";
-import Button from "../../components/Button";
-import InputForm from "../../components/InputForm";
+import { useFormContext } from "../../../FormContext";
+import FormLayout from "../../../layouts/FormLayout";
+import SelectForm from "../../../components/SelectForm";
+import Button from "../../../components/Button";
+import InputForm from "../../../components/InputForm";
 import "./index.css";
 
 const BodyInfoPage = () => {

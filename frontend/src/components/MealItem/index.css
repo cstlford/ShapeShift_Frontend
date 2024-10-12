@@ -1,0 +1,40 @@
+.meal-item {
+  padding: 10px;
+  margin: 0px;
+  border-radius: 8px;
+  background-color: #00ffff;
+  cursor: pointer;
+}
+
+.meal-item:hover {
+  background-color: #00d5d5;
+}
+
+.meal-summary {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.meal-summary > * {
+  margin: 0 0 2px 0;
+}
+#cals {
+  text-decoration: underline;
+}
+
+.meal-details {
+  background-color: #fff;
+  padding: 2px 10px 2px 10px;
+  border-radius: 4px;
+}
+.meal-details > * {
+  margin: 0;
+}
+
+.collapsed .meal-details {
+  display: none;
+}
+
+.expanded .meal-details {
+  display: block;
+}
