@@ -7,9 +7,7 @@ interface Props {
   label?: string;
   value: string | number;
   width?: string;
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputForm: React.FC<Props> = ({

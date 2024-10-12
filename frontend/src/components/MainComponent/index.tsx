@@ -2,7 +2,7 @@ import "./index.css";
 const MainComponent: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  return <main className="main-content">{children}</main>;
+  return <div className="main-content">{children}</div>;
 };
 
 export default MainComponent;
