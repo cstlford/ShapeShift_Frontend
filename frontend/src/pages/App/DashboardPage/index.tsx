@@ -4,7 +4,7 @@ import "./index.css";
 const DashboardPage = () => {
   return (
     <AppLayout>
-      <div className="box-container">
+      <div className="dash-container">
         <div className="box row1">Content 1</div>
         <div className="row2">
           <div className="box">Content 2</div>

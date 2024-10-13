@@ -208,7 +208,7 @@ const NutritionPage = () => {
   return (
     <AppLayout>
       <h1>Create Your Personal Nutritional Plan</h1>
-      <div className="container">
+      <div className="nutrition-container">
         <div className="nutrition-info">
           <h2>Your Nutritional Blueprint</h2>
           <p>
@@ -275,7 +275,7 @@ const NutritionPage = () => {
           <Button style="blue">Create My Meal Plan</Button>
         </form>
       </div>
-      <h2>Your Meal Schedule</h2>
+      <h2 id="schedule-heading">Your Meal Schedule</h2>
       <MealCarousel mealData={meals} />
     </AppLayout>
   );

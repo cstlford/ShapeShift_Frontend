@@ -1,19 +1,21 @@
-h1 {
+.customize h1 {
   margin: 0 0 10px 0;
 }
 
-h2 {
+.nutrition-container h2,
+#schedule-heading {
   color: #00ffff;
   margin: 0px;
   text-align: center;
   font-family: sans-serif;
 }
 
-.container {
+.nutrition-container {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: flex-start;
+  margin-bottom: 10px;
 }
 
 .nutrition-info {
