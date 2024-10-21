@@ -11,146 +11,8 @@ const NutritionPage = () => {
   const [foodsToAvoid, setFoodsToAvoid] = useState("");
   const [mealCount, setMealCount] = useState("");
   const [flavorPreferences, setFlavorPreferences] = useState("");
-  const meals = [
-    [
-      {
-        title: "Eggs & Toast",
-        calories: 350,
-        macros: { protein: 20, carbs: 40, fat: 10 },
-        ingredients: ["2 Eggs", "1Tb Butter", "1pc Toast"],
-        directions: "",
-      },
-      {
-        title: "Carrot Soup",
-        calories: 500,
-        macros: { protein: 30, carbs: 50, fat: 20 },
-        ingredients: [],
-        directions: "",
-      },
-      {
-        title: "Meatloaf",
-        calories: 600,
-        macros: { protein: 35, carbs: 60, fat: 25 },
-        ingredients: [],
-        directions: "",
-      },
-    ],
-    [
-      {
-        title: "Eggs & Toast",
-        calories: 350,
-        macros: { protein: 20, carbs: 40, fat: 10 },
-        ingredients: ["2 Eggs", "1Tb Butter", "1pc Toast"],
-        directions: "",
-      },
-      {
-        title: "Carrot Soup",
-        calories: 500,
-        macros: { protein: 30, carbs: 50, fat: 20 },
-        ingredients: [],
-        directions: "",
-      },
-      {
-        title: "Meatloaf",
-        calories: 600,
-        macros: { protein: 35, carbs: 60, fat: 25 },
-        ingredients: [],
-        directions: "",
-      },
-    ],
-    [
-      {
-        title: "Eggs & Toast",
-        calories: 350,
-        macros: { protein: 20, carbs: 40, fat: 10 },
-        ingredients: ["2 Eggs", "1Tb Butter", "1pc Toast"],
-        directions: "",
-      },
-      {
-        title: "Carrot Soup",
-        calories: 500,
-        macros: { protein: 30, carbs: 50, fat: 20 },
-        ingredients: [],
-        directions: "",
-      },
-      {
-        title: "Meatloaf",
-        calories: 600,
-        macros: { protein: 35, carbs: 60, fat: 25 },
-        ingredients: [],
-        directions: "",
-      },
-    ],
-    [
-      {
-        title: "Eggs & Toast",
-        calories: 350,
-        macros: { protein: 20, carbs: 40, fat: 10 },
-        ingredients: ["2 Eggs", "1Tb Butter", "1pc Toast"],
-        directions: "",
-      },
-      {
-        title: "Carrot Soup",
-        calories: 500,
-        macros: { protein: 30, carbs: 50, fat: 20 },
-        ingredients: [],
-        directions: "",
-      },
-      {
-        title: "Meatloaf",
-        calories: 600,
-        macros: { protein: 35, carbs: 60, fat: 25 },
-        ingredients: [],
-        directions: "",
-      },
-    ],
-    [
-      {
-        title: "Eggs & Toast",
-        calories: 350,
-        macros: { protein: 20, carbs: 40, fat: 10 },
-        ingredients: ["2 Eggs", "1Tb Butter", "1pc Toast"],
-        directions: "",
-      },
-      {
-        title: "Carrot Soup",
-        calories: 500,
-        macros: { protein: 30, carbs: 50, fat: 20 },
-        ingredients: [],
-        directions: "",
-      },
-      {
-        title: "Meatloaf",
-        calories: 600,
-        macros: { protein: 35, carbs: 60, fat: 25 },
-        ingredients: [],
-        directions: "",
-      },
-    ],
-    [
-      {
-        title: "Eggs & Toast",
-        calories: 350,
-        macros: { protein: 20, carbs: 40, fat: 10 },
-        ingredients: ["2 Eggs", "1Tb Butter", "1pc Toast"],
-        directions: "",
-      },
-      {
-        title: "Carrot Soup",
-        calories: 500,
-        macros: { protein: 30, carbs: 50, fat: 20 },
-        ingredients: [],
-        directions: "",
-      },
-      {
-        title: "Meatloaf",
-        calories: 600,
-        macros: { protein: 35, carbs: 60, fat: 25 },
-        ingredients: [],
-        directions: "",
-      },
-    ],
-  ];
+
+  const [meals, setMeals] = useState([]);
 
   const nutritionInfo = {
     dietaryPreference: "Vegetarian",
@@ -182,16 +44,41 @@ const NutritionPage = () => {
     setFlavorPreferences(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
-    console.log("Form submitted with the following data:");
-    console.log({
+    const formData = {
       planDuration,
       foodsToAvoid,
       mealCount,
       flavorPreferences,
-    });
+    };
+    console.log("Form submitted with the following data:", formData);
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/generate-meal-plan", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const mealData = await response.json();
+      console.log("Received meal data from backend:", mealData);
+
+      // Update the state with the received meal data
+      setMeals(mealData);
+    } catch (error) {
+      console.error("Error fetching meal plan:", error);
+    }
   };
+
   const timeOptions = [
     { name: "This week", id: 1 },
     { name: "Next 14 days", id: 2 },

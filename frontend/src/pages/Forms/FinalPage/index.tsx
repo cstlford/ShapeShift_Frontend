@@ -1,29 +1,36 @@
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 import logo from "../../../assets/logo.ico";
-import { useFormContext } from "../../../FormContext";
+import { useUserInfoContext } from "../../../UserInfoContext";
 import axios from "axios";
 import Button from "../../../components/Button";
 import FormLayout from "../../../layouts/FormLayout";
+import { useState } from "react";
 
 const FinalPage: React.FC = () => {
   const navigate = useNavigate();
-  const { formData } = useFormContext();
+  const { userInfoData } = useUserInfoContext();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(
-      `Name: ${formData.name} \n${formData.bodyInfo.weightUnit}: ${formData.bodyInfo.weight}\n${formData.bodyInfo.heightUnit}: ${formData.bodyInfo.height}\nWeight management: ${formData.fitnessGoals.weightManagement}\nCardio: ${formData.fitnessGoals.cardioGoals}\nResistance: ${formData.fitnessGoals.resistanceTrainingGoals}\nDiet: ${formData.dailyRoutine.particularDiet}\nActivity:${formData.dailyRoutine.typicalDay}`
-    );
-    navigate("/dashboard");
+    console.log(JSON.stringify(userInfoData));
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/formData",
-        formData
+        "http://127.0.0.1:5000/submit-profile-data",
+        userInfoData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
       );
       console.log(response.data);
+      navigate("/dashboard");
     } catch (error) {
-      console.error("Error: ", error);
+      console.error("Error posting data: ", error);
+      setErrorMessage("Registration failed. Please try again.");
     }
   };
 
@@ -43,6 +50,7 @@ const FinalPage: React.FC = () => {
         </p>
 
         <Button style="blue">Take Me to My Dashboard</Button>
+        {errorMessage && <p className="error">{errorMessage}</p>}
       </form>
     </FormLayout>
   );

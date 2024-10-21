@@ -1,40 +1,40 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormContext } from "../../../FormContext";
+import { useUserInfoContext } from "../../../UserInfoContext";
 import "./index.css";
 import FormLayout from "../../../layouts/FormLayout";
 import Button from "../../../components/Button";
 import RadioCard from "../../../components/RadioCard";
 
 const options = {
-  weightManagement: [
+  weight_management: [
     { name: "Gain weight", id: "gain" },
     { name: "Lose weight", id: "lose" },
     { name: "Maintain weight", id: "maintain" },
   ],
-  cardioGoals: [
+  cardio_goals: [
     { name: "Improve Endurance", id: "endurance" },
     { name: "Increase Speed", id: "speed" },
-    { name: "Maximize Fat Burn", id: "fatBurn" },
-    { name: "Improve Overall Fitness", id: "overallFitness" },
+    { name: "Maximize Fat Burn", id: "fat_burn" },
+    { name: "Improve Overall Fitness", id: "overall_fitness" },
   ],
-  resistanceTrainingGoals: [
-    { name: "Increase Muscle Mass", id: "muscleMass" },
-    { name: "Improve Overall Strength", id: "overallStrength" },
-    { name: "Enhance Muscle Endurance", id: "muscleEndurance" },
-    { name: "Improve Functional Strength", id: "functionalStrength" },
+  resistance_training_goals: [
+    { name: "Increase Muscle Mass", id: "muscle_mass" },
+    { name: "Improve Overall Strength", id: "overall_strength" },
+    { name: "Enhance Muscle Endurance", id: "muscle_endurance" },
+    { name: "Improve Functional Strength", id: "functional_strength" },
   ],
 };
 
 const FitnessGoalsForm: React.FC = () => {
   const navigate = useNavigate();
-  const { formData, setFormData } = useFormContext();
+  const { userInfoData, setUserInfoData } = useUserInfoContext();
 
   const handleRadioChange = (category: string, value: string) => {
-    setFormData((prev: any) => ({
+    setUserInfoData((prev: any) => ({
       ...prev,
-      fitnessGoals: {
-        ...prev.fitnessGoals,
+      fitness_goals: {
+        ...prev.fitness_goals,
         [category]: value,
       },
     }));
@@ -59,22 +59,24 @@ const FitnessGoalsForm: React.FC = () => {
         <div className="fg-form-group">
           <RadioCard
             title="Weight Management"
-            options={options.weightManagement}
-            selectedOption={formData.fitnessGoals.weightManagement}
-            onChange={(value) => handleRadioChange("weightManagement", value)}
+            options={options.weight_management}
+            selectedOption={userInfoData.fitness_goals.weight_management}
+            onChange={(value) => handleRadioChange("weight_management", value)}
           />
           <RadioCard
             title="Cardio Goals"
-            options={options.cardioGoals}
-            selectedOption={formData.fitnessGoals.cardioGoals}
-            onChange={(value) => handleRadioChange("cardioGoals", value)}
+            options={options.cardio_goals}
+            selectedOption={userInfoData.fitness_goals.cardio_goals}
+            onChange={(value) => handleRadioChange("cardio_goals", value)}
           />
           <RadioCard
             title="Resistance Training Goals"
-            options={options.resistanceTrainingGoals}
-            selectedOption={formData.fitnessGoals.resistanceTrainingGoals}
+            options={options.resistance_training_goals}
+            selectedOption={
+              userInfoData.fitness_goals.resistance_training_goals
+            }
             onChange={(value) =>
-              handleRadioChange("resistanceTrainingGoals", value)
+              handleRadioChange("resistance_training_goals", value)
             }
           />
         </div>

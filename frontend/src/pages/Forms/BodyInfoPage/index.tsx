@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormContext } from "../../../FormContext";
+import { useUserInfoContext } from "../../../UserInfoContext";
 import FormLayout from "../../../layouts/FormLayout";
 import SelectForm from "../../../components/SelectForm";
 import Button from "../../../components/Button";
@@ -9,27 +9,27 @@ import "./index.css";
 
 const BodyInfoPage = () => {
   const navigate = useNavigate();
-  const { formData, setFormData } = useFormContext();
+  const { userInfoData, setUserInfoData } = useUserInfoContext();
   const convertToMetric = () => {
-    let weight = formData.bodyInfo.weight;
-    let height = formData.bodyInfo.height;
+    let weight = userInfoData.body_info.weight;
+    let height = userInfoData.body_info.height;
 
-    if (formData.bodyInfo.weightUnit === "lb") {
+    if (userInfoData.body_info.weight_unit === "lb") {
       weight = (parseFloat(weight) / 2.20462).toFixed(2);
     }
 
-    if (formData.bodyInfo.heightUnit === "in") {
+    if (userInfoData.body_info.height_unit === "in") {
       height = (parseFloat(height) * 2.54).toFixed(2);
     }
 
-    setFormData({
-      ...formData,
-      bodyInfo: {
-        ...formData.bodyInfo,
+    setUserInfoData({
+      ...userInfoData,
+      body_info: {
+        ...userInfoData.body_info,
         weight: weight,
         height: height,
-        weightUnit: "kg",
-        heightUnit: "cm",
+        weight_unit: "kg",
+        height_unit: "cm",
       },
     });
   };
@@ -51,11 +51,14 @@ const BodyInfoPage = () => {
           <InputForm
             type="number"
             placeholder="Weight"
-            value={formData.bodyInfo.weight}
+            value={userInfoData.body_info.weight}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                bodyInfo: { ...formData.bodyInfo, weight: e.target.value },
+              setUserInfoData({
+                ...userInfoData,
+                body_info: {
+                  ...userInfoData.body_info,
+                  weight: e.target.value,
+                },
               })
             }
           />
@@ -64,13 +67,13 @@ const BodyInfoPage = () => {
               { name: "lb", id: 1 },
               { name: "kg", id: 2 },
             ]}
-            value={formData.bodyInfo.weightUnit}
+            value={userInfoData.body_info.weight_unit}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                bodyInfo: {
-                  ...formData.bodyInfo,
-                  weightUnit: e.target.value,
+              setUserInfoData({
+                ...userInfoData,
+                body_info: {
+                  ...userInfoData.body_info,
+                  weight_unit: e.target.value,
                 },
               })
             }
@@ -81,11 +84,14 @@ const BodyInfoPage = () => {
           <InputForm
             type="number"
             placeholder="Height"
-            value={formData.bodyInfo.height}
+            value={userInfoData.body_info.height}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                bodyInfo: { ...formData.bodyInfo, height: e.target.value },
+              setUserInfoData({
+                ...userInfoData,
+                body_info: {
+                  ...userInfoData.body_info,
+                  height: e.target.value,
+                },
               })
             }
           />
@@ -94,13 +100,13 @@ const BodyInfoPage = () => {
               { name: "in", id: 1 },
               { name: "cm", id: 2 },
             ]}
-            value={formData.bodyInfo.heightUnit}
+            value={userInfoData.body_info.height_unit}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                bodyInfo: {
-                  ...formData.bodyInfo,
-                  heightUnit: e.target.value,
+              setUserInfoData({
+                ...userInfoData,
+                body_info: {
+                  ...userInfoData.body_info,
+                  height_unit: e.target.value,
                 },
               })
             }
@@ -109,15 +115,15 @@ const BodyInfoPage = () => {
         <div className="sex">
           <SelectForm
             label="What is your sex?"
-            value={formData.bodyInfo.sex}
+            value={userInfoData.body_info.sex}
             options={[
-              { name: "Male", id: 1 },
-              { name: "Female", id: 2 },
+              { name: "Male", id: "Male" },
+              { name: "Female", id: "Female" },
             ]}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                bodyInfo: { ...formData.bodyInfo, sex: e.target.value },
+              setUserInfoData({
+                ...userInfoData,
+                body_info: { ...userInfoData.body_info, sex: e.target.value },
               })
             }
           />
@@ -126,11 +132,14 @@ const BodyInfoPage = () => {
           <InputForm
             label="When is your birthday?"
             type="date"
-            value={formData.bodyInfo.birthday}
+            value={userInfoData.body_info.birthday}
             onChange={(e) =>
-              setFormData({
-                ...formData,
-                bodyInfo: { ...formData.bodyInfo, birthday: e.target.value },
+              setUserInfoData({
+                ...userInfoData,
+                body_info: {
+                  ...userInfoData.body_info,
+                  birthday: e.target.value,
+                },
               })
             }
           ></InputForm>

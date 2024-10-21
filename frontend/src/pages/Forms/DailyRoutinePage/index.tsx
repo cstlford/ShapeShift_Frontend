@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useFormContext } from "../../../FormContext";
+import { useUserInfoContext } from "../../../UserInfoContext";
 import "./index.css";
 import Button from "../../../components/Button";
 import FormLayout from "../../../layouts/FormLayout";
@@ -8,17 +8,17 @@ import SelectForm from "../../../components/SelectForm";
 
 const DailyRoutineForm: React.FC = () => {
   const navigate = useNavigate();
-  const { formData, setFormData } = useFormContext();
+  const { userInfoData, setUserInfoData } = useUserInfoContext();
 
   const handleSelectChange = (
     category: string,
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const newValue = event.target.value;
-    setFormData((prev: any) => ({
+    setUserInfoData((prev: any) => ({
       ...prev,
-      dailyRoutine: {
-        ...prev.dailyRoutine,
+      daily_routine: {
+        ...prev.daily_routine,
         [category]: newValue,
       },
     }));
@@ -30,21 +30,30 @@ const DailyRoutineForm: React.FC = () => {
   };
 
   const options = {
-    particularDiet: [
-      { name: "Vegetarian", id: 1 },
-      { name: "Vegan", id: 2 },
-      { name: "Keto", id: 3 },
-      { name: "Omnivore", id: 4 },
-      { name: "Carnivore", id: 5 },
+    particular_diet: [
+      { name: "Vegetarian", id: "vegetarian" },
+      { name: "Vegan", id: "vegan" },
+      { name: "Keto", id: "keto" },
+      { name: "Omnivore", id: "omnivore" },
+      { name: "Paleo", id: "paleo" },
     ],
-    typicalDay: [
-      { name: "Sedentary (little to no exercise)", id: 1 },
-      { name: "Lightly Active (light exercise 1-3 days/week)", id: 2 },
-      { name: "Moderately Active (Moderate exercise 3-5 days/week)", id: 3 },
-      { name: "Very Active (Intense exercise 6-7 days/week)", id: 4 },
+    activity_level: [
+      { name: "Sedentary (little to no exercise)", id: "sedentary" },
+      {
+        name: "Lightly Active (light exercise 1-3 days/week)",
+        id: "lightly_active",
+      },
+      {
+        name: "Moderately Active (Moderate exercise 3-5 days/week)",
+        id: "moderately_active",
+      },
+      {
+        name: "Very Active (Intense exercise 6-7 days/week)",
+        id: "very_active",
+      },
       {
         name: "Extremely Active (very intense exercise & physical job)",
-        id: 5,
+        id: "extremely_active",
       },
     ],
   };
@@ -58,15 +67,15 @@ const DailyRoutineForm: React.FC = () => {
         <div className="inputs">
           <SelectForm
             label="Do you follow a particular diet?"
-            value={formData.dailyRoutine?.particularDiet || ""}
-            options={options.particularDiet}
-            onChange={(event) => handleSelectChange("particularDiet", event)}
+            value={userInfoData.daily_routine?.particular_diet || ""}
+            options={options.particular_diet}
+            onChange={(event) => handleSelectChange("particular_diet", event)}
           />
           <SelectForm
             label="How would you describe your typical day?"
-            value={formData.dailyRoutine?.typicalDay || ""}
-            options={options.typicalDay}
-            onChange={(event) => handleSelectChange("typicalDay", event)}
+            value={userInfoData.daily_routine?.activity_level || ""}
+            options={options.activity_level}
+            onChange={(event) => handleSelectChange("activity_level", event)}
           />
         </div>
 

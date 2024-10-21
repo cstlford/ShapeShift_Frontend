@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import FormLayout from "../../../layouts/FormLayout";
 import { useNavigate } from "react-router-dom";
 import InputForm from "../../../components/InputForm";
-import { useFormContext } from "../../../FormContext";
+import { useAuthContext } from "../../../AuthenticationContext";
 import Button from "../../../components/Button";
 import "./index.css";
+import axios from "axios";
 
 const AboutYourselfPage: React.FC = () => {
   const navigate = useNavigate();
-  const { formData, setFormData } = useFormContext();
-  const handleSubmit = (event: React.FormEvent) => {
+  const { authData, setAuthData } = useAuthContext();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    navigate("/body-info");
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/auth/register",
+        authData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log("Data posted successfully:", response.data);
+      navigate("/body-info");
+    } catch (error) {
+      console.error("Error posting data: ", error);
+      setErrorMessage("Registration failed. Please try again.");
+    }
   };
 
   return (
@@ -26,17 +45,17 @@ const AboutYourselfPage: React.FC = () => {
             label="What's your name?"
             type="text"
             placeholder="Enter your name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={authData.name}
+            onChange={(e) => setAuthData({ ...authData, name: e.target.value })}
           />
 
           <InputForm
             label="What's your email?"
             type="email"
             placeholder="Enter your email"
-            value={formData.email}
+            value={authData.email}
             onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
+              setAuthData({ ...authData, email: e.target.value })
             }
           />
 
@@ -44,15 +63,14 @@ const AboutYourselfPage: React.FC = () => {
             label="Create a password"
             type="password"
             placeholder="Enter a strong password"
-            value={formData.password}
+            value={authData.password}
             onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
+              setAuthData({ ...authData, password: e.target.value })
             }
           />
         </div>
-        <p>or</p>
-        <Button style="white">Sign up with Google</Button>
         <Button style="orange">Next: Your Physical Stats</Button>
+        {errorMessage && <p className="error">{errorMessage}</p>}
       </form>
     </FormLayout>
   );
