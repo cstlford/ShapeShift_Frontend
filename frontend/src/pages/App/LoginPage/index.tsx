@@ -25,26 +25,25 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/app/auth/login", {
+      const response = await fetch("http://127.0.0.1:5000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
-        const data = await response.json();
-        // Store the JWT token securely
-        localStorage.setItem("accessToken", data.access_token);
         navigate("/dashboard");
         setError("");
       } else {
         const errorData = await response.json();
-        setError(errorData.message || "Login failed");
+        setError(errorData.error || "Login failed");
       }
     } catch (error) {
       console.error("An error occurred:", error);
+      setError("An error occurred. Please try again.");
     }
   };
 

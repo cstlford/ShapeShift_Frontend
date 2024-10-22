@@ -25,13 +25,13 @@ const SideNavbarComponent = () => {
         >
           <div className="collapsible-content">
             <li className="sidenav-item">
-              <NavLink to="/dashboard/nutrition/plan">Make a Plan</NavLink>
+              <NavLink to="/nutrition/plan">Make a Plan</NavLink>
             </li>
             <li className="sidenav-item">
-              <NavLink to="/dashboard/nutrition/recipes">My Recipes</NavLink>
+              <NavLink to="/nutrition/recipes">My Recipes</NavLink>
             </li>
             <li className="sidenav-item">
-              <NavLink to="/dashboard/nutrition/logging">Food Logging</NavLink>
+              <NavLink to="/nutrition/logging">Food Logging</NavLink>
             </li>
           </div>
         </div>
@@ -47,17 +47,13 @@ const SideNavbarComponent = () => {
         >
           <div className="collapsible-content">
             <li className="sidenav-item">
-              <NavLink to="/dashboard/exercise/plan">Make a Plan</NavLink>
+              <NavLink to="/exercise/plan">Make a Plan</NavLink>
             </li>
             <li className="sidenav-item">
-              <NavLink to="/dashboard/exercise/guide">
-                Exercise How-To Guide
-              </NavLink>
+              <NavLink to="/exercise/guide">Exercise How-To Guide</NavLink>
             </li>
             <li className="sidenav-item">
-              <NavLink to="/dashboard/exercise/logging">
-                Exercise Logging
-              </NavLink>
+              <NavLink to="/exercise/logging">Exercise Logging</NavLink>
             </li>
           </div>
         </div>
@@ -74,7 +70,7 @@ const SideNavbarComponent = () => {
         >
           <div className="collapsible-content">
             <li className="sidenav-item">
-              <NavLink to="/dashboard/progress/logging">Weight Logging</NavLink>
+              <NavLink to="/progress/logging">Weight Logging</NavLink>
             </li>
           </div>
         </div>

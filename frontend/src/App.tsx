@@ -43,31 +43,28 @@ const App: React.FC = () => {
                 element={<GenerateMealPlan />}
               />
               <Route
-                path="/dashboard/exercise/guide"
+                path="/exercise/guide"
                 element={<ExcerciseGuideComponent />}
               />
               <Route
-                path="/dashboard/exercise/logging"
+                path="/exercise/logging"
                 element={<ExcerciseLoggingComponent />}
               />
               <Route
-                path="/dashboard/exercise/plan"
+                path="/exercise/plan"
                 element={<ExcercisePlanComponent />}
               />
               <Route
-                path="/dashboard/nutrition/recipes"
+                path="/nutrition/recipes"
                 element={<NutritionRecipeComponent />}
               />
               <Route
-                path="/dashboard/nutrition/logging"
+                path="nutrition/logging"
                 element={<NutritionLoggingComponent />}
               />
+              <Route path="/nutrition/plan" element={<NutritionPage />} />
               <Route
-                path="/dashboard/nutrition/plan"
-                element={<NutritionPage />}
-              />
-              <Route
-                path="/dashboard/progress/logging"
+                path="/progress/logging"
                 element={<ProgressLoggingComponent />}
               />
             </Routes>
