@@ -5,13 +5,14 @@ import MealCarousel from "../../../components/MealCarousel";
 import SelectForm from "../../../components/SelectForm";
 import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
+import axios from "axios";
 
 const NutritionPage = () => {
   const [planDuration, setPlanDuration] = useState("");
   const [foodsToAvoid, setFoodsToAvoid] = useState("");
   const [mealCount, setMealCount] = useState("");
   const [flavorPreferences, setFlavorPreferences] = useState("");
-
+  const [errorMessage, setErrorMessage] = useState("");
   const [meals, setMeals] = useState([]);
 
   const nutritionInfo = {
@@ -44,9 +45,7 @@ const NutritionPage = () => {
     setFlavorPreferences(e.target.value);
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = {
       planDuration,
@@ -54,7 +53,23 @@ const NutritionPage = () => {
       mealCount,
       flavorPreferences,
     };
-    console.log("Form submitted with the following data:", formData);
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/submit-mealplan-data",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log("Data posted successfully:", response.data);
+    } catch (error) {
+      console.error("Error posting data: ", error);
+      setErrorMessage("Registration failed. Please try again.");
+    }
 
     try {
       const response = await fetch("http://127.0.0.1:5000/generate-meal-plan", {
@@ -80,8 +95,8 @@ const NutritionPage = () => {
   };
 
   const timeOptions = [
-    { name: "This week", id: 1 },
-    { name: "Next 14 days", id: 2 },
+    { name: "One week", id: 7 },
+    { name: "Two weeks", id: 14 },
   ];
   const numberOptions = [
     { name: "One", id: 1 },
@@ -140,6 +155,7 @@ const NutritionPage = () => {
                 label="Any foods to avoid?"
                 value={foodsToAvoid}
                 type="text"
+                maxLength={255}
                 onChange={handleFoodsToAvoidChange}
               />
             </div>
@@ -155,6 +171,7 @@ const NutritionPage = () => {
                 label="What flavors excite your palate?"
                 value={flavorPreferences}
                 type="text"
+                maxLength={255}
                 onChange={handleFlavorPreferencesChange}
               />
             </div>
@@ -163,6 +180,7 @@ const NutritionPage = () => {
         </form>
       </div>
       <h2 id="schedule-heading">Your Meal Schedule</h2>
+      {errorMessage && <p className="error">{errorMessage}</p>}
       <MealCarousel mealData={meals} />
     </AppLayout>
   );

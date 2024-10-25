@@ -6,7 +6,8 @@ interface Props {
   placeholder?: string;
   label?: string;
   value: string | number;
-  width?: string;
+  maxLength?: number;
+
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -15,20 +16,19 @@ const InputForm: React.FC<Props> = ({
   placeholder,
   label,
   value,
-  width,
+  maxLength,
   onChange,
 }) => {
   return (
     <div className="input-group">
       {label && <label>{label}</label>}
-
       <input
         className={`input input-${type}`}
-        style={{ width: width }}
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        maxLength={maxLength}
         required
       />
     </div>
