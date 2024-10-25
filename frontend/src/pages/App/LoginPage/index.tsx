@@ -5,14 +5,13 @@ import Button from "../../../components/Button";
 import { NavLink } from "react-router-dom";
 import "./index.css";
 import shapeshift from "../../../assets/shapeshift.ico";
-import { useNavigate } from "react-router-dom";
+import AuthHandler from "../../../components/AuthHandler";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -35,8 +34,8 @@ const LoginPage = () => {
       });
 
       if (response.ok) {
-        navigate("/dashboard");
         setError("");
+        setIsAuthenticated(true);
       } else {
         const errorData = await response.json();
         setError(errorData.error || "Login failed");
@@ -46,7 +45,9 @@ const LoginPage = () => {
       setError("An error occurred. Please try again.");
     }
   };
-
+  if (isAuthenticated) {
+    return <AuthHandler />;
+  }
   return (
     <FormLayout>
       <div className="login-container">

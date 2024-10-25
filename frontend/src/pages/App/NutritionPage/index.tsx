@@ -6,6 +6,7 @@ import SelectForm from "../../../components/SelectForm";
 import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
 import axios from "axios";
+import { useGlobalState } from "../../../contexts/GlobalStateContext";
 
 const NutritionPage = () => {
   const [planDuration, setPlanDuration] = useState("");
@@ -14,17 +15,19 @@ const NutritionPage = () => {
   const [flavorPreferences, setFlavorPreferences] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [meals, setMeals] = useState([]);
+  const { state } = useGlobalState();
 
   const nutritionInfo = {
-    dietaryPreference: "Vegetarian",
-    nutritionGoal: "Gain Weight",
-    dailyCaloricGoal: 2563,
+    dietaryPreference: state.user?.diet_type,
+    nutritionGoal: state.user?.goals?.weight_goal,
+    dailyCaloricGoal: state.user?.calories,
     macroSplit: {
-      protein: 122,
-      fat: 83,
-      carbohydrates: 315,
+      protein: state.user?.macronutrients?.protein,
+      fat: state.user?.macronutrients?.fat,
+      carbohydrates: state.user?.macronutrients?.carbs,
     },
   };
+
   const handlePlanDurationChange = (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -87,7 +90,6 @@ const NutritionPage = () => {
       const mealData = await response.json();
       console.log("Received meal data from backend:", mealData);
 
-      // Update the state with the received meal data
       setMeals(mealData);
     } catch (error) {
       console.error("Error fetching meal plan:", error);
@@ -118,7 +120,8 @@ const NutritionPage = () => {
             {nutritionInfo.dietaryPreference}
           </p>
           <p>
-            <strong>Nutrition Goal:</strong> {nutritionInfo.nutritionGoal}
+            <strong>Nutrition Goal:</strong> {nutritionInfo.nutritionGoal}{" "}
+            Weight
           </p>
           <p>
             <strong>Daily Caloric Goal:</strong>{" "}
@@ -156,6 +159,7 @@ const NutritionPage = () => {
                 value={foodsToAvoid}
                 type="text"
                 maxLength={255}
+                required={false}
                 onChange={handleFoodsToAvoidChange}
               />
             </div>
@@ -172,6 +176,7 @@ const NutritionPage = () => {
                 value={flavorPreferences}
                 type="text"
                 maxLength={255}
+                required={false}
                 onChange={handleFlavorPreferencesChange}
               />
             </div>

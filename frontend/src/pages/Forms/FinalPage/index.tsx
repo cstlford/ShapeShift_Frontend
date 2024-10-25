@@ -1,16 +1,16 @@
-import { useNavigate } from "react-router-dom";
 import "./index.css";
 import logo from "../../../assets/logo.ico";
-import { useUserInfoContext } from "../../../UserInfoContext";
+import { useUserInfoContext } from "../../../contexts/UserInfoContext";
 import axios from "axios";
 import Button from "../../../components/Button";
 import FormLayout from "../../../layouts/FormLayout";
 import { useState } from "react";
+import AuthHandler from "../../../components/AuthHandler";
 
 const FinalPage: React.FC = () => {
-  const navigate = useNavigate();
   const { userInfoData } = useUserInfoContext();
   const [errorMessage, setErrorMessage] = useState("");
+  const [isProfileSubmitted, setIsProfileSubmitted] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -27,13 +27,16 @@ const FinalPage: React.FC = () => {
         }
       );
       console.log(response.data);
-      navigate("/dashboard");
+      setErrorMessage("");
+      setIsProfileSubmitted(true);
     } catch (error) {
       console.error("Error posting data: ", error);
       setErrorMessage("Registration failed. Please try again.");
     }
   };
-
+  if (isProfileSubmitted) {
+    return <AuthHandler />;
+  }
   return (
     <FormLayout>
       <form className="fp-form" onSubmit={handleSubmit}>

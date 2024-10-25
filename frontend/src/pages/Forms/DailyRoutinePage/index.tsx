@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserInfoContext } from "../../../UserInfoContext";
+import { useUserInfoContext } from "../../../contexts/UserInfoContext";
 import "./index.css";
 import Button from "../../../components/Button";
 import FormLayout from "../../../layouts/FormLayout";

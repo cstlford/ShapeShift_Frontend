@@ -5,11 +5,9 @@ import FitnessGoalsPage from "./pages/Forms/FitnessGoalsPage";
 import UserPreferencesForm from "./components/UserPreferencesForm";
 import WelcomePage from "./pages/Forms/WelcomePage";
 import DailyRoutinePage from "./pages/Forms/DailyRoutinePage";
-import AboutYourselfPage from "./pages/Forms/AboutYourselfPage";
 import FinalPage from "./pages/Forms/FinalPage";
 import ChatWithCoach from "./components/ChatWithCoach";
-import { AuthProvider } from "./AuthenticationContext";
-import { UserInfoProvider } from "./UserInfoContext";
+import { UserInfoProvider } from "./contexts/UserInfoContext";
 import GenerateMealPlan from "./components/GenerateMealPlan";
 import ExcerciseGuideComponent from "./components/Dashboard/Exercise/ExerciseGuideComponent";
 import ExcerciseLoggingComponent from "./components/Dashboard/Exercise/ExerciseLoggingComponent";
@@ -20,17 +18,20 @@ import ProgressLoggingComponent from "./components/Dashboard/Progress/ProgressLo
 import NutritionPage from "./pages/App/NutritionPage";
 import DashboardPage from "./pages/App/DashboardPage";
 import LoginPage from "./pages/App/LoginPage";
+import CreateAccount from "./pages/Forms/CreateAccount";
+import { GlobalStateProvider } from "./contexts/GlobalStateContext";
+import ProfilePage from "./pages/App/ProfilePage";
 
 const App: React.FC = () => {
   return (
     <>
-      <AuthProvider>
+      <GlobalStateProvider>
         <UserInfoProvider>
           <Router>
             <Routes>
               <Route path="/" element={<LoginPage />} />
               <Route path="/begin" element={<WelcomePage />} />
-              <Route path="/about-yourself" element={<AboutYourselfPage />} />
+              <Route path="/about-yourself" element={<CreateAccount />} />
               <Route path="/body-info" element={<BodyInfoPage />} />
               <Route path="/fitness-goals" element={<FitnessGoalsPage />} />
               <Route path="/daily-routine" element={<DailyRoutinePage />} />
@@ -67,10 +68,11 @@ const App: React.FC = () => {
                 path="/progress/logging"
                 element={<ProgressLoggingComponent />}
               />
+              <Route path="/profile" element={<ProfilePage />} />
             </Routes>
           </Router>
         </UserInfoProvider>
-      </AuthProvider>
+      </GlobalStateProvider>
     </>
   );
 };

@@ -7,6 +7,7 @@ interface Props {
   label?: string;
   value: string | number;
   maxLength?: number;
+  required?: boolean;
 
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -17,6 +18,7 @@ const InputForm: React.FC<Props> = ({
   label,
   value,
   maxLength,
+  required = true,
   onChange,
 }) => {
   return (
@@ -29,7 +31,7 @@ const InputForm: React.FC<Props> = ({
         value={value}
         onChange={onChange}
         maxLength={maxLength}
-        required
+        required={required}
       />
     </div>
   );

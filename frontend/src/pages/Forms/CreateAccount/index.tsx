@@ -2,14 +2,23 @@ import React, { useState } from "react";
 import FormLayout from "../../../layouts/FormLayout";
 import { useNavigate } from "react-router-dom";
 import InputForm from "../../../components/InputForm";
-import { useAuthContext } from "../../../AuthenticationContext";
 import Button from "../../../components/Button";
 import "./index.css";
 import axios from "axios";
 
-const AboutYourselfPage: React.FC = () => {
+interface AuthData {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const CreateAccount: React.FC = () => {
   const navigate = useNavigate();
-  const { authData, setAuthData } = useAuthContext();
+  const [authData, setAuthData] = useState<AuthData>({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -76,4 +85,4 @@ const AboutYourselfPage: React.FC = () => {
   );
 };
 
-export default AboutYourselfPage;
+export default CreateAccount;
