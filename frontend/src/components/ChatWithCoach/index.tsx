@@ -1,5 +1,5 @@
 
-import {useState } from "react";
+import {useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css"
 import.meta.env.VITE_YOUR_ENV_VARIABLE
@@ -10,7 +10,7 @@ const ChatWithCoach = () => {
   
     const navigate = useNavigate() //navigate to page via react-router-dom "virtual dom"
     
-    const[output, setOutput] = useState(null) // set the LLM output state
+    const[output, setOutput] = useState<string | null>(null)  // set the LLM output state
 
     const[userInput, setUserInput] = useState("") // set the userInput state
 
@@ -18,9 +18,8 @@ const ChatWithCoach = () => {
 
     const[show, setShow] = useState(false) // Show LLM output
     
-    const handleChange = (e) => { // set user input
+    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {  // Add type to event parameter
       setUserInput(e.target.value)
-    
     }
     const handleMealClick = () => { // navigates to generate sample meal plan when users clicks the button
       navigate("/generate-meal-plan")

@@ -5,7 +5,6 @@ import MealCarousel from "../../../components/MealCarousel";
 import SelectForm from "../../../components/SelectForm";
 import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
-import axios from "axios";
 import { useGlobalState } from "../../../contexts/GlobalStateContext";
 
 const NutritionPage = () => {
