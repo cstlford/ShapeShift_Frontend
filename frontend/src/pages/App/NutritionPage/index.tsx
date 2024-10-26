@@ -47,7 +47,6 @@ const NutritionPage = () => {
   ) => {
     setFlavorPreferences(e.target.value);
   };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = {
@@ -58,28 +57,12 @@ const NutritionPage = () => {
     };
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:5000/submit-mealplan-data",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      console.log("Data posted successfully:", response.data);
-    } catch (error) {
-      console.error("Error posting data: ", error);
-      setErrorMessage("Registration failed. Please try again.");
-    }
-
-    try {
       const response = await fetch("http://127.0.0.1:5000/generate-meal-plan", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(formData),
       });
 
@@ -88,11 +71,13 @@ const NutritionPage = () => {
       }
 
       const mealData = await response.json();
-      console.log("Received meal data from backend:", mealData);
+      console.log("Received meal data from backend:", mealData["ai"]);
 
-      setMeals(mealData);
+      // Update the state with the received meal data
+      setMeals(mealData["meals"]);
     } catch (error) {
       console.error("Error fetching meal plan:", error);
+      setErrorMessage("Failed to generate meal plan. Please try again.");
     }
   };
 
