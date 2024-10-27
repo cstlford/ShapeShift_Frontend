@@ -6,6 +6,7 @@ import SelectForm from "../../../components/SelectForm";
 import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
 import { useGlobalState } from "../../../contexts/GlobalStateContext";
+import Loading from "../../../components/LoadingPage";
 
 const NutritionPage = () => {
   const [planDuration, setPlanDuration] = useState("");
@@ -15,6 +16,7 @@ const NutritionPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [meals, setMeals] = useState([]);
   const { state } = useGlobalState();
+  const [isLoading, setLoading] = useState(false)
 
   const nutritionInfo = {
     dietaryPreference: state.user?.diet_type,
@@ -54,7 +56,7 @@ const NutritionPage = () => {
       mealCount,
       flavorPreferences,
     };
-
+    setLoading(true); 
     try {
       const response = await fetch("http://127.0.0.1:5000/generate-meal-plan", {
         method: "POST",
@@ -77,6 +79,9 @@ const NutritionPage = () => {
     } catch (error) {
       console.error("Error fetching meal plan:", error);
       setErrorMessage("Failed to generate meal plan. Please try again.");
+    }
+    finally {
+      setLoading(false); // Reset loading to false after the API call completes
     }
   };
 
@@ -169,6 +174,8 @@ const NutritionPage = () => {
         </form>
       </div>
       <h2 id="schedule-heading">Your Meal Schedule</h2>
+      {isLoading && <Loading />}
+
       {errorMessage && <p className="error">{errorMessage}</p>}
       <MealCarousel mealData={meals} />
     </AppLayout>
