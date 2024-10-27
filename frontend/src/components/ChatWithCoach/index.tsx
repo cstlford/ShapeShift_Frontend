@@ -48,7 +48,7 @@ const ChatWithCoach = () => {
 
     }
     const handleGoBack = () => {
-      navigate("/")
+      navigate("/dashboard")
 
     }
     const SendMessage = () => { // Render LLM output
