@@ -1,12 +1,14 @@
 // src/components/AuthHandler.tsx
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalState } from "../../contexts/GlobalStateContext";
+import Loading from "../LoadingPage";
 
 const AuthHandler: React.FC = () => {
   const { setState } = useGlobalState();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); 
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -41,10 +43,17 @@ const AuthHandler: React.FC = () => {
         console.error("Error fetching user profile:", error);
         navigate("/login");
       }
+      finally {
+        setIsLoading(false); // Ensure loading state is updated
+      }
     };
 
     fetchUserProfile();
   }, [navigate, setState]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return null; // or a loading indicator
 };
