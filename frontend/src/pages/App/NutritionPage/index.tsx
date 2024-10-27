@@ -5,7 +5,6 @@ import MealCarousel from "../../../components/MealCarousel";
 import SelectForm from "../../../components/SelectForm";
 import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
-import axios from "axios";
 import { useGlobalState } from "../../../contexts/GlobalStateContext";
 
 const NutritionPage = () => {
@@ -69,7 +68,7 @@ const NutritionPage = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+      console.log("Meal plan request sent to backend:", formData);
       const mealData = await response.json();
       console.log("Received meal data from backend:", mealData["ai"]);
 
