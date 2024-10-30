@@ -74,8 +74,14 @@ const SideNavbarComponent = () => {
             </li>
           </div>
         </div>
+        <li className="sidenav-item">
+          <NavLink to="/chat-with-coach">Chat with Coach</NavLink>
+        </li>
+        
       </ul>
     </aside>
+    
+    
   );
 };
 
