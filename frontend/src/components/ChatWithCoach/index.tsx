@@ -2,7 +2,7 @@
 import {useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css"
-import.meta.env.VITE_YOUR_ENV_VARIABLE
+// import.meta.env.VITE_YOUR_ENV_VARIABLE
 
 
 const ChatWithCoach = () => {
@@ -27,26 +27,38 @@ const ChatWithCoach = () => {
 
    
     
-    const handleClick = () => { // Send use input to Api to generate output and set output state
+  
 
+      const handleClick = async () => {
+   
+        try {
+          const response = await fetch("http://127.0.0.1:5000/chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({"message": userInput}),
+          });
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+    
+          const ai_response = await response.json();
+          setOutput(ai_response.message)
+          setShow(true)
+          setUserInput(""); 
+          
+    
+       
+        } catch (error) {
+          console.error("Error fetching meal plan:", error);
+          
+        }
       
-      const baseUrl = import.meta.env.VITE_API_URL; // base url of api pulled from .env
-
-
-      fetch(`${baseUrl}/basic_chat/${userInput}`)
-        .then((response) => response.json())
-        .then((data) => {
-        
-        setOutput(data); // Update the state with the API output
-        setShow(true)
-        })
-        .catch((error) => {
-        console.error('Error fetching data:', error);
-        });
-
-    setUserInput(""); // Clear the input after the button is clicked
-
-    }
+      };
+    
     const handleGoBack = () => {
       navigate("/dashboard")
 
