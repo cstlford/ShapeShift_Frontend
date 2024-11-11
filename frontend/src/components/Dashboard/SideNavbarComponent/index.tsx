@@ -6,7 +6,9 @@ const SideNavbarComponent = () => {
   const [nutritionOpen, setNutritionOpen] = useState(false);
   const [exerciseOpen, setExerciseOpen] = useState(false);
   const [progressOpen, setProgressOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
 
+  const toggleChat = () => setChatOpen(!chatOpen)
   const toggleNutrition = () => setNutritionOpen(!nutritionOpen);
   const toggleExercise = () => setExerciseOpen(!exerciseOpen);
   const toggleProgress = () => setProgressOpen(!progressOpen);
@@ -74,10 +76,29 @@ const SideNavbarComponent = () => {
             </li>
           </div>
         </div>
-        <li className="sidenav-item">
-          <NavLink to="/chat-with-coach">Chat with Coach</NavLink>
+        <li className="sidenav-header">
+          <h2 onClick={toggleChat}>
+            Chat With Hercules <span className="arrow">{chatOpen ? "▼" : "▲"}</span>
+          </h2>
         </li>
-        
+
+        <div
+          className={`collapsible ${chatOpen ? "open" : ""}`}
+          style={{ maxHeight: chatOpen ? "200px" : "0" }}
+        >
+          <div className="collapsible-content">
+            <li className="sidenav-item">
+              <NavLink to="/chat-with-coach">Chat with Hercules</NavLink>
+            </li>
+            {/* <li className="sidenav-item">
+              <NavLink to="/nutrition/recipes">My Recipes</NavLink>
+            </li>
+            <li className="sidenav-item">
+              <NavLink to="/nutrition/logging">Food Logging</NavLink>
+            </li> */}
+          </div>
+        </div>
+    
       </ul>
     </aside>
     
