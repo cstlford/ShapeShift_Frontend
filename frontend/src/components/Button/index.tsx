@@ -7,9 +7,9 @@ interface Props {
   onClick?: () => void;
   type?: "submit";
 }
-const Button: React.FC<Props> = ({ children, style, type }) => {
+const Button: React.FC<Props> = ({ children, style, type, onClick }) => {
   return (
-    <button className={`btn btn-${style}`} type={type}>
+    <button className={`btn btn-${style}`} type={type} onClick={onClick}>
       {children}
     </button>
   );

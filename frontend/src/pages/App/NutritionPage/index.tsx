@@ -16,7 +16,8 @@ const NutritionPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [meals, setMeals] = useState([]);
   const { state } = useGlobalState();
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(false);
+  const [saveMessage, setSaveMessage] = useState("");
 
   const nutritionInfo = {
     dietaryPreference: state.user?.diet_type,
@@ -56,7 +57,7 @@ const NutritionPage = () => {
       mealCount,
       flavorPreferences,
     };
-    setLoading(true); 
+    setLoading(true);
     try {
       const response = await fetch("http://127.0.0.1:5000/generate-meal-plan", {
         method: "POST",
@@ -75,13 +76,37 @@ const NutritionPage = () => {
       console.log("Received meal data from backend:", mealData["ai"]);
 
       // Update the state with the received meal data
-      setMeals(mealData["meals"]);
+      setMeals(mealData["ai"]);
     } catch (error) {
       console.error("Error fetching meal plan:", error);
       setErrorMessage("Failed to generate meal plan. Please try again.");
-    }
-    finally {
+    } finally {
       setLoading(false); // Reset loading to false after the API call completes
+    }
+  };
+
+  const handleSavePlan = async () => {
+    console.log("clicked");
+    try {
+      const response = await fetch("http://127.0.0.1:5000/save-meal-plan", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // Include cookies for authentication if needed
+        body: JSON.stringify({ meals }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Meal plan saved:", result);
+      setSaveMessage("Plan saved successfully.");
+    } catch (error) {
+      console.error("Error saving meal plan:", error);
+      setSaveMessage("Could not save plan.");
     }
   };
 
@@ -173,11 +198,18 @@ const NutritionPage = () => {
           <Button style="blue">Create My Meal Plan</Button>
         </form>
       </div>
-      <h2 id="schedule-heading">Your Meal Schedule</h2>
       {isLoading && <Loading />}
-
       {errorMessage && <p className="error">{errorMessage}</p>}
-      <MealCarousel mealData={meals} />
+      {meals.length > 0 && (
+        <>
+          <h2 id="schedule-heading">Your Meal Schedule</h2>
+          <MealCarousel mealData={meals} />
+          <Button style="orange" onClick={handleSavePlan}>
+            Save Plan
+          </Button>
+          {saveMessage && <p className="error">{saveMessage}</p>}
+        </>
+      )}
     </AppLayout>
   );
 };

@@ -22,10 +22,15 @@ interface CarouselProps {
 const MealCarousel: React.FC<CarouselProps> = ({ mealData }) => {
   const settings = {
     dots: true,
-    speed: 500,
-    slidesToShow: 3, // Show 1 card at a time for most screen sizes
+    infinite: true,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    slidesToShow: 3,
     slidesToScroll: 1,
-    centerPadding: "40px", // Default padding for larger screens
+    pauseOnHover: true,
+    centerPadding: "40px",
   };
   const getIncrementedDate = (startDate: Date, daysToAdd: number) => {
     const newDate = new Date(startDate);
