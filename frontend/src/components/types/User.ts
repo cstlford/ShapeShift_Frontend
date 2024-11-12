@@ -14,6 +14,12 @@ export interface User {
   id: number;
   name: string;
   email: string;
+  height: number;
+  weight: number;
+  sex: string;
+  birthday: string;
+  activity_level: string;
+  diet: string;
   goals: UserGoal | null;
   diet_type: string | null;
   calories: number | null;

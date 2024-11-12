@@ -13,7 +13,7 @@
 .highlight {
   color: var(--secondary-color);
 }
-h2 {
+.body-info h2 {
   font-size: 20px;
   margin-bottom: 20px;
   text-align: center;

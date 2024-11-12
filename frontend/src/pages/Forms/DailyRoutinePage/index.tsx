@@ -60,26 +60,29 @@ const DailyRoutineForm: React.FC = () => {
   return (
     <FormLayout>
       <form onSubmit={handleSubmit}>
-        <h2>
-          Tell us about your <span className="highlight">daily routine</span>...
-        </h2>
+        <div className="daily-routine">
+          <h2>
+            Tell us about your <span className="highlight">daily routine</span>
+            ...
+          </h2>
 
-        <div className="inputs">
-          <SelectForm
-            label="Do you follow a particular diet?"
-            value={userInfoData.daily_routine?.particular_diet || ""}
-            options={options.particular_diet}
-            onChange={(event) => handleSelectChange("particular_diet", event)}
-          />
-          <SelectForm
-            label="How would you describe your typical day?"
-            value={userInfoData.daily_routine?.activity_level || ""}
-            options={options.activity_level}
-            onChange={(event) => handleSelectChange("activity_level", event)}
-          />
+          <div className="inputs">
+            <SelectForm
+              label="Do you follow a particular diet?"
+              value={userInfoData.daily_routine?.particular_diet || ""}
+              options={options.particular_diet}
+              onChange={(event) => handleSelectChange("particular_diet", event)}
+            />
+            <SelectForm
+              label="How would you describe your typical day?"
+              value={userInfoData.daily_routine?.activity_level || ""}
+              options={options.activity_level}
+              onChange={(event) => handleSelectChange("activity_level", event)}
+            />
+          </div>
+
+          <Button style="orange">Create My Profile</Button>
         </div>
-
-        <Button style="orange">Create My Profile</Button>
       </form>
     </FormLayout>
   );

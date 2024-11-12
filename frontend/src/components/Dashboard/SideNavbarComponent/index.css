@@ -71,7 +71,7 @@
   padding: 0.5rem 0;
 }
 
-h2 {
+.sidenav-list h2 {
   color: #ffffff;
   margin: 1.5rem 0 0.5rem;
   font-size: 1.2rem;
@@ -79,7 +79,7 @@ h2 {
   position: relative;
 }
 
-h2::after {
+.sidenav-list h2::after {
   content: "";
   position: absolute;
   left: 0;
@@ -91,6 +91,6 @@ h2::after {
   transition: transform 0.3s ease;
 }
 
-h2:hover::after {
+.sidenav-list h2:hover::after {
   transform: scaleX(1);
 }

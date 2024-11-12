@@ -1,0 +1,16 @@
+.profile-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.profile-user-info {
+  color: white;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.profile-user-info h2 {
+  color: #00ffff;
+  font-size: 22px;
+}
