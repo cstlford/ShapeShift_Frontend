@@ -13,7 +13,6 @@ import ExcerciseGuideComponent from "./components/Dashboard/Exercise/ExerciseGui
 import ExcerciseLoggingComponent from "./components/Dashboard/Exercise/ExerciseLoggingComponent";
 import ExcercisePlanComponent from "./components/Dashboard/Exercise/ExercisePlanComponent";
 import NutritionLoggingComponent from "./components/Dashboard/Nutrition/NutritionLoggingComponent";
-import NutritionRecipeComponent from "./components/Dashboard/Nutrition/NutritionRecipeComponent";
 import ProgressLoggingComponent from "./components/Dashboard/Progress/ProgressLoggingComponent";
 import NutritionPage from "./pages/App/NutritionPage";
 import DashboardPage from "./pages/App/DashboardPage";
@@ -21,6 +20,7 @@ import LoginPage from "./pages/App/LoginPage";
 import CreateAccount from "./pages/Forms/CreateAccount";
 import { GlobalStateProvider } from "./contexts/GlobalStateContext";
 import ProfilePage from "./pages/App/ProfilePage";
+import RecipePage from "./pages/App/RecipePage";
 
 const App: React.FC = () => {
   return (
@@ -40,7 +40,7 @@ const App: React.FC = () => {
               <Route path="/preferences" element={<UserPreferencesForm />} />
               <Route path="/chat-with-coach" element={<ChatWithCoach />} />
               <Route path="/login" element={<LoginPage />} />
-              
+
               <Route
                 path="/generate-meal-plan"
                 element={<GenerateMealPlan />}
@@ -57,10 +57,7 @@ const App: React.FC = () => {
                 path="/exercise/plan"
                 element={<ExcercisePlanComponent />}
               />
-              <Route
-                path="/nutrition/recipes"
-                element={<NutritionRecipeComponent />}
-              />
+              <Route path="/nutrition/recipes" element={<RecipePage />} />
               <Route
                 path="nutrition/logging"
                 element={<NutritionLoggingComponent />}

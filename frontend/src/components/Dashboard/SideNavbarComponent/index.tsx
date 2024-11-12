@@ -8,7 +8,7 @@ const SideNavbarComponent = () => {
   const [progressOpen, setProgressOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
 
-  const toggleChat = () => setChatOpen(!chatOpen)
+  const toggleChat = () => setChatOpen(!chatOpen);
   const toggleNutrition = () => setNutritionOpen(!nutritionOpen);
   const toggleExercise = () => setExerciseOpen(!exerciseOpen);
   const toggleProgress = () => setProgressOpen(!progressOpen);
@@ -30,7 +30,7 @@ const SideNavbarComponent = () => {
               <NavLink to="/nutrition/plan">Make a Plan</NavLink>
             </li>
             <li className="sidenav-item">
-              <NavLink to="/nutrition/recipes">My Recipes</NavLink>
+              <NavLink to="/nutrition/recipes">Saved Meal Plans</NavLink>
             </li>
             <li className="sidenav-item">
               <NavLink to="/nutrition/logging">Food Logging</NavLink>
@@ -78,7 +78,8 @@ const SideNavbarComponent = () => {
         </div>
         <li className="sidenav-header">
           <h2 onClick={toggleChat}>
-            Chat With Hercules <span className="arrow">{chatOpen ? "▼" : "▲"}</span>
+            Chat With Hercules{" "}
+            <span className="arrow">{chatOpen ? "▼" : "▲"}</span>
           </h2>
         </li>
 
@@ -98,11 +99,8 @@ const SideNavbarComponent = () => {
             </li> */}
           </div>
         </div>
-    
       </ul>
     </aside>
-    
-    
   );
 };
 
