@@ -21,7 +21,6 @@ interface Meal {
 const RecipePage = () => {
   const [mealPlans, setMealPlans] = useState<MealPlan[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
-  //   const [isLoading, setLoading] = useState(true);
 
   const getIncrementedDate = (startDate: Date, daysToAdd: number) => {
     const newDate = new Date(startDate);
@@ -60,23 +59,26 @@ const RecipePage = () => {
     <AppLayout>
       <div className="recipe-page">
         <h1>Your Meal Plans</h1>
-
-        <div className="meal-plan-container">
-          {mealPlans.map((plan) => (
-            <div className="meal-plan" key={plan.id}>
-              <h3>Meal Plan ID: {plan.id}</h3>
-              <div className="meal-cards">
-                {plan.meals.map((dayMeals, dayIndex) => (
-                  <MealCard
-                    key={dayIndex}
-                    meals={dayMeals}
-                    date={getIncrementedDate(today, dayIndex)}
-                  />
-                ))}
+        {mealPlans.length > 0 ? (
+          <div className="meal-plan-container">
+            {mealPlans.map((plan, index) => (
+              <div className="meal-plan" key={plan.id}>
+                <h3>Meal Plan: {index + 1}</h3>
+                <div className="meal-cards">
+                  {plan.meals.map((dayMeals, dayIndex) => (
+                    <MealCard
+                      key={dayIndex}
+                      meals={dayMeals}
+                      date={getIncrementedDate(today, dayIndex)}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <h3>**You have no saved plans yet**</h3>
+        )}
       </div>
     </AppLayout>
   );
