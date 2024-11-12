@@ -204,10 +204,10 @@ const NutritionPage = () => {
         <>
           <h2 id="schedule-heading">Your Meal Schedule</h2>
           <MealCarousel mealData={meals} />
+          {saveMessage && <p className="error">{saveMessage}</p>}
           <Button style="orange" onClick={handleSavePlan}>
             Save Plan
           </Button>
-          {saveMessage && <p className="error">{saveMessage}</p>}
         </>
       )}
     </AppLayout>

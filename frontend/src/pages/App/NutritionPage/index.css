@@ -11,6 +11,10 @@
   font-size: 22px;
 }
 
+#schedule-heading {
+  margin-bottom: 10px;
+}
+
 .nutrition-container {
   display: flex;
   flex-direction: row;
@@ -43,5 +47,6 @@
 }
 
 .error {
-  color: red;
+  color: white;
+  margin-bottom: 0px;
 }
