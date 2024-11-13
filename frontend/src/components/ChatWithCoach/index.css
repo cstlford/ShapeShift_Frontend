@@ -19,3 +19,31 @@
     margin: auto;
     width: 50%;
 }
+
+/* Base styles for both buttons */
+#btn-go-back, #btn-chat {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient colors */
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    color: #fff; /* White text */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover effect for both buttons */
+#btn-go-back:hover, #btn-chat:hover {
+    transform: translateY(-2px); /* Lift button on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+/* Active (click) effect for both buttons */
+#btn-go-back:active, #btn-chat:active {
+    transform: scale(0.98); /* Slightly shrink on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow reduction on click */
+}
