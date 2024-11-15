@@ -21,6 +21,7 @@ import CreateAccount from "./pages/Forms/CreateAccount";
 import { GlobalStateProvider } from "./contexts/GlobalStateContext";
 import ProfilePage from "./pages/App/ProfilePage";
 import RecipePage from "./pages/App/RecipePage";
+import WeightHistory from "./components/Dashboard/Progress/WeightHIstory";
 
 const App: React.FC = () => {
   return (
@@ -68,6 +69,9 @@ const App: React.FC = () => {
                 element={<ProgressLoggingComponent />}
               />
               <Route path="/profile" element={<ProfilePage />} />
+              
+              <Route path="/weight-history" element={<WeightHistory/>} />
+
             </Routes>
           </Router>
         </UserInfoProvider>
