@@ -2,7 +2,9 @@
 import {useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css"
-
+import Markdown from 'react-markdown'
+import SideNavbarComponent from "../Dashboard/SideNavbarComponent";
+import NavbarComponent from "../Dashboard/NavbarComponent";
 // import.meta.env.VITE_YOUR_ENV_VARIABLE
 
 
@@ -55,7 +57,7 @@ const ChatWithCoach = () => {
           const ai_response = await response.json();
   
           setMessages((prev) => [...prev, {sender: "You", text: userInput}])
-          setMessages((prev) => [...prev, {sender:"Hercules", text: ai_response.message  } ])
+          setMessages((prev) => [...prev, {sender:"Hercules", text:  ai_response.message.trim()  } ])
           
 
           setShow(true)
@@ -75,38 +77,73 @@ const ChatWithCoach = () => {
 
     }
  
-    const SendMessage = () => { // Render LLM output
-     
+    const SendMessage = () => {
+      return (
+          <>
+              <div className="gemini-output">
+                  {messages.map((data, index) => (
+                      <div id="messages" key={index}> {/* Direct div to avoid extra <p> */}
+                          <strong>{data.sender}:</strong>
+                          <Markdown>{data.text}</Markdown>
+                      </div>
+                  ))}
+              </div>
+          </>
+      );
+  };
 
-      return ( 
-              <>
-                  <p className="gemini-output">{messages.map((data) => {
-                    console.log(data)
-                    
-                        return (
-                          <p>
-                              <div id="messages"><strong>{data.sender}:</strong> {data.text}</div>
-                          </p>
-                          
-                        )
-                  })}</p> 
-              </>
-      )
+  const handleDeleteChat = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/delete-chat-history", {
+        method: "DELETE", // If you are using POST to clear chat, keep it as POST
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // Ensures the session or cookie is sent with the request
+        // No need for body since it's just clearing the chat
+      });
+    
+      // Handle the response after the request is successful
+      if (response.ok) {
+        console.log("Chat history cleared successfully.");
+        // Optionally, you can update the UI to reflect the cleared chat
+      } else {
+        console.log("Failed to clear chat history.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
+
+  }
   return (
     <>
-       
-       
-        <button className='btn-go-back' onClick={handleGoBack}>Go Back</button>
-        <h1 id="main-title">Chat with Nutrition Coach Hercules</h1>
-        <div id="main-flex-container">
-               
-                {show && <SendMessage />}
-                <textarea id="userInput" className={"user-input"} onChange={handleChange} value={userInput}></textarea>
-                <button onClick={handleClick}>Submit</button> 
-        </div>
- 
-    </>
+     <NavbarComponent />
+    <SideNavbarComponent />
+    <div id="main-container">
+      <div id="header-buttons">
+        
+        <button id="btn-delete-chat" onClick={handleDeleteChat}>Delete All Chat History</button>
+      </div>
+
+      <h1 id="main-title">Chat with Nutrition Coach Hercules</h1>
+
+      <div id="chat-container">
+        {show && <SendMessage />}
+      </div>
+
+      <div id="input-container">
+        <textarea
+          id="userInput"
+          className="user-input"
+          onChange={handleChange}
+          value={userInput}
+          placeholder="Type your message here..."
+        ></textarea>
+
+        <button id="btn-chat" onClick={handleClick}>Submit</button>
+      </div>
+    </div>
+  </>
 
   )
 }

@@ -72,7 +72,10 @@ const SideNavbarComponent = () => {
         >
           <div className="collapsible-content">
             <li className="sidenav-item">
-              <NavLink to="/progress/logging">Weight Logging</NavLink>
+              <NavLink to="/progress/logging">Weight Chart</NavLink>
+            </li>
+            <li className="sidenav-item">
+              <NavLink to="/weight-history">Weight Logging</NavLink>
             </li>
           </div>
         </div>

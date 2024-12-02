@@ -19,7 +19,8 @@ const ProgressLoggingComponent: React.FC = () => {
 
         </div>
         <div className="box-container">
-        
+     
+
         </div>
       </div>
     </div>
