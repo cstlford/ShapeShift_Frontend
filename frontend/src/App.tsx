@@ -11,7 +11,6 @@ import { UserInfoProvider } from "./contexts/UserInfoContext";
 import GenerateMealPlan from "./components/GenerateMealPlan";
 import ExcerciseGuideComponent from "./components/Dashboard/Exercise/ExerciseGuideComponent";
 import ExcerciseLoggingComponent from "./components/Dashboard/Exercise/ExerciseLoggingComponent";
-import ExcercisePlanComponent from "./components/Dashboard/Exercise/ExercisePlanComponent";
 import NutritionLoggingComponent from "./components/Dashboard/Nutrition/NutritionLoggingComponent";
 import ProgressLoggingComponent from "./components/Dashboard/Progress/ProgressLoggingComponent";
 import NutritionPage from "./pages/App/NutritionPage";
@@ -22,6 +21,7 @@ import { GlobalStateProvider } from "./contexts/GlobalStateContext";
 import ProfilePage from "./pages/App/ProfilePage";
 import RecipePage from "./pages/App/RecipePage";
 import WeightHistory from "./components/Dashboard/Progress/WeightHIstory";
+import ExerciseGenerationPage from "./pages/App/ExerciseGenPage";
 
 const App: React.FC = () => {
   return (
@@ -56,7 +56,7 @@ const App: React.FC = () => {
               />
               <Route
                 path="/exercise/plan"
-                element={<ExcercisePlanComponent />}
+                element={<ExerciseGenerationPage />}
               />
               <Route path="/nutrition/recipes" element={<RecipePage />} />
               <Route
@@ -69,9 +69,8 @@ const App: React.FC = () => {
                 element={<ProgressLoggingComponent />}
               />
               <Route path="/profile" element={<ProfilePage />} />
-              
-              <Route path="/weight-history" element={<WeightHistory/>} />
 
+              <Route path="/weight-history" element={<WeightHistory />} />
             </Routes>
           </Router>
         </UserInfoProvider>

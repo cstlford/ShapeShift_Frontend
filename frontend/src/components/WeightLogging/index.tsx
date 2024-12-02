@@ -1,12 +1,7 @@
-
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 function WeightLogging() {
-   
-
-
   return (
     <div>
       <Calendar />
@@ -15,4 +10,4 @@ function WeightLogging() {
     </div>
   );
 }
-export default WeightLogging
+export default WeightLogging;

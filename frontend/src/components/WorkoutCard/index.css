@@ -1,0 +1,52 @@
+.workout-card {
+  border-radius: 8px;
+  background-color: white;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.workout-card-header {
+  background-color: #ff7f50;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#dumbbell {
+  width: 25px;
+  height: 25px;
+  margin: 0px;
+}
+
+.workout-card-header > * {
+  margin: 0px;
+}
+
+.workout-card-body {
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 238px;
+  text-align: left;
+}
+
+.section h3 {
+  margin-top: 0;
+  margin-bottom: 0px;
+}
+
+.section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section li {
+  margin: 4px 0 0 15px;
+}
