@@ -58,6 +58,7 @@ const NutritionPage = () => {
       flavorPreferences,
     };
     setLoading(true);
+    setErrorMessage("");
     try {
       const response = await fetch("http://127.0.0.1:5000/generate-meal-plan", {
         method: "POST",
@@ -73,7 +74,7 @@ const NutritionPage = () => {
       }
       console.log("Meal plan request sent to backend:", formData);
       const mealData = await response.json();
-      console.log("Received meal data from backend:", mealData["ai"]);
+      console.log("Received meal data from backend:", mealData["meals"]);
 
       // Update the state with the received meal data
       setMeals(mealData["ai"]);
@@ -81,7 +82,7 @@ const NutritionPage = () => {
       console.error("Error fetching meal plan:", error);
       setErrorMessage("Failed to generate meal plan. Please try again.");
     } finally {
-      setLoading(false); // Reset loading to false after the API call completes
+      setLoading(false); // update loading state
     }
   };
 
@@ -93,7 +94,7 @@ const NutritionPage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies for authentication if needed
+        credentials: "include",
         body: JSON.stringify({ meals }),
       });
 
