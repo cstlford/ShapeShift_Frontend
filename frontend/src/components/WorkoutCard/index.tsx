@@ -5,6 +5,7 @@ type Exercise = {
   name: string;
   sets: number;
   reps: number;
+  rest: number;
 };
 
 type WorkoutCardProps = {
@@ -24,56 +25,90 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
 }) => {
   return (
     <div className="workout-card">
-      <div className="workout-card-header">
+      <div className="workout-header">
         <h3>{title}</h3>
-        <img id="dumbbell" src={dumbbell} alt="" />
+        <img src={dumbbell} alt="dumbbell" id="dumbbell" />
       </div>
-      <div className="workout-card-body">
-        {warmup.length > 0 && (
-          <div className="section">
-            <h3>Warmup:</h3>
-            <ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <th>Rest</th>
+          </tr>
+        </thead>
+        <tbody>
+          {warmup.length > 0 && (
+            <>
+              <tr>
+                <td colSpan={4} className="subheading">
+                  Warmup
+                </td>
+              </tr>
               {warmup.map((activity, index) => (
-                <li key={index}>{activity}</li>
+                <tr key={`warmup-${index}`}>
+                  <td>{activity}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
               ))}
-            </ul>
-          </div>
-        )}
-        {compoundLifts.length > 0 && (
-          <div className="section">
-            <h3>Compound Lifts:</h3>
-            <ul>
-              {compoundLifts.map((lift, index) => (
-                <li key={index}>
-                  {lift.name}: {lift.sets} x {lift.reps}
-                </li>
+            </>
+          )}
+          {compoundLifts.length > 0 && (
+            <>
+              <tr>
+                <td colSpan={4} className="subheading">
+                  Compound Lifts
+                </td>
+              </tr>
+              {compoundLifts.map((exercise, index) => (
+                <tr key={`compound-${index}`}>
+                  <td>{exercise.name}</td>
+                  <td>{exercise.sets}</td>
+                  <td>{exercise.reps}</td>
+                  <td>{exercise.rest} sec</td>
+                </tr>
               ))}
-            </ul>
-          </div>
-        )}
-        {isolationLifts.length > 0 && (
-          <div className="section">
-            <h3>Isolation Lifts:</h3>
-            <ul>
-              {isolationLifts.map((lift, index) => (
-                <li key={index}>
-                  {lift.name}: {lift.sets} x {lift.reps}
-                </li>
+            </>
+          )}
+          {isolationLifts.length > 0 && (
+            <>
+              <tr>
+                <td colSpan={4} className="subheading">
+                  Isolation Lifts
+                </td>
+              </tr>
+              {isolationLifts.map((exercise, index) => (
+                <tr key={`isolation-${index}`}>
+                  <td>{exercise.name}</td>
+                  <td>{exercise.sets}</td>
+                  <td>{exercise.reps}</td>
+                  <td>{exercise.rest} sec</td>
+                </tr>
               ))}
-            </ul>
-          </div>
-        )}
-        {cooldown.length > 0 && (
-          <div className="section">
-            <h3>Cooldown:</h3>
-            <ul>
+            </>
+          )}
+          {cooldown.length > 0 && (
+            <>
+              <tr>
+                <td colSpan={4} className="subheading">
+                  Cooldown
+                </td>
+              </tr>
               {cooldown.map((activity, index) => (
-                <li key={index}>{activity}</li>
+                <tr key={`cooldown-${index}`}>
+                  <td>{activity}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
               ))}
-            </ul>
-          </div>
-        )}
-      </div>
+            </>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };

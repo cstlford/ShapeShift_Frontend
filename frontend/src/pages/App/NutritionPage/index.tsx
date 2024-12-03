@@ -30,35 +30,19 @@ const NutritionPage = () => {
     },
   };
 
-  const handlePlanDurationChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setPlanDuration(e.target.value);
-  };
-
-  const handleFoodsToAvoidChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFoodsToAvoid(e.target.value);
-  };
-
-  const handleMealCountChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setMealCount(e.target.value);
-  };
-
-  const handleFlavorPreferencesChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFlavorPreferences(e.target.value);
-  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formData = {
       planDuration,
       foodsToAvoid,
       mealCount,
       flavorPreferences,
     };
+
     setLoading(true);
     setErrorMessage("");
+
     try {
       const response = await fetch("http://127.0.0.1:5000/generate-meal-plan", {
         method: "POST",
@@ -166,7 +150,7 @@ const NutritionPage = () => {
                 value={planDuration}
                 label="Select Your Plan Duration"
                 options={timeOptions}
-                onChange={handlePlanDurationChange}
+                onChange={(e) => setPlanDuration(e.target.value)}
               />
               <InputForm
                 placeholder="E.g., Shellfish, Gluten"
@@ -175,7 +159,7 @@ const NutritionPage = () => {
                 type="text"
                 maxLength={255}
                 required={false}
-                onChange={handleFoodsToAvoidChange}
+                onChange={(e) => setFoodsToAvoid(e.target.value)}
               />
             </div>
             <div className="col">
@@ -183,7 +167,7 @@ const NutritionPage = () => {
                 value={mealCount}
                 label="How many meals do you eat per day?"
                 options={numberOptions}
-                onChange={handleMealCountChange}
+                onChange={(e) => setMealCount(e.target.value)}
               />
               <InputForm
                 placeholder="E.g., Mediterranean, Italian..."
@@ -192,7 +176,7 @@ const NutritionPage = () => {
                 type="text"
                 maxLength={255}
                 required={false}
-                onChange={handleFlavorPreferencesChange}
+                onChange={(e) => setFlavorPreferences(e.target.value)}
               />
             </div>
           </div>

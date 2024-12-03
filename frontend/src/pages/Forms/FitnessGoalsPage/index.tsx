@@ -16,13 +16,11 @@ const options = {
     { name: "Improve Endurance", id: "endurance" },
     { name: "Increase Speed", id: "speed" },
     { name: "Maximize Fat Burn", id: "fat_burn" },
-    { name: "Improve Overall Fitness", id: "overall_fitness" },
   ],
   resistance_training_goals: [
-    { name: "Increase Muscle Mass", id: "muscle_mass" },
-    { name: "Improve Overall Strength", id: "overall_strength" },
-    { name: "Enhance Muscle Endurance", id: "muscle_endurance" },
-    { name: "Improve Functional Strength", id: "functional_strength" },
+    { name: "Increase Muscle Mass", id: "hypertrophy" },
+    { name: "Improve Overall Strength", id: "strength" },
+    { name: "Enhance Muscle Endurance", id: "endurance" },
   ],
 };
 

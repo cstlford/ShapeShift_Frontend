@@ -8,18 +8,20 @@ import { useState } from "react";
 
 const ExerciseGenerationPage = () => {
   const [daysPerWeek, setDaysPerWeek] = useState("");
-  const [timePerDay, setTimePerDay] = useState("");
+  const [timePerWorkout, setTimePerWorkout] = useState("");
+  const [equipment, setEquipment] = useState("");
+  const [customEquipment, setCustomEquipment] = useState("");
 
   const pushWorkoutData = {
     title: "Push Workout",
     warmup: ["5 minutes treadmill", "Dynamic stretches"],
     compoundLifts: [
-      { name: "Bench Press", sets: 3, reps: 8 },
-      { name: "Overhead Press", sets: 2, reps: 8 },
+      { name: "Bench Press", sets: 3, reps: 8, rest: 60 },
+      { name: "Overhead Press", sets: 2, reps: 8, rest: 60 },
     ],
     isolationLifts: [
-      { name: "Tricep Extension", sets: 3, reps: 8 },
-      { name: "Lateral Raises", sets: 2, reps: 8 },
+      { name: "Tricep Extension", sets: 3, reps: 8, rest: 30 },
+      { name: "Lateral Raises", sets: 2, reps: 8, rest: 30 },
     ],
     cooldown: ["Stretch chest", "Stretch shoulders"],
   };
@@ -34,15 +36,22 @@ const ExerciseGenerationPage = () => {
     { name: "Seven", id: 7 },
   ];
 
+  const equipmentOptions = [
+    { name: "Standard Gym", id: 1 },
+    { name: "No Equipment", id: 2 },
+    { name: "Other", id: 3 },
+  ];
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const payload = {
+    const formData = {
       daysPerWeek: parseInt(daysPerWeek, 10),
-      timePerDay: parseInt(timePerDay, 10),
+      timePerWorkout: parseInt(timePerWorkout, 10),
+      equipment: parseInt(equipment),
+      customEquipment: customEquipment,
     };
 
-    console.log("payload", payload);
     try {
       const response = await fetch(
         "http://127.0.0.1:5000/generate-exercise-plan",
@@ -52,7 +61,7 @@ const ExerciseGenerationPage = () => {
             "Content-Type": "application/json",
           },
           credentials: "include",
-          body: JSON.stringify(payload),
+          body: JSON.stringify(formData),
         }
       );
 
@@ -81,11 +90,26 @@ const ExerciseGenerationPage = () => {
             />
             <InputForm
               type="number"
-              value={timePerDay}
-              onChange={(e) => setTimePerDay(e.target.value)}
+              value={timePerWorkout}
+              onChange={(e) => setTimePerWorkout(e.target.value)}
               placeholder="ex: 45"
               label="How many minutes can you train per day?"
             />
+            <SelectForm
+              value={equipment}
+              label="What equipment do you have access to?"
+              options={equipmentOptions}
+              onChange={(e) => setEquipment(e.target.value)}
+            />
+            {equipment === "3" && (
+              <InputForm
+                type="text"
+                value={customEquipment}
+                onChange={(e) => setCustomEquipment(e.target.value)}
+                placeholder="ex: resistance bands, pull-up bar"
+                label="Please specify your available equipment"
+              />
+            )}
             <Button style="orange" type="submit">
               Generate Exercise Plan
             </Button>
