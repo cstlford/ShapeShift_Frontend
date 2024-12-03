@@ -6,7 +6,6 @@ import SelectForm from "../../../components/SelectForm";
 import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
 import { useGlobalState } from "../../../contexts/GlobalStateContext";
-import Loading from "../../../components/LoadingPage";
 import PlanLoader from "../../../components/PlanLoader";
 
 const NutritionPage = () => {
@@ -170,7 +169,7 @@ const NutritionPage = () => {
                 />
               </div>
             </div>
-            <Button style="blue">Create My Meal Plan</Button>
+            <Button style="orange">Create My Meal Plan</Button>
           </form>
         </div>
 

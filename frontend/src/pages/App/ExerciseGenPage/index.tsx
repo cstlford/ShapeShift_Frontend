@@ -3,9 +3,10 @@ import InputForm from "../../../components/InputForm";
 import SelectForm from "../../../components/SelectForm";
 import WorkoutCarousel from "../../../components/WorkoutCarousel";
 import AppLayout from "../../../layouts/AppLayout";
-import Loading from "../../../components/LoadingPage";
 import "./index.css";
 import { useState } from "react";
+import PlanLoader from "../../../components/PlanLoader";
+import { useGlobalState } from "../../../contexts/GlobalStateContext";
 
 const ExerciseGenerationPage = () => {
   const [daysPerWeek, setDaysPerWeek] = useState("");
@@ -15,6 +16,7 @@ const ExerciseGenerationPage = () => {
   const [workout, setWorkout] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { state } = useGlobalState();
 
   const timeOptions = [
     { name: "One", id: 1 },
@@ -32,6 +34,24 @@ const ExerciseGenerationPage = () => {
     { name: "Other", id: 3 },
   ];
 
+  const rows = [
+    {
+      top: "Resistance Goal",
+      bottom: `${state.user?.goals?.resistance_goal}`,
+    },
+    {
+      top: "Cardio Goal",
+      bottom: `${state.user?.goals?.cardio_goal}`,
+    },
+    {
+      top: "Weight Goal",
+      bottom: `${state.user?.goals?.weight_goal}`,
+    },
+    {
+      top: "Chosen Split",
+      bottom: `Push/Pull/Legs`,
+    },
+  ];
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -106,11 +126,20 @@ const ExerciseGenerationPage = () => {
               />
             )}
             <Button style="orange" type="submit">
-              Generate Exercise Plan
+              Create My Exercise Plan
             </Button>
           </form>
         </div>
-        {isLoading && <Loading />}
+        {isLoading && (
+          <PlanLoader title="Generating meal plan">
+            {rows.map((row, index) => (
+              <div className="plan-item" key={index}>
+                <div className="plan-item-top">{row.top}</div>
+                <div className="plan-item-bottom">{row.bottom}</div>
+              </div>
+            ))}
+          </PlanLoader>
+        )}
         {errorMessage && <p className="error">{errorMessage}</p>}
         {workout.length > 0 && (
           <div className="workout-carousel">
