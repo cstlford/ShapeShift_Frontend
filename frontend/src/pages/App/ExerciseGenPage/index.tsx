@@ -2,7 +2,9 @@ import Button from "../../../components/Button";
 import InputForm from "../../../components/InputForm";
 import SelectForm from "../../../components/SelectForm";
 import WorkoutCard from "../../../components/WorkoutCard";
+import WorkoutCarousel from "../../../components/WorkoutCarousel";
 import AppLayout from "../../../layouts/AppLayout";
+import Loading from "../../../components/LoadingPage";
 import "./index.css";
 import { useState } from "react";
 
@@ -11,20 +13,9 @@ const ExerciseGenerationPage = () => {
   const [timePerWorkout, setTimePerWorkout] = useState("");
   const [equipment, setEquipment] = useState("");
   const [customEquipment, setCustomEquipment] = useState("");
-
-  const pushWorkoutData = {
-    title: "Push Workout",
-    warmup: ["5 minutes treadmill", "Dynamic stretches"],
-    compoundLifts: [
-      { name: "Bench Press", sets: 3, reps: 8, rest: 60 },
-      { name: "Overhead Press", sets: 2, reps: 8, rest: 60 },
-    ],
-    isolationLifts: [
-      { name: "Tricep Extension", sets: 3, reps: 8, rest: 30 },
-      { name: "Lateral Raises", sets: 2, reps: 8, rest: 30 },
-    ],
-    cooldown: ["Stretch chest", "Stretch shoulders"],
-  };
+  const [workout, setWorkout] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const timeOptions = [
     { name: "One", id: 1 },
@@ -52,6 +43,9 @@ const ExerciseGenerationPage = () => {
       customEquipment: customEquipment,
     };
 
+    setLoading(true);
+    setErrorMessage("");
+
     try {
       const response = await fetch(
         "http://127.0.0.1:5000/generate-exercise-plan",
@@ -69,10 +63,12 @@ const ExerciseGenerationPage = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const result = await response.json();
-      console.log(result);
+      const workoutData = await response.json();
+      setWorkout(workoutData);
     } catch (error) {
       console.error("Error fetching exercise plan:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -115,15 +111,14 @@ const ExerciseGenerationPage = () => {
             </Button>
           </form>
         </div>
-        <div>
-          <WorkoutCard
-            title={pushWorkoutData.title}
-            warmup={pushWorkoutData.warmup}
-            compoundLifts={pushWorkoutData.compoundLifts}
-            isolationLifts={pushWorkoutData.isolationLifts}
-            cooldown={pushWorkoutData.cooldown}
-          />
-        </div>
+        {isLoading && <Loading />}
+        {errorMessage && <p className="error">{errorMessage}</p>}
+        {workout.length > 0 && (
+          <div className="workout-carousel">
+            <WorkoutCarousel workouts={workout} />
+            <Button style="orange">Save Plan</Button>
+          </div>
+        )}
       </div>
     </AppLayout>
   );

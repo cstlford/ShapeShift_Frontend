@@ -10,17 +10,22 @@
 .workout-card {
   border-radius: 8px;
   background-color: #ff7f50;
-  width: 300px;
+  width: 90%;
+  max-width: 300px;
+  min-width: 200px;
   overflow-y: auto;
   max-height: 300px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
 .workout-header {
+  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
-  padding: 10px 0 10px;
+  padding: 10px 0;
 }
 
 .workout-card h3 {
@@ -28,6 +33,7 @@
   color: #ffffff;
   flex: 1;
   margin: 0;
+  font-size: 1.2rem;
 }
 
 table {
@@ -53,11 +59,13 @@ td {
   border: 1px solid #ddd;
   padding: 2px;
   text-align: left;
+  font-size: 0.9rem;
 }
 
 tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
 tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
@@ -71,4 +79,5 @@ tbody tr:hover {
   font-weight: bold;
   text-align: center;
   color: #ffffff;
+  font-size: 1rem;
 }

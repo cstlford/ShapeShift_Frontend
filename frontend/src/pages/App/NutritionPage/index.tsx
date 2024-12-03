@@ -110,9 +110,9 @@ const NutritionPage = () => {
 
   return (
     <AppLayout>
-      <h1>Create Your Personal Nutritional Plan</h1>
       <div className="nutrition-container">
-        <div className="nutrition-info">
+        <h1>Create Your Personal Nutritional Plan</h1>
+        {/* <div className="nutrition-info">
           <h2>Your Nutritional Blueprint</h2>
           <p>
             <strong>Dietary Preference:</strong>{" "}
@@ -141,60 +141,62 @@ const NutritionPage = () => {
               {nutritionInfo.macroSplit.carbohydrates}g
             </li>
           </ul>
+        </div> */}
+        <div className="nutrition-forms">
+          <form onSubmit={handleSubmit}>
+            <div className="form-columns">
+              <div className="form-column">
+                <SelectForm
+                  value={planDuration}
+                  label="Select Your Plan Duration"
+                  options={timeOptions}
+                  onChange={(e) => setPlanDuration(e.target.value)}
+                />
+                <InputForm
+                  placeholder="E.g., Shellfish, Gluten"
+                  label="Any foods to avoid?"
+                  value={foodsToAvoid}
+                  type="text"
+                  maxLength={255}
+                  required={false}
+                  onChange={(e) => setFoodsToAvoid(e.target.value)}
+                />
+              </div>
+              <div className="form-column">
+                <SelectForm
+                  value={mealCount}
+                  label="How many meals do you eat per day?"
+                  options={numberOptions}
+                  onChange={(e) => setMealCount(e.target.value)}
+                />
+                <InputForm
+                  placeholder="E.g., Mediterranean, Italian..."
+                  label="What flavors excite your palate?"
+                  value={flavorPreferences}
+                  type="text"
+                  maxLength={255}
+                  required={false}
+                  onChange={(e) => setFlavorPreferences(e.target.value)}
+                />
+              </div>
+            </div>
+            <Button style="blue">Create My Meal Plan</Button>
+          </form>
         </div>
-        <form className="customize" onSubmit={handleSubmit}>
-          <h2>Customize Your Meal Plan</h2>
-          <div className="cols">
-            <div className="col">
-              <SelectForm
-                value={planDuration}
-                label="Select Your Plan Duration"
-                options={timeOptions}
-                onChange={(e) => setPlanDuration(e.target.value)}
-              />
-              <InputForm
-                placeholder="E.g., Shellfish, Gluten"
-                label="Any foods to avoid?"
-                value={foodsToAvoid}
-                type="text"
-                maxLength={255}
-                required={false}
-                onChange={(e) => setFoodsToAvoid(e.target.value)}
-              />
-            </div>
-            <div className="col">
-              <SelectForm
-                value={mealCount}
-                label="How many meals do you eat per day?"
-                options={numberOptions}
-                onChange={(e) => setMealCount(e.target.value)}
-              />
-              <InputForm
-                placeholder="E.g., Mediterranean, Italian..."
-                label="What flavors excite your palate?"
-                value={flavorPreferences}
-                type="text"
-                maxLength={255}
-                required={false}
-                onChange={(e) => setFlavorPreferences(e.target.value)}
-              />
-            </div>
+
+        {isLoading && <Loading />}
+        {errorMessage && <p className="error">{errorMessage}</p>}
+        {meals.length > 0 && (
+          <div className="meal-carousel">
+            <h2 id="schedule-heading">Your Meal Schedule</h2>
+            <MealCarousel mealData={meals} />
+            {saveMessage && <p className="error">{saveMessage}</p>}
+            <Button style="orange" onClick={handleSavePlan}>
+              Save Plan
+            </Button>
           </div>
-          <Button style="blue">Create My Meal Plan</Button>
-        </form>
+        )}
       </div>
-      {isLoading && <Loading />}
-      {errorMessage && <p className="error">{errorMessage}</p>}
-      {meals.length > 0 && (
-        <>
-          <h2 id="schedule-heading">Your Meal Schedule</h2>
-          <MealCarousel mealData={meals} />
-          {saveMessage && <p className="error">{saveMessage}</p>}
-          <Button style="orange" onClick={handleSavePlan}>
-            Save Plan
-          </Button>
-        </>
-      )}
     </AppLayout>
   );
 };
