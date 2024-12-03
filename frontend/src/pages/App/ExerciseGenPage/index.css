@@ -12,6 +12,10 @@
   margin-bottom: 20px;
 }
 
+.workout-carousel h2 {
+  margin-top: 0;
+}
+
 .exercise-page h1 {
   margin-bottom: 0;
 }

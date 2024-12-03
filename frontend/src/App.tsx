@@ -22,6 +22,7 @@ import ProfilePage from "./pages/App/ProfilePage";
 import RecipePage from "./pages/App/RecipePage";
 import WeightHistory from "./components/Dashboard/Progress/WeightHIstory";
 import ExerciseGenerationPage from "./pages/App/ExerciseGenPage";
+import SavedExercisePlansPage from "./pages/App/SavedExercisePlansPage";
 
 const App: React.FC = () => {
   return (
@@ -48,7 +49,7 @@ const App: React.FC = () => {
               />
               <Route
                 path="/exercise/guide"
-                element={<ExcerciseGuideComponent />}
+                element={<SavedExercisePlansPage />}
               />
               <Route
                 path="/exercise/logging"

@@ -1,7 +1,6 @@
 import Button from "../../../components/Button";
 import InputForm from "../../../components/InputForm";
 import SelectForm from "../../../components/SelectForm";
-import WorkoutCard from "../../../components/WorkoutCard";
 import WorkoutCarousel from "../../../components/WorkoutCarousel";
 import AppLayout from "../../../layouts/AppLayout";
 import Loading from "../../../components/LoadingPage";
@@ -115,6 +114,7 @@ const ExerciseGenerationPage = () => {
         {errorMessage && <p className="error">{errorMessage}</p>}
         {workout.length > 0 && (
           <div className="workout-carousel">
+            <h2>Your Workout Routine</h2>
             <WorkoutCarousel workouts={workout} />
             <Button style="orange">Save Plan</Button>
           </div>

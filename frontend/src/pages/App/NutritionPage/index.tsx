@@ -7,6 +7,7 @@ import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
 import { useGlobalState } from "../../../contexts/GlobalStateContext";
 import Loading from "../../../components/LoadingPage";
+import PlanLoader from "../../../components/PlanLoader";
 
 const NutritionPage = () => {
   const [planDuration, setPlanDuration] = useState("");
@@ -29,6 +30,25 @@ const NutritionPage = () => {
       carbohydrates: state.user?.macronutrients?.carbs,
     },
   };
+
+  const rows = [
+    {
+      top: "Calories",
+      bottom: `${nutritionInfo.dailyCaloricGoal} kcal`,
+    },
+    {
+      top: "Protein",
+      bottom: `${nutritionInfo.macroSplit?.protein} g`,
+    },
+    {
+      top: "Fat",
+      bottom: `${nutritionInfo.macroSplit?.fat} g`,
+    },
+    {
+      top: "Carbs",
+      bottom: `${nutritionInfo.macroSplit?.carbohydrates} g`,
+    },
+  ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -112,36 +132,6 @@ const NutritionPage = () => {
     <AppLayout>
       <div className="nutrition-container">
         <h1>Create Your Personal Nutritional Plan</h1>
-        {/* <div className="nutrition-info">
-          <h2>Your Nutritional Blueprint</h2>
-          <p>
-            <strong>Dietary Preference:</strong>{" "}
-            {nutritionInfo.dietaryPreference}
-          </p>
-          <p>
-            <strong>Nutrition Goal:</strong> {nutritionInfo.nutritionGoal}{" "}
-            Weight
-          </p>
-          <p>
-            <strong>Daily Caloric Goal:</strong>{" "}
-            {nutritionInfo.dailyCaloricGoal} kcal
-          </p>
-          <p>
-            <strong>Daily Macro Split:</strong>
-          </p>
-          <ul>
-            <li>
-              <strong>protein:</strong> {nutritionInfo.macroSplit.protein}g
-            </li>
-            <li>
-              <strong>fat:</strong> {nutritionInfo.macroSplit.fat}g
-            </li>
-            <li>
-              <strong>carbohydrate:</strong>{" "}
-              {nutritionInfo.macroSplit.carbohydrates}g
-            </li>
-          </ul>
-        </div> */}
         <div className="nutrition-forms">
           <form onSubmit={handleSubmit}>
             <div className="form-columns">
@@ -184,11 +174,21 @@ const NutritionPage = () => {
           </form>
         </div>
 
-        {isLoading && <Loading />}
+        {isLoading && (
+          <PlanLoader title="Generating meal plan">
+            {rows.map((row, index) => (
+              <div className="plan-item" key={index}>
+                <div className="plan-item-top">{row.top}</div>
+                <div className="plan-item-bottom">{row.bottom}</div>
+              </div>
+            ))}
+          </PlanLoader>
+        )}
+
         {errorMessage && <p className="error">{errorMessage}</p>}
         {meals.length > 0 && (
           <div className="meal-carousel">
-            <h2 id="schedule-heading">Your Meal Schedule</h2>
+            <h2>Your Meal Schedule</h2>
             <MealCarousel mealData={meals} />
             {saveMessage && <p className="error">{saveMessage}</p>}
             <Button style="orange" onClick={handleSavePlan}>
