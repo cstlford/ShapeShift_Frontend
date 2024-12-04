@@ -31,7 +31,7 @@ const SavedExercisePlansPage = () => {
       </Button>
       <div>
         {isLoading && (
-          <PlanLoader title="Generating meal plan">
+          <PlanLoader title="Generating plan">
             {rows.map((row, index) => (
               <div className="plan-item" key={index}>
                 <div className="plan-item-top">{row.top}</div>
