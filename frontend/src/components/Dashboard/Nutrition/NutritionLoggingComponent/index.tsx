@@ -9,10 +9,10 @@ const NutritionLoggingComponent: React.FC = () => {
       <NavbarComponent />
       <SideNavbarComponent />
       <div className="content-container">
-        <div className="box box1">Nutrition 1</div>
+        <div className="box box1">Coming Soon!</div>
         <div className="box-container">
-          <div className="box box2">Nutrition 2</div>
-          <div className="box box3">Nutrition 3</div>
+          <div className="box box2">Coming Soon!</div>
+          <div className="box box3">Coming Soon!</div>
         </div>
       </div>
     </div>

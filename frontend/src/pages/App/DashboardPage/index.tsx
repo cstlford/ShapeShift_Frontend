@@ -16,21 +16,21 @@ const DashboardPage = () => {
   const getContentForDay = (dayIndex: number) => {
     switch (dayIndex) {
       case 0:
-        return "Content for Sunday";
+        return "Sunday - Coming Soon!";
       case 1:
-        return "Content for Monday";
+        return "Monday - Coming Soon!";
       case 2:
-        return "Content for Tuesday";
+        return "Tuesday - Coming Soon!";
       case 3:
-        return "Content for Wednesday";
+        return "Wednesday - Coming Soon!";
       case 4:
-        return "Content for Thursday";
+        return "Thursday - Coming Soon!";
       case 5:
-        return "Content for Friday";
+        return "Friday - Coming Soon!";
       case 6:
-        return "Content for Saturday";
+        return "Saturday - Coming Soon!";
       default:
-        return "Content for Today";
+        return "Today - Coming Soon!";
     }
   };
 
@@ -57,8 +57,8 @@ const DashboardPage = () => {
         </div>
         <div className="box row1">{getContentForDay(selectedDay)}</div>
         <div className="row2">
-          <div className="box">Content 2</div>
-          <div className="box">Content 3</div>
+          <div className="box">Coming Soon!</div>
+          <div className="box">Coming Soon!</div>
         </div>
       </div>
     </AppLayout>
