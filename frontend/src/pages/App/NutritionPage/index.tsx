@@ -1,13 +1,14 @@
 import { useState } from "react";
 import Button from "../../../components/Button";
 import InputForm from "../../../components/InputForm";
-import MealCarousel from "../../../components/MealCarousel";
+//import MealCarousel from "../../../components/MealCarousel";
 import SelectForm from "../../../components/SelectForm";
 import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
 import { useGlobalState } from "../../../contexts/GlobalStateContext";
 import PlanLoader from "../../../components/PlanLoader";
 import salad from "../../../assets/animations/salad.json";
+import MealPlanContainer from "../../../components/Dashboard/Nutrition/MealPlanContainer";
 
 const NutritionPage = () => {
   const [planDuration, setPlanDuration] = useState("");
@@ -33,8 +34,11 @@ const NutritionPage = () => {
   ];
 
   const timeOptions = [
-    { name: "One week", id: 7 },
-    { name: "Two weeks", id: 14 },
+    //{ name: "One week", id: 7 },
+    //{ name: "Two weeks", id: 14 },
+    { name: "One Day", id: 1 },
+    { name: "Two Days", id: 2 },
+    { name: "Three Days", id: 3 },
   ];
   const numberOptions = [
     { name: "One", id: 1 },
@@ -73,7 +77,7 @@ const NutritionPage = () => {
       }
       console.log("Meal plan request sent to backend:", formData);
       const mealData = await response.json();
-      console.log("Received meal data from backend:", mealData["meals"]);
+      console.log("Received meal data from backend:", mealData["ai"]);
 
       // Update the state with the received meal data
       setMeals(mealData["ai"]);
@@ -161,7 +165,7 @@ const NutritionPage = () => {
         {meals.length > 0 && (
           <div className="meal-carousel">
             <h2>Your Meal Schedule</h2>
-            <MealCarousel mealData={meals} />
+            <MealPlanContainer mealData={meals} />
             {saveMessage && <p className="error">{saveMessage}</p>}
             <Button style="orange" onClick={handleSavePlan}>
               Save Plan

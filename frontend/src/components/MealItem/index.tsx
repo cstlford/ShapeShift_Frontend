@@ -38,19 +38,27 @@ const MealItem: React.FC<Props> = ({ meal }) => {
 
       {isExpanded && (
         <div className="meal-details">
-          <p>Macros:</p>
+          <p>
+            <strong>Macros:</strong>
+          </p>
           <ul>
             <li>Protein: {meal.macros.protein}g</li>
             <li>Carbs: {meal.macros.carbs}g</li>
             <li>Fat: {meal.macros.fat}g</li>
           </ul>
-          <p>Ingredients:</p>
+          <p>
+            <strong>Ingredients:</strong>
+          </p>
           <ul>
             {meal.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
-          <p>Directions: {meal.directions}</p>
+          <p>
+            <strong>Directions:</strong>
+            <br></br>
+            {meal.directions}
+          </p>
         </div>
       )}
     </div>
