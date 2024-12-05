@@ -15,8 +15,10 @@ const ExerciseGenerationPage = () => {
   const [equipment, setEquipment] = useState("");
   const [customEquipment, setCustomEquipment] = useState("");
   const [workout, setWorkout] = useState([]);
+  const [split, setSplit] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [saveMessage, setSaveMessage] = useState("");
   const { state } = useGlobalState();
 
   const timeOptions = [
@@ -37,7 +39,11 @@ const ExerciseGenerationPage = () => {
 
   const messages = [
     "Generating your plan",
-    "Almost there",
+    "Reviewing your goals",
+    `Resistance goal: ${state.user?.goals?.resistance_goal}`,
+    `Cardio goal: ${state.user?.goals?.cardio_goal}`,
+    `Choosing an exercise split`,
+    "Consulting the experts",
     "Just a few more seconds",
   ];
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -71,9 +77,45 @@ const ExerciseGenerationPage = () => {
       }
 
       const workoutData = await response.json();
-      setWorkout(workoutData);
+      setWorkout(workoutData["workout_plan"]);
+      setSplit(workoutData["split"]);
     } catch (error) {
       console.error("Error fetching exercise plan:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSavePlan = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/save-exercise-plan", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          workout: workout,
+          split: split,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSaveMessage("Plan saved successfully.");
+      } else {
+        setErrorMessage("Failed to save workout plan. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error saving workout plan:", error);
+      setErrorMessage(
+        "An error occurred while saving your plan. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -126,8 +168,12 @@ const ExerciseGenerationPage = () => {
         {Array.isArray(workout) && workout.length > 0 && (
           <div className="workout-carousel">
             <h2>Your Workout Routine</h2>
+            <h3 id="split">Chosen Split: {split}</h3>
             <WorkoutCarousel workouts={workout} />
-            <Button style="orange">Save Plan</Button>
+            {saveMessage && <p className="error">{saveMessage}</p>}
+            <Button style="orange" onClick={handleSavePlan}>
+              Save Plan
+            </Button>
           </div>
         )}
       </div>

@@ -8,8 +8,6 @@ import DailyRoutinePage from "./pages/Forms/DailyRoutinePage";
 import FinalPage from "./pages/Forms/FinalPage";
 import ChatWithCoach from "./components/ChatWithCoach";
 import { UserInfoProvider } from "./contexts/UserInfoContext";
-import ExcerciseLoggingComponent from "./components/Dashboard/Exercise/ExerciseLoggingComponent";
-import NutritionLoggingComponent from "./components/Dashboard/Nutrition/NutritionLoggingComponent";
 import ProgressLoggingComponent from "./components/Dashboard/Progress/ProgressLoggingComponent";
 import NutritionPage from "./pages/App/NutritionPage";
 import DashboardPage from "./pages/App/DashboardPage";
@@ -45,18 +43,10 @@ const App: React.FC = () => {
                 element={<SavedExercisePlansPage />}
               />
               <Route
-                path="/exercise/logging"
-                element={<ExcerciseLoggingComponent />}
-              />
-              <Route
                 path="/exercise/plan"
                 element={<ExerciseGenerationPage />}
               />
               <Route path="/nutrition/saved" element={<RecipePage />} />
-              <Route
-                path="nutrition/logging"
-                element={<NutritionLoggingComponent />}
-              />
               <Route path="/nutrition/plan" element={<NutritionPage />} />
               <Route
                 path="/progress/logging"

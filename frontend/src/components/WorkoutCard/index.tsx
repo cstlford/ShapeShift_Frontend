@@ -26,7 +26,7 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({
   return (
     <div className="workout-card">
       <div className="workout-header">
-        <h3>{title}</h3>
+        <h3 id="workout-title">{title}</h3>
         <img src={dumbbell} alt="dumbbell" id="dumbbell" />
       </div>
       <table>

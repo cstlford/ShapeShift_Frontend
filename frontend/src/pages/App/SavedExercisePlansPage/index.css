@@ -1,0 +1,37 @@
+.exercise-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercise-plan-container {
+  background: #616161;
+  margin: 0 20px 20px 20px;
+  border-radius: 10px;
+  padding: 20px;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.exercise-page h3 {
+  color: #ff7f50;
+}
+
+.exercise-plan {
+  margin-bottom: 20px;
+}
+
+.exercise-plan h3 {
+  text-align: left;
+  margin: 0px 0px 10px 0px;
+  color: white;
+}
+
+.workout-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-evenly;
+}

@@ -12,7 +12,8 @@
   max-width: 400px;
   min-width: 200px;
   overflow-y: auto;
-  max-height: 300px;
+  min-height: 300px;
+  max-height: 800px;
   margin: 0 auto;
   transition: all 0.3s ease;
 }
@@ -26,7 +27,7 @@
   padding: 10px;
 }
 
-.workout-card h3 {
+#workout-title {
   text-align: left;
 
   color: #ffffff;

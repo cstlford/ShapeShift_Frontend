@@ -21,6 +21,7 @@ const NutritionPage = () => {
   const [saveMessage, setSaveMessage] = useState("");
 
   const messages = [
+    "Generating your plan",
     "Reviewing your preferences",
     "Calculating Macros",
     `Calories: ${state.user?.calories} kcal`,
@@ -29,6 +30,19 @@ const NutritionPage = () => {
     `Fat: ${state.user?.macronutrients?.fat} g`,
     "Consulting the experts",
     "Almost there",
+  ];
+
+  const timeOptions = [
+    { name: "One week", id: 7 },
+    { name: "Two weeks", id: 14 },
+  ];
+  const numberOptions = [
+    { name: "One", id: 1 },
+    { name: "Two", id: 2 },
+    { name: "Three", id: 3 },
+    { name: "Four", id: 4 },
+    { name: "Five", id: 5 },
+    { name: "Six", id: 6 },
   ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -72,7 +86,6 @@ const NutritionPage = () => {
   };
 
   const handleSavePlan = async () => {
-    console.log("clicked");
     try {
       const response = await fetch("http://127.0.0.1:5000/save-meal-plan", {
         method: "POST",
@@ -95,19 +108,6 @@ const NutritionPage = () => {
       setSaveMessage("Could not save plan.");
     }
   };
-
-  const timeOptions = [
-    { name: "One week", id: 7 },
-    { name: "Two weeks", id: 14 },
-  ];
-  const numberOptions = [
-    { name: "One", id: 1 },
-    { name: "Two", id: 2 },
-    { name: "Three", id: 3 },
-    { name: "Four", id: 4 },
-    { name: "Five", id: 5 },
-    { name: "Six", id: 6 },
-  ];
 
   return (
     <AppLayout>

@@ -32,9 +32,6 @@ const SideNavbarComponent = () => {
             <li className="sidenav-item">
               <NavLink to="/nutrition/saved">Saved Meal Plans</NavLink>
             </li>
-            <li className="sidenav-item">
-              <NavLink to="/nutrition/logging">Food Logging</NavLink>
-            </li>
           </div>
         </div>
 
@@ -53,9 +50,6 @@ const SideNavbarComponent = () => {
             </li>
             <li className="sidenav-item">
               <NavLink to="/exercise/saved">Saved Exercise Plans</NavLink>
-            </li>
-            <li className="sidenav-item">
-              <NavLink to="/exercise/logging">Exercise Logging</NavLink>
             </li>
           </div>
         </div>
