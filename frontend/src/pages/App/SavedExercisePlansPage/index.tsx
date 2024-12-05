@@ -83,7 +83,7 @@ const SavedExercisePlansPage = () => {
             ))}
           </div>
         ) : (
-          <h3>**You have no saved plans yet**</h3>
+          <h3 id="no-plans">**You have no saved plans yet**</h3>
         )}
       </div>
     </AppLayout>
