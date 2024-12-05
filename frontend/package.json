@@ -15,6 +15,7 @@
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "frontend": "file:",
+    "lottie-react": "^2.4.0",
     "multiselect-react-dropdown": "^2.0.25",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",

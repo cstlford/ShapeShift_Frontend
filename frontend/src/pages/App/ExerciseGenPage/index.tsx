@@ -7,6 +7,7 @@ import "./index.css";
 import { useState } from "react";
 import PlanLoader from "../../../components/PlanLoader";
 import { useGlobalState } from "../../../contexts/GlobalStateContext";
+import dumbbell from "../../../assets/animations/dumbbell.json";
 
 const ExerciseGenerationPage = () => {
   const [daysPerWeek, setDaysPerWeek] = useState("");
@@ -34,23 +35,10 @@ const ExerciseGenerationPage = () => {
     { name: "Other", id: 3 },
   ];
 
-  const rows = [
-    {
-      top: "Resistance Goal",
-      bottom: `${state.user?.goals?.resistance_goal}`,
-    },
-    {
-      top: "Cardio Goal",
-      bottom: `${state.user?.goals?.cardio_goal}`,
-    },
-    {
-      top: "Weight Goal",
-      bottom: `${state.user?.goals?.weight_goal}`,
-    },
-    {
-      top: "Chosen Split",
-      bottom: `Push/Pull/Legs`,
-    },
+  const messages = [
+    "Generating your plan",
+    "Almost there",
+    "Just a few more seconds",
   ];
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -61,7 +49,7 @@ const ExerciseGenerationPage = () => {
       equipment: parseInt(equipment),
       customEquipment: customEquipment,
     };
-
+    setWorkout([]);
     setLoading(true);
     setErrorMessage("");
 
@@ -95,8 +83,9 @@ const ExerciseGenerationPage = () => {
     <AppLayout>
       <div className="exercise-page">
         <h1>Create Your Personal Exercise Plan</h1>
-        <div className="exercise-forms">
-          <form onSubmit={handleSubmit} className="exercise-forms">
+
+        <form onSubmit={handleSubmit}>
+          <div className="exercise-forms">
             <SelectForm
               value={daysPerWeek}
               label="How many days per week can you train?"
@@ -125,23 +114,16 @@ const ExerciseGenerationPage = () => {
                 label="Please specify your available equipment"
               />
             )}
-            <Button style="orange" type="submit">
-              Create My Exercise Plan
-            </Button>
-          </form>
-        </div>
-        {isLoading && (
-          <PlanLoader title="Generating exercise plan">
-            {rows.map((row, index) => (
-              <div className="plan-item" key={index}>
-                <div className="plan-item-top">{row.top}</div>
-                <div className="plan-item-bottom">{row.bottom}</div>
-              </div>
-            ))}
-          </PlanLoader>
-        )}
+          </div>
+          <Button style="orange" type="submit">
+            Create My Exercise Plan
+          </Button>
+        </form>
+
+        {isLoading && <PlanLoader path={dumbbell} messages={messages} />}
+
         {errorMessage && <p className="error">{errorMessage}</p>}
-        {workout.length > 0 && (
+        {Array.isArray(workout) && workout.length > 0 && (
           <div className="workout-carousel">
             <h2>Your Workout Routine</h2>
             <WorkoutCarousel workouts={workout} />

@@ -19,10 +19,11 @@
 .exercise-page h1 {
   margin-bottom: 0;
 }
-
+.exercise-page form {
+  margin: 0 0 10px;
+}
 .exercise-forms {
-  width: 300px;
   padding: 0;
   border: 0;
-  margin-bottom: 10px;
+  width: 300px;
 }

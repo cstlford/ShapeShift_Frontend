@@ -7,6 +7,7 @@ import AppLayout from "../../../layouts/AppLayout";
 import "./index.css";
 import { useGlobalState } from "../../../contexts/GlobalStateContext";
 import PlanLoader from "../../../components/PlanLoader";
+import salad from "../../../assets/animations/salad.json";
 
 const NutritionPage = () => {
   const [planDuration, setPlanDuration] = useState("");
@@ -19,34 +20,15 @@ const NutritionPage = () => {
   const [isLoading, setLoading] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
 
-  const nutritionInfo = {
-    dietaryPreference: state.user?.diet_type,
-    nutritionGoal: state.user?.goals?.weight_goal,
-    dailyCaloricGoal: state.user?.calories,
-    macroSplit: {
-      protein: state.user?.macronutrients?.protein,
-      fat: state.user?.macronutrients?.fat,
-      carbohydrates: state.user?.macronutrients?.carbs,
-    },
-  };
-
-  const rows = [
-    {
-      top: "Calories",
-      bottom: `${nutritionInfo.dailyCaloricGoal} kcal`,
-    },
-    {
-      top: "Protein",
-      bottom: `${nutritionInfo.macroSplit?.protein} g`,
-    },
-    {
-      top: "Fat",
-      bottom: `${nutritionInfo.macroSplit?.fat} g`,
-    },
-    {
-      top: "Carbs",
-      bottom: `${nutritionInfo.macroSplit?.carbohydrates} g`,
-    },
+  const messages = [
+    "Reviewing your preferences",
+    "Calculating Macros",
+    `Calories: ${state.user?.calories} kcal`,
+    `Protein: ${state.user?.macronutrients?.protein} g`,
+    `Carbs: ${state.user?.macronutrients?.carbs} g`,
+    `Fat: ${state.user?.macronutrients?.fat} g`,
+    "Consulting the experts",
+    "Almost there",
   ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -173,16 +155,7 @@ const NutritionPage = () => {
           </form>
         </div>
 
-        {isLoading && (
-          <PlanLoader title="Generating meal plan">
-            {rows.map((row, index) => (
-              <div className="plan-item" key={index}>
-                <div className="plan-item-top">{row.top}</div>
-                <div className="plan-item-bottom">{row.bottom}</div>
-              </div>
-            ))}
-          </PlanLoader>
-        )}
+        {isLoading && <PlanLoader path={salad} messages={messages} />}
 
         {errorMessage && <p className="error">{errorMessage}</p>}
         {meals.length > 0 && (

@@ -2,16 +2,14 @@
   width: 25px;
   height: 25px;
   margin: 0px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  padding-right: 18px;
 }
 
 .workout-card {
   border-radius: 8px;
   background-color: #ff7f50;
   width: 90%;
-  max-width: 300px;
+  max-width: 400px;
   min-width: 200px;
   overflow-y: auto;
   max-height: 300px;
@@ -21,15 +19,16 @@
 
 .workout-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
   width: 100%;
-  padding: 10px 0;
+  padding: 10px;
 }
 
 .workout-card h3 {
-  text-align: center;
+  text-align: left;
+
   color: #ffffff;
   flex: 1;
   margin: 0;

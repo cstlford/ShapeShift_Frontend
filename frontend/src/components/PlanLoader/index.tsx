@@ -1,53 +1,51 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import Player from "lottie-react";
 import "./index.css";
 
-type Props = {
-  children: React.ReactNode[];
-  title: string;
+type LoadingProps = {
+  messages: string[];
+  interval?: number;
+  path: any;
 };
 
-const PlanLoader: React.FC<Props> = ({ children, title }) => {
-  const [visibleRows, setVisibleRows] = useState<number>(0);
-  const [dots, setDots] = useState<string>("");
+const PlanLoader: React.FC<LoadingProps> = ({
+  messages,
+  interval = 4000,
+  path,
+}) => {
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
-    // Increment visible rows every 2 seconds
-    const rowTimer = setInterval(() => {
-      setVisibleRows((prev) => {
-        if (prev < children.length) {
-          return prev + 1;
-        } else {
-          clearInterval(rowTimer);
-          return prev;
-        }
-      });
-    }, 2000);
+    const timer = setInterval(() => {
+      setIsFadingOut(true);
+      setTimeout(() => {
+        setCurrentMessageIndex(
+          (prevIndex) => (prevIndex + 1) % messages.length
+        );
+        setIsFadingOut(false);
+      }, 500);
+    }, interval);
 
-    // Animate the dots
-    const dotsTimer = setInterval(() => {
-      setDots((prev) => (prev.length < 3 ? prev + "." : ""));
-    }, 500);
-
-    return () => {
-      clearInterval(rowTimer);
-      clearInterval(dotsTimer);
-    };
-  }, [children.length]);
+    return () => clearInterval(timer);
+  }, [messages.length, interval]);
 
   return (
-    <div className="plan-loader">
-      <h2>
-        {title}
-        {dots}
-      </h2>
-      <div className="plan-content">
-        {children.slice(0, visibleRows).map((child, index) => (
-          <div className="plan-item" key={index}>
-            {child}
-          </div>
-        ))}
+    <>
+      <div style={{ width: "auto", height: "100px", margin: "0" }}>
+        <Player
+          autoplay
+          loop
+          animationData={path}
+          style={{ width: "100%", height: "100%" }}
+        />
       </div>
-    </div>
+      <div className="loader-container">
+        <h3 className={isFadingOut ? "fade-out" : "fade-in"}>
+          {messages[currentMessageIndex]}
+        </h3>
+      </div>
+    </>
   );
 };
 
