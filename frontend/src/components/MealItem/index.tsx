@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import "./index.css";
 
+interface Ingredient {
+  ingredient: string;
+  amount: number;
+  unit: string;
+  calories: number;
+  fat: number;
+  carbs: number;
+  protein: number;
+}
+
 interface Meal {
   title: string;
   calories: number;
@@ -9,7 +19,7 @@ interface Meal {
     carbs: number;
     fat: number;
   };
-  ingredients: string[];
+  ingredients: Ingredient[];
   directions: string;
 }
 
@@ -38,19 +48,31 @@ const MealItem: React.FC<Props> = ({ meal }) => {
 
       {isExpanded && (
         <div className="meal-details">
-          <p>Macros:</p>
+          <p>
+            <strong>Macros:</strong>
+          </p>
           <ul>
             <li>Protein: {meal.macros.protein}g</li>
             <li>Carbs: {meal.macros.carbs}g</li>
             <li>Fat: {meal.macros.fat}g</li>
           </ul>
-          <p>Ingredients:</p>
+          <p>
+            <strong>Ingredients:</strong>
+          </p>
           <ul>
             {meal.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
+              <li key={index}>
+                {ingredient.amount} {ingredient.unit} {ingredient.ingredient},
+                Cal: {ingredient.calories}, P: {ingredient.protein}, F:{" "}
+                {ingredient.fat}, C: {ingredient.carbs}
+              </li>
             ))}
           </ul>
-          <p>Directions: {meal.directions}</p>
+          <p>
+            <strong>Directions:</strong>
+            <br></br>
+            {meal.directions}
+          </p>
         </div>
       )}
     </div>
