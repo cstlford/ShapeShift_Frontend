@@ -1,12 +1,9 @@
 .workout-slider {
   margin-bottom: 20px;
-  height: 300px;
 }
 
 .workout-slider .slick-slide {
-  display: flex !important; /* Ensures child divs stretch to fill height */
-  justify-content: center; /* Center align cards horizontally */
-  align-items: flex-start; /* Align cards at the top */
-  height: 300px; /* Restrict the maximum height of the slider */
-  overflow: hidden; /* Prevent overflowing content */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
