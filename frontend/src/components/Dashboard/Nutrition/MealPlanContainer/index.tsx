@@ -1,6 +1,16 @@
 import MealContainer from "../MealContainer";
 import "./index.css";
 
+interface Ingredient {
+  ingredient: string;
+  amount: number;
+  unit: string;
+  calories: number;
+  fat: number;
+  carbs: number;
+  protein: number;
+}
+
 interface Meal {
   title: string;
   calories: number;
@@ -9,7 +19,7 @@ interface Meal {
     carbs: number;
     fat: number;
   };
-  ingredients: string[];
+  ingredients: Ingredient[];
   directions: string;
 }
 

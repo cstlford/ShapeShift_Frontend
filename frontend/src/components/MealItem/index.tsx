@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import "./index.css";
 
+interface Ingredient {
+  ingredient: string;
+  amount: number;
+  unit: string;
+  calories: number;
+  fat: number;
+  carbs: number;
+  protein: number;
+}
+
 interface Meal {
   title: string;
   calories: number;
@@ -9,7 +19,7 @@ interface Meal {
     carbs: number;
     fat: number;
   };
-  ingredients: string[];
+  ingredients: Ingredient[];
   directions: string;
 }
 
@@ -51,7 +61,11 @@ const MealItem: React.FC<Props> = ({ meal }) => {
           </p>
           <ul>
             {meal.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
+              <li key={index}>
+                {ingredient.amount} {ingredient.unit} {ingredient.ingredient},
+                Cal: {ingredient.calories}, P: {ingredient.protein}, F:{" "}
+                {ingredient.fat}, C: {ingredient.carbs}
+              </li>
             ))}
           </ul>
           <p>
