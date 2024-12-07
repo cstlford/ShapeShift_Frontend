@@ -1,119 +1,71 @@
-/* Main container for everything */
-#main-container {
-    margin: auto;
-    width: 60%; /* Limit width to prevent overflow */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    position: relative; /* For absolute positioning of buttons */
+.chat-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.chat-content {
+  height: 100%;
+  width: 90%;
+}
+.chat-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-/* Header buttons (Delete Chat) positioned in the top right */
-#header-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    justify-content: flex-end; /* Position the delete button on the right */
-    width: 100%; /* Ensures it spans the whole width of the screen */
-    gap: 15px;
-}
-
-/* Delete button styling */
-#btn-delete-chat {
-    background: linear-gradient(135deg, #e74c3c, #c0392b); /* Red gradient background for warning */
-    border: none;
-    border-radius: 12px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 24px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Hover effect for delete button */
-#btn-delete-chat:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #c0392b, #e74c3c); /* Darker red for hover effect */
-}
-
-/* Active effect for delete button */
-#btn-delete-chat:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Main title styling */
 #main-title {
-    font-size: 2rem;
-    color: white;
-    text-align: center;
-    margin-top: 60px; /* Ensures space between header and title */
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  margin: 0;
 }
 
-/* Chat container where messages appear */
-#chat-container {
-    width: 100%;
-    max-height: 60vh; /* Limit height for scrolling */
-    overflow-y: auto; /* Scrollable if messages exceed height */
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 8px;
-    color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+#output-container {
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Input container (textarea + submit button) */
-#input-container {
-    display: flex;
-    align-items: flex-start; /* Align input and button on the same row */
-    width: 100%;
-    gap: 10px;
-    justify-content: space-between;
-}
-
-/* Textarea styles */
 #userInput {
-    width: 80%; /* Take up most of the width */
-    min-height: 10vh;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    resize: none;
+  min-height: 10vh;
+  width: 97%;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  resize: none;
+  margin: 10px 0 10px;
 }
 
-/* Submit button styling */
 #btn-chat {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    border: none;
-    border-radius: 12px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 24px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effect for submit button */
 #btn-chat:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Active effect for submit button */
 #btn-chat:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
