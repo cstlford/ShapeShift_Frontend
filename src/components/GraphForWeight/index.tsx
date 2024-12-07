@@ -1,45 +1,72 @@
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const data = [
-  { date: '7/3/2023', weight: 300 },
-  { date: '7/10/2023', weight: 295 },
-  { date: '7/17/2023', weight: 290 },
-  { date: '7/24/2023', weight: 285 },
-  { date: '7/31/2023', weight: 280 },
-  { date: '8/7/2023', weight: 275 },
-  { date: '8/14/2023', weight: 270 },
-  { date: '8/21/2023', weight: 265 },
-  { date: '8/28/2023', weight: 260 },
-  { date: '9/4/2023', weight: 255 },
-];
+class WeightHistoryChart extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      weightHistory: [],
+      isLoading: true,
+      error: null
+    };
+  }
 
-export default class Example extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/p/sandbox/line-chart-width-xaxis-padding-8v7952';
+  componentDidMount() {
+    fetch('http://127.0.0.1:5000/get-weight-history', {
+      credentials: 'include',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.weight_history) {
+          this.setState({
+            weightHistory: data.weight_history.map((entry) => ({
+              date: new Date(entry.date).toLocaleDateString(),
+              weight: entry.weight,
+            })),
+            isLoading: false,
+          });
+        } else {
+          this.setState({ error: 'No weight history found', isLoading: false });
+        }
+      })
+      .catch((error) => {
+        console.error('Fetch error:', error);
+        this.setState({ error: `Error fetching weight history: ${error.message}`, isLoading: false });
+      });
+  }
 
   render() {
+    const { weightHistory, isLoading, error } = this.state;
+
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
+    if (error) {
+      return <div>{error}</div>;
+    }
+
     return (
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
+          data={weightHistory}
+          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
-          <YAxis domain={[180, 310]} />
+          <YAxis domain={['auto', 'auto']} />
           <Tooltip />
           <Legend />
-          <Line type="basis" dataKey="weight" stroke="#8884d8" activeDot={{ r: 8 }} />
-          
+          <Line type="monotone" dataKey="weight" stroke="#8884d8" activeDot={{ r: 8 }} />
         </LineChart>
       </ResponsiveContainer>
     );
   }
 }
+
+export default WeightHistoryChart;
